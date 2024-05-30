@@ -993,3 +993,76 @@ Output
 ```
 A New Exception occurred:  6
 ```
+
+# Python Logging
+
+⭐⭐Read in detail [here](https://www.datacamp.com/tutorial/logging-in-python)
+
+logging is a way of keeping a log generated from a computer program. A log file usually has a set of records of events that occur in your code ( for example, a python code ) or an operating system. These events or messages are written to a log file, a message, or an event can also be a communication between different users.
+
+Five Levels of Logging as shown here, are:
+
+![](https://images.datacamp.com/image/upload/f_auto,q_auto:best/v1584715062/logging1_sjhzzn.png)
+
+- Debug (10): Useful for diagnosing issues in the code.
+
+- Info (20): It can act as an acknowledgment that there are no bugs in the code. One good use-case of Info level logging is the progress of training a machine learning model.
+
+- Warning (30): Indicative of a problem that could occur in the future. For example, a warning of a module that might be discontinued in the future or low-ram warning.
+
+- Error (40): A serious bug in the code, could be a syntax error, out of memory error, exceptions.
+
+- Critical (50): An error due to which the program might stop functioning or might exit abruptly.
+
+Important logging attributes for reference :-
+
+![](https://images.datacamp.com/image/upload/f_auto,q_auto:best/v1584715063/logging5_ugwysb.png)
+
+Read more [here](https://www.geeksforgeeks.org/logging-in-python/)
+
+### 🙄  quite confused regarding logging yet. 
+
+
+# Python regex
+
+Very good videos :-
+
+🔗[Corey Schafer general regex](https://www.youtube.com/watch?v=sa-TUpSx1JA)
+
+🔗[Corey schafer python regex](https://www.youtube.com/watch?v=K8L6KVGG-7o)
+
+For quick read see [w3school](https://www.w3schools.com/python/python_regex.asp) and [GFG](https://www.geeksforgeeks.org/regular-expression-python-examples/)
+
+A RegEx, or Regular Expression, is a sequence of characters that forms a search pattern.
+
+RegEx can be used to check if a string contains the specified search pattern.
+
+Python has a built-in package called `re`, which can be used to work with Regular Expressions.
+
+# Multithreading in python
+
+A program in execution is known as a **process**. When you start any app or program on your computer, such as the internet browser, the operating system treats it as a process.
+
+a **thread** is synonymous with lightweight processes.a thread is a sequence of instructions that the computer performs. It is executed independently.
+
+To facilitate multithreading in Python, we can make use of the following modules offered by Python –
+
+- Thread Module
+- Threading Module
+
+Multithreading in Python is a popular technique that enables multiple tasks to be executed simultaneously. In simple words, the ability of a processor to execute multiple threads simultaneously is known as multithreading.
+
+
+
+
+
+
+
+| Multithreading	| Multiprocessing |
+|-------------------|-----------------|
+| It is a technique where a process spawns multiple threads simultaneously. |It is the technique where multiple processes run across multiple processors/processor cores simultaneously. |
+|Python multithreading implements concurrency.	|Python multiprocessing implements parallelism in its truest form.
+|It gives the illusion that they are running parallelly, but they work in a concurrent manner.|	It is parallel in the sense that the multiprocessing module facilitates the running of independent processes parallelly by using subprocesses.|
+|In multithreading, the GIL or Global Interpreter Lock prevents the threads from running simultaneously.| In multiprocessing, each process has its own Python Interpreter performing the execution.|
+
+![](https://scaler.com/topics/images/multithreading-and-multiprocessing-in-python.webp)
