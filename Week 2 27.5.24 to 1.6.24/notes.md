@@ -968,6 +968,7 @@ locals()['__builtins__']
 
 
 ⭐⭐Definitely read in detail [here](https://www.geeksforgeeks.org/user-defined-exceptions-python-examples/?ref=lbp)
+
 Exceptions need to be derived from the Exception class, either directly or indirectly. Although not mandatory, most of the exceptions are named as names that end in “Error” similar to the naming of the standard exceptions in python.
 
 ```python
@@ -1172,11 +1173,12 @@ pytest has some other great features:
 - An ecosystem of hundreds of plugins to extend the functionality
 
 ```python
+#filename test_example.py
 def test_pass():
     assert 2 < 3
 ```
 In terminal
-```zsh
+```bash
 pytest
 ```
 Output
@@ -1199,6 +1201,7 @@ check this [video](https://www.youtube.com/watch?list=PLJsmaNFr5mNqSeuNepT3IaMrg
 Arrange, act, assert methodology
 
 ```python
+#filename test_example2.py
 def greet(person):
     return "hi {name}".format(**person)
 
@@ -1208,7 +1211,7 @@ def test_greet():
     assert greeting == "hi Bob" # Assert
 ```
 In terminal
-```zsh
+```bash
 pytest .\test_example2.py
 ```
 Output
