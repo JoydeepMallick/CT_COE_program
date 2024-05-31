@@ -1050,10 +1050,71 @@ To facilitate multithreading in Python, we can make use of the following modules
 - Thread Module
 - Threading Module
 
+[readme](https://www.scaler.com/topics/multithreading-in-python/)
+
 Multithreading in Python is a popular technique that enables multiple tasks to be executed simultaneously. In simple words, the ability of a processor to execute multiple threads simultaneously is known as multithreading.
 
+## 1. Using the Threading Module
+Let's take a look at the code using which we can create a new thread using the Threading Module –
+
+```python
+from threading import *
+def MyThread1():
+    print("I am in thread1.", "Current Thread in Execution is", current_thread().getName())
+def MyThread2():
+    print("I am in thread2.", "Current Thread in Execution is", current_thread().getName())
+t1 = Thread(target=MyThread1, args=[])
+t2 = Thread(target=MyThread2, args=[])
+t1.start()
+t2.start()
+```
+Output:
+```
+I am in thread1. Current Thread in Execution is Thread-1
+I am in thread2. Current Thread in Execution is Thread-2
+```
+
+## 2. Using the Thread Module
+
+The way to create a new thread using the Thread module is as follows –
+
+```python
+import _thread
+def MyThread1():
+    print("This is thread1")
+def MyThread2():
+    print("This is thread2")
+ 
+_thread.start_new_thread(MyThread1, ())
+_thread.start_new_thread(MyThread2, ())
+```
+
+Output:
+```
+This is thread1
+This is thread2
+```
+
+**Note**: The output of the above code snippet can differ for different runs. It happens because multithreading in Python using the _thread module is unstable.
+
+No one can tell which thread is going to get executed first. The _thread module treats threads as functions while the Threading module is implemented in an object-oriented way, which means every thread corresponds to an object. The _thread module has also been deprecated and is only used for backward incompatibilities in Python3.
+
+Out of the two methods, the recommended one is using the Threading module.
+
+ The Threading module is preferred as its intuitive APIs help us synchronize thread executions, thus making it predictable and highly reliable.
+
+More complex concepts like synchronization, multithreaded priority queue discussed [here](https://www.tutorialspoint.com/python/python_multithreading.htm)
 
 
+# Multiprocessing in python
+
+Explained in detail [here](https://www.analyticsvidhya.com/blog/2021/04/a-beginners-guide-to-multi-processing-in-python/)
+
+Multiprocessing refers to the ability of a system to support more than one processor at the same time. Applications in a multiprocessing system are broken to smaller routines that run independently. The operating system allocates these threads to the processors improving performance of the system.
+
+![](https://editor.analyticsvidhya.com/uploads/53591Screenshot%202021-04-25%20at%207.55.24%20PM.png)
+
+![](https://editor.analyticsvidhya.com/uploads/44715Screenshot%202021-04-25%20at%207.55.35%20PM.png)
 
 
 
@@ -1066,3 +1127,98 @@ Multithreading in Python is a popular technique that enables multiple tasks to b
 |In multithreading, the GIL or Global Interpreter Lock prevents the threads from running simultaneously.| In multiprocessing, each process has its own Python Interpreter performing the execution.|
 
 ![](https://scaler.com/topics/images/multithreading-and-multiprocessing-in-python.webp)
+
+# Test file concept
+
+Read more [here](https://realpython.com/python-testing/)
+
+- exploratory testing and is a form of manual testing. Exploratory testing is a form of testing that is done without a plan. In an exploratory test, you’re just exploring the application.
+
+-  Automated testing is the execution of your test plan (the parts of your application you want to test, the order in which you want to test them, and the expected responses) by a script instead of a human. Python already comes with a set of tools and libraries to help you create automated tests for your application.
+
+- testing multiple components is known as integration testing. A major challenge with integration testing is when an integration test doesn’t give the right result. It’s very hard to diagnose the issue without being able to isolate which part of the system is failing. 
+
+- A unit test is a smaller test, one that checks that a single component operates in the right way. A unit test helps you to isolate what is broken in your application and fix it faster.
+
+## test runners available
+
+There are many test runners available for Python. The one built into the Python standard library is called unittest. 
+
+The principles of unittest are easily portable to other frameworks. The three most popular test runners are:
+
+### 1. [unittest](https://realpython.com/python-testing/#unittest)
+unittest has been built into the Python standard library since version 2.1. unittest requires that:
+
+- You put your tests into classes as methods
+- You use a series of special assertion methods in the unittest.TestCase class instead of the built-in assert statement
+
+(check the link to know more regarding example)
+
+### 2. [nose or nose2](https://realpython.com/python-testing/#nose)
+
+nose is compatible with any tests written using the unittest framework and can be used as a drop-in replacement for the unittest test runner. The development of nose as an open-source application fell behind, and a fork called nose2 was created. If you’re starting from scratch, it is recommended that you use nose2 instead of nose.
+
+(check more in documentation)
+
+### 3. [pytest](https://realpython.com/python-testing/#pytest)
+
+pytest supports execution of unittest test cases. The real advantage of pytest comes by writing pytest test cases. **pytest test cases are a series of functions in a Python file starting with the name test_.**
+
+pytest has some other great features:
+
+- Support for the built-in assert statement instead of using special `self.assert*()` methods
+- Support for filtering for test cases
+- Ability to rerun from the last failing test
+- An ecosystem of hundreds of plugins to extend the functionality
+
+```python
+def test_pass():
+    assert 2 < 3
+```
+In terminal
+```zsh
+pytest
+```
+Output
+```
+ H:\_MyProjects_\3rd year\CT_COE_program\Week 2 27.5.24 to 1.6.24> pytest
+===================================== test session starts =====================================
+platform win32 -- Python 3.10.0, pytest-7.2.2, pluggy-1.0.0
+rootdir: H:\_MyProjects_\3rd year\CT_COE_program\Week 2 27.5.24 to 1.6.24
+collected 1 item
+
+test_example.py .                                                                        [100%] 
+
+====================================== 1 passed in 0.23s ====================================== 
+```
+
+## structuring a test
+
+check this [video](https://www.youtube.com/watch?list=PLJsmaNFr5mNqSeuNepT3IaMrgzRMm9lQR&v=sCthIEOaMI8)
+
+Arrange, act, assert methodology
+
+```python
+def greet(person):
+    return "hi {name}".format(**person)
+
+def test_greet():
+    bob = {"name": "Bob"}       # Arrange
+    greeting = greet(bob)       # Act
+    assert greeting == "hi Bob" # Assert
+```
+In terminal
+```zsh
+pytest .\test_example2.py
+```
+Output
+```
+===================================== test session starts =====================================
+platform win32 -- Python 3.10.0, pytest-7.2.2, pluggy-1.0.0
+rootdir: H:\_MyProjects_\3rd year\CT_COE_program\Week 2 27.5.24 to 1.6.24
+collected 1 item
+
+test_example2.py .                                                                       [100%] 
+
+====================================== 1 passed in 0.09s ======================================
+```
