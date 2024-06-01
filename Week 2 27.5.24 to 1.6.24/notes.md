@@ -1225,3 +1225,79 @@ test_example2.py .                                                              
 
 ====================================== 1 passed in 0.09s ======================================
 ```
+
+## pytest fixtures
+
+⭐⭐⭐Read in detail [here](https://www.geeksforgeeks.org/fixtures-in-pytest/)
+
+
+Pytest fixtures are a powerful feature that allows you to set up and tear down resources needed for your tests. They help in creating reusable and maintainable test code by providing a way to define and manage the setup and teardown logic. 
+
+A Fixture is a piece of code that runs and returns output before the execution of each test.
+
+**Syntax:**
+```python
+# Importing the math and pytest libraries 
+import math 
+import pytest 
+
+# Creating the common function for input 
+@pytest.fixture 
+def input_value(): 
+    input = 8
+    return input
+
+# Creating first test case 
+def test_check_difference(input_value): 
+    assert 99-93==input_value 
+
+# Creating second test case 
+def test_check_square_root(input_value): 
+    assert input_value==math.sqrt(64)
+
+```
+
+Its kind of like 1 test for multiple functions.
+
+e.g.
+```py
+import pytest
+
+@pytest.fixture
+```
+Output:
+```pwsh
+==================================== test session starts =====================================
+platform win32 -- Python 3.10.0, pytest-7.2.2, pluggy-1.0.0
+rootdir: H:\_MyProjects_\3rd year\CT_COE_program\Week 2 27.5.24 to 1.6.24
+collected 2 items
+
+pytest_fixture_example.py F.                                                            [100%]
+
+========================================== FAILURES ========================================== 
+___________________________________ test_check_difference ____________________________________
+
+input_value = 8
+
+    def test_check_difference(input_value):
+>       assert 99-93==input_value
+E       assert (99 - 93) == 8
+
+pytest_fixture_example.py:13: AssertionError
+================================== short test summary info ===================================
+FAILED pytest_fixture_example.py::test_check_difference - assert (99 - 93) == 8
+================================ 1 failed, 1 passed in 1.18s ================================= 
+```
+
+## mock patching a function
+
+
+Read [here](https://www.fugue.co/blog/2016-02-11-python-mocking-101) and also [here](https://realpython.com/python-mock-library/)
+
+**Mocking** = "The replacement of one or more function calls or objects with mock calls or objects"
+
+A mock function call returns a predefined value immediately, without doing any work. A mock object's attributes and methods are similarly defined entirely in the test, without creating the real object or doing any work. 
+
+In Python, mocking is accomplished through the `unittest.mock` module. The module contains a number of useful classes and functions, the most important of which are the `patch` function (as decorator and context manager) and the `MagicMock` class. Mocking in Python is largely accomplished through the use of these two powerful components.
+
+### 🙄quite confused regarding the same.
