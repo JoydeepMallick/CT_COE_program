@@ -1,5 +1,7 @@
 # CT_COE_program
  
+This is the Learning program under the domain of **"DATA ENGINEERING"**
+
  Contains all trackers and weekly assignments performed per week(15 week course)
 
  Check out my interview experience in [Medium](https://medium.com/@joydeep150703/my-celebal-technology-center-of-excellence-coe-interview-experience-2024-d0bca04bbd1e)
