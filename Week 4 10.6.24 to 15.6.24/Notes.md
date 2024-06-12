@@ -185,6 +185,11 @@ ALTER TABLE ConstraintDemo5
 Add Constraint DF__Constrain__Emplo  DEFAULT (GETDATE()) FOR EmployeeDate
 ```
 
+# All inbuilt functions in SQL
+
+🌟🌟🌟[Read here in detail](https://www.w3schools.com/sqL/sql_ref_sqlserver.asp)
+
+
 # All concepts related to date time
 
 [Read me](https://www.mssqltips.com/sqlservertip/5993/sql-server-date-and-time-functions-with-examples/)
@@ -326,3 +331,323 @@ ISDATE – returns int - Returns 1 if a valid datetime type and 0 if not
 | `SELECT ISDATE(GETDATE()) AS 'IsDate';`|	IsDate|	1|
 |`SELECT ISDATE(NULL) AS 'IsDate';`|	IsDate|	0|
 
+## SQL Server String Functions
+
+[read more](https://www.sqlservertutorial.net/sql-server-string-functions/)
+
+<table>
+<thead>
+    <tr><th>Function</th><th>Description</th></tr>
+</thead>
+<tbody>
+    <tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-ascii-function/">ASCII</a></td><td>Return the ASCII code value of a character</td></tr><tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-char-function/">CHAR</a></td><td>Convert an ASCII value to a character</td></tr><tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-charindex-function/">CHARINDEX</a></td><td>Search for a substring inside a string starting from a specified location and return the position of the substring.</td></tr><tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-concat-function/">CONCAT</a></td><td>Join two or more strings into one string</td></tr><tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-concat_ws-function/">CONCAT_WS</a></td><td>Concatenate multiple strings with a separator into a single string</td></tr><tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-difference-function/">DIFFERENCE</a></td><td>Compare the SOUNDEX() values of two strings</td></tr><tr><td>FORMAT</td><td>Return a value formatted with the specified format and optional culture</td></tr><tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-left-function/">LEFT</a></td><td>Extract a given a number of characters from a character string starting from the left</td></tr><tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-len-function/">LEN</a></td><td>Return a number of characters of a character string</td></tr><tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-lower-function/">LOWER</a></td><td>Convert a string to lowercase</td></tr><tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-ltrim-function/">LTRIM</a></td><td>Return a new string from a specified string after removing all leading blanks</td></tr><tr><td>NCHAR</td><td>Return the Unicode character with the specified integer code, as defined by the Unicode standard</td></tr><tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-patindex-function/">PATINDEX</a></td><td>Returns the starting position of the first occurrence of a pattern in a string.</td></tr><tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-quotename-function/">QUOTENAME</a></td><td>Returns a Unicode string with the delimiters added to make the input string a valid delimited identifier</td></tr><tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-replace-function/">REPLACE</a></td><td>Replace all occurrences of a substring, within a string, with another substring</td></tr><tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-replicate-function/">REPLICATE</a></td><td>Return a string repeated a specified number of times</td></tr><tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-reverse-function/">REVERSE</a></td><td>Return the reverse order of a character string</td></tr><tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-right-function/">RIGHT</a></td><td>Extract a given a number of characters from a character string starting from the right</td></tr><tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-rtrim-function/">RTRIM</a></td><td>Return a new string from a specified string after removing all trailing blanks</td></tr><tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-soundex-function/">SOUNDEX</a></td><td>Return a four-character (SOUNDEX) code of a string based on how it is spoken</td></tr><tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-space-function/">SPACE</a></td><td>Returns a string of repeated spaces.</td></tr><tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-str-function/">STR</a></td><td>Returns character data converted from numeric data.</td></tr><tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-string_agg-function/">STRING_AGG</a></td><td>Concatenate rows of strings with a specified separator into a new string</td></tr><tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-string_escape-function/">STRING_ESCAPE</a></td><td>Escapes special characters in a string and returns a new string with escaped characters</td></tr><tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-string_split-function/">STRING_SPLIT</a></td><td>A table-valued function that splits a string into rows of substrings based on a specified separator.</td></tr><tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-stuff-function/">STUFF</a></td><td>Delete a part of a string and then insert another substring into the string starting at a specified position.</td></tr><tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-substring-function/">SUBSTRING</a></td><td>Extract a substring within a string starting from a specified location with a specified length</td></tr><tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-translate-function/">TRANSLATE</a></td><td>Replace several single-characters, one-to-one translation in one operation.</td></tr><tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-trim-function/">TRIM</a></td><td>Return a&nbsp;new string from a specified string after removing all leading and trailing blanks</td></tr><tr><td>UNICODE</td><td>Returns the integer value, as defined by the Unicode standard, of a character.</td></tr><tr><td><a href="https://www.sqlservertutorial.net/sql-server-string-functions/sql-server-upper-function/">UPPER</a></td><td>Convert a string to uppercase</td></tr>
+</tbody>
+</table>
+
+## SQL math functions
+
+<table class="ws-table-all notranslate">
+<tbody><tr>
+<th style="width:25%">Function</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><a href="func_sqlserver_abs.asp">ABS</a></td>
+<td>Returns the absolute value of a number</td>
+</tr>
+<tr>
+<td><a href="func_sqlserver_acos.asp">ACOS</a></td>
+<td>Returns the arc cosine of a number</td>
+</tr>
+<tr>
+<td><a href="func_sqlserver_asin.asp">ASIN</a></td>
+<td>Returns the arc sine of a number</td>
+</tr>
+<tr>
+<td><a href="func_sqlserver_atan.asp">ATAN</a></td>
+<td>Returns the arc tangent of a number</td>
+</tr>
+<tr>
+<td><a href="func_sqlserver_atn2.asp">ATN2</a></td>
+<td>Returns the arc tangent of two numbers</td>
+</tr>
+<tr>
+<td><a href="func_sqlserver_avg.asp">AVG</a></td>
+<td>Returns the average value of an expression</td>
+</tr>
+<tr>
+<td><a href="func_sqlserver_ceiling.asp">CEILING</a></td>
+<td>Returns the smallest integer value that is &gt;= a number</td>
+</tr>
+<tr>
+<td><a href="func_sqlserver_count.asp">COUNT</a></td>
+<td>Returns the number of records returned by a select query</td>
+</tr>
+<tr>
+<td><a href="func_sqlserver_cos.asp">COS</a></td>
+<td>Returns the cosine of a number</td>
+</tr>
+<tr>
+<td><a href="func_sqlserver_cot.asp">COT</a></td>
+<td>Returns the cotangent of a number</td>
+</tr>
+<tr>
+<td><a href="func_sqlserver_degrees.asp">DEGREES</a></td>
+<td>Converts a value in radians to degrees</td>
+</tr>
+<tr>
+<td><a href="func_sqlserver_exp.asp">EXP</a></td>
+<td>Returns e raised to the power of a specified number</td>
+</tr>
+<tr>
+<td><a href="func_sqlserver_floor.asp">FLOOR</a></td>
+<td>Returns the largest integer value that is &lt;= to a number</td>
+</tr>
+<tr>
+<td><a href="func_sqlserver_log.asp">LOG</a></td>
+<td>Returns the natural logarithm of a number, or the logarithm of a number to a 
+specified base</td>
+</tr>
+<tr>
+<td><a href="func_sqlserver_log10.asp">LOG10</a></td>
+<td>Returns the natural logarithm of a number to base 10</td>
+</tr>
+<tr>
+<td><a href="func_sqlserver_max.asp">MAX</a></td>
+<td>Returns the maximum value in a set of values</td>
+</tr>
+<tr>
+<td><a href="func_sqlserver_min.asp">MIN</a></td>
+<td>Returns the minimum value in a set of values</td>
+</tr>
+<tr>
+<td><a href="func_sqlserver_pi.asp">PI</a></td>
+<td>Returns the value of PI</td>
+</tr>
+<tr>
+<td><a href="func_sqlserver_power.asp">POWER</a></td>
+<td>Returns the value of a number raised to the power of another number</td>
+</tr>
+<tr>
+<td><a href="func_sqlserver_radians.asp">RADIANS</a></td>
+<td>Converts a degree value into radians</td>
+</tr>
+<tr>
+<td><a href="func_sqlserver_rand.asp">RAND</a></td>
+<td>Returns a random number</td>
+</tr>
+<tr>
+<td><a href="func_sqlserver_round.asp">ROUND</a></td>
+<td>Rounds a number to a specified number of decimal places</td>
+</tr>
+<tr>
+<td><a href="func_sqlserver_sign.asp">SIGN</a></td>
+<td>Returns the sign of a number</td>
+</tr>
+<tr>
+<td><a href="func_sqlserver_sin.asp">SIN</a></td>
+<td>Returns the sine of a number</td>
+</tr>
+<tr>
+<td><a href="func_sqlserver_sqrt.asp">SQRT</a></td>
+<td>Returns the square root of a number</td>
+</tr>
+<tr>
+<td><a href="func_sqlserver_square.asp">SQUARE</a></td>
+<td>Returns the square of a number</td>
+</tr>
+<tr>
+<td><a href="func_sqlserver_sum.asp">SUM</a></td>
+<td>Calculates the sum of a set of values</td>
+</tr>
+<tr>
+<td><a href="func_sqlserver_tan.asp">TAN</a></td>
+<td>Returns the tangent of a number</td>
+</tr>
+</tbody></table>
+
+
+
+# SQL server GROUP BY
+
+
+⭐⭐⭐[Read more in detail](https://www.sqlservertutorial.net/sql-server-basics/sql-server-group-by/)
+
+The GROUP BY clause allows you to arrange the rows of a query in groups. The groups are determined by the columns that you specify in the GROUP BY clause.
+
+Syntax
+```sql
+SELECT
+    select_list
+FROM
+    table_name
+GROUP BY
+    column_name1,
+    column_name2 ,...;
+```
+
+Assume following table:-
+
+<img src="https://www.sqlservertutorial.net/wp-content/uploads/SQL-Server-GROUP-BY-clause.png" width="400" height="300" />
+
+
+
+the following query returns the number of orders placed by the customer by year:
+
+```sql
+SELECT
+    customer_id,
+    YEAR (order_date) order_year,
+    COUNT (order_id) order_placed
+FROM
+    sales.orders
+WHERE
+    customer_id IN (1, 2)
+GROUP BY
+    customer_id,
+    YEAR (order_date)
+ORDER BY
+    customer_id; 
+```
+Output:-
+
+<img src="https://www.sqlservertutorial.net/wp-content/uploads/SQL-Server-GROUP-BY-clause-expression-example.png"  width="400" height="300">
+
+
+## Group By rollup
+
+⭐⭐⭐[read me](https://learn.microsoft.com/en-us/sql/t-sql/queries/select-group-by-transact-sql?view=sql-server-ver16#group-by-rollup) and [readme](https://www.sqltutorial.org/sql-rollup/)
+
+**The ROLLUP is an extension of the GROUP BY clause.** 
+
+Creates a group for each combination of column expressions. In addition, it "rolls up" the results into subtotals and grand totals. To do this, it moves from right to left decreasing the number of column expressions over which it creates groups and the aggregation(s).
+
+The **column order affects the ROLLUP output** and can affect the number of rows in the result set.
+
+For example, `GROUP BY ROLLUP (col1, col2, col3, col4)` creates groups for each combination of column expressions in the following lists.
+
+- col1, col2, col3, col4
+- col1, col2, col3, NULL
+- col1, col2, NULL, NULL
+- col1, NULL, NULL, NULL
+- NULL, NULL, NULL, NULL --This is the grand total
+
+
+```sql
+-- Oracle, Microsoft SQL Server, and PostgreSQL syntax
+SELECT 
+    c1, c2, aggregate_function(c3)
+FROM
+    table
+GROUP BY ROLLUP (c1, c2);
+
+
+-- mysql syntax
+SELECT 
+    c1, c2, aggregate_function(c3)
+FROM
+    table_name
+GROUP BY c1, c2 WITH ROLLUP;
+```
+example table:-
+|Country	|Region	|Sales|
+|-----------|-------|-----|
+|Canada	|Alberta	|100|
+|Canada	|British Columbia	|200|
+|Canada	|British Columbia	|300|
+|United States	|Montana	|100|
+
+```sql
+-- normal group by
+SELECT Country, Region, SUM(sales) AS TotalSales
+FROM Sales
+GROUP BY Country, Region;
+```
+Output 
+
+|Country|	Region|	TotalSales|
+|-------|---------|-----------|
+|Canada	|Alberta|	100|
+Canada	|British Columbia|	500|
+|United States	|Montana|	100|
+
+```sql
+-- group by with extension of roll up
+SELECT Country, Region, SUM(Sales) AS TotalSales
+FROM Sales
+GROUP BY ROLLUP (Country, Region);
+```
+Output :-
+
+|Country|	Region|	TotalSales|
+|-------|---------|-----------|
+|Canada	|Alberta	|100|
+|Canada	|British Columbia|	500|
+|Canada	|NULL	|600|
+|United States	|Montana	|100|
+|United States	|NULL	|100|
+|NULL	|NULL	|700|
+
+## Group by cube
+[readme](https://learn.microsoft.com/en-us/sql/t-sql/queries/select-group-by-transact-sql?view=sql-server-ver16#group-by-cube--) and [readme](https://www.mssqltips.com/sqlservertip/6315/group-by-in-sql-server-with-cube-rollup-and-grouping-sets-examples/)
+
+GROUP BY CUBE creates groups for **all possible combinations of columns**. For `GROUP BY CUBE (a, b)` the results has groups for unique values of
+- (a, b)
+- (NULL, b)
+- (a, NULL)
+- (NULL, NULL).
+
+```sql
+SELECT Country, Region, SUM(Sales) AS TotalSales
+FROM Sales
+GROUP BY CUBE (Country, Region);
+```
+Output :-
+|Country|	Region|	TotalSales|
+|-------|---------|-----------|
+|Canada|	Alberta|	100|
+|NULL|	Alberta|	100|
+|Canada|	British Columbia|	500|
+|NULL|	British Columbia|	500|
+|United States|	Montana|	100|
+|NULL|	Montana|	100|
+|NULL|	NULL|	700|
+|Canada|	NULL|	600|
+|United States|	NULL|	100|
+
+## Group by sets
+[read](https://learn.microsoft.com/en-us/sql/t-sql/queries/select-group-by-transact-sql?view=sql-server-ver16#group-by-grouping-sets--)
+
+The GROUPING SETS option gives you the ability to combine multiple GROUP BY clauses into one GROUP BY clause. **The results are the equivalent of UNION ALL of the specified groups.**
+
+For example, `GROUP BY ROLLUP (Country, Region)` and `GROUP BY GROUPING SETS ( ROLLUP (Country, Region) )` return the same results.
+
+When GROUPING SETS has two or more elements, the results are a union of the elements. This example returns the union of the ROLLUP and CUBE results for Country and Region.
+
+```sql
+SELECT Country, Region, SUM(Sales) AS TotalSales
+FROM Sales
+GROUP BY GROUPING SETS ( ROLLUP (Country, Region), CUBE (Country, Region) );
+
+-- this below query gives same result as above
+SELECT Country, Region, SUM(Sales) AS TotalSales
+FROM Sales
+GROUP BY ROLLUP (Country, Region)
+UNION ALL
+SELECT Country, Region, SUM(Sales) AS TotalSales
+FROM Sales
+GROUP BY CUBE (Country, Region);
+```
+SQL does not consolidate duplicate groups generated for a GROUPING SETS list. For example, in `GROUP BY ( (), CUBE (Country, Region) )`, both elements return a row for the grand total and both rows will be listed in the results.
+
+
+## GROUP BY ()
+Specifies the empty group, which generates the grand total. This is useful as one of the elements of a GROUPING SET. 
+
+For example, this statement gives the total sales for each country/region and then gives the grand-total for all countries/regions.
+
+```sql
+SELECT Country, SUM(Sales) AS TotalSales
+FROM Sales
+GROUP BY GROUPING SETS ( Country, () );
+```
