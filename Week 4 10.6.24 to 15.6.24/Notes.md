@@ -1,8 +1,8 @@
-## SQL server basics
+# SQL server basics
 
 [read me](https://www.sqlservertutorial.net/sql-server-basics/)
 
-## Constraints in SQL
+# Constraints in SQL
 
 <span style="color:red">**The syntax is of SQL server.**</span>
 
@@ -651,3 +651,133 @@ SELECT Country, SUM(Sales) AS TotalSales
 FROM Sales
 GROUP BY GROUPING SETS ( Country, () );
 ```
+
+
+# JOINS in SQL
+
+⭐⭐⭐[Read more](https://www.sqlshack.com/sql-join-overview-and-tutorial/)
+
+A SQL Join is a special form of generating a meaningful data by combining multiple tables relate to each other using a “Key”.
+
+The various SQL join types are as follows :-
+
+1. SQL inner join
+    - Equi join
+    - Non-equi join (Theta join)
+2. SQL outer join
+    - SQL left join or left outer join
+    - SQL right join or right outer join
+    - SQL full join or full outer join
+3. SQL cross join
+4. SQL self join
+
+![](https://www.sqlshack.com/wp-content/uploads/2018/09/word-image-249a.png)
+
+**Note:** <span style="color:yellow">The keyword outer is optional.</span> It means you can specify the keyword “outer” or not makes no difference to the query execution.
+
+## SQL inner join
+
+The simplest and most common form of a join is the SQL inner join the default of the SQL join types used in most database management systems. It’s the **default SQL join** you get when you use the join keyword by itself.
+
+The result of the SQL inner join includes rows from both the tables where the join conditions are met.
+
+![](https://www.sqlshack.com/wp-content/uploads/2018/09/word-image-253a.png)
+
+```sql
+SELECT ColumnList from LeftTable L
+INNER join  RightTable R
+ON L.Column=R.Column
+```
+
+### EQUI join 
+An equi join is the most common form of SQL inner join used in practice. If the join contains an equality operator e.g. =, then it’s an equi-join.
+
+```sql
+SELECT DISTINCT A.StateProvinceID,S.Name
+FROM Person.Address A
+inner join Person.StateProvince S
+On A.StateProvinceID=S.StateProvinceID
+```
+
+### Theta join (Non-equi join)
+
+In general, this a Theta join used to specify operators or conditions (the `ON` clause in SQL). In practice, this is a rarely used SQL join types. In most cases, the join will use a non-equality condition e.g. >
+
+```sql
+SELECT p1.FirstName, p2. FirstName             
+FROM PErson.Person p1                                          
+INNER join PErson.Person p2                                     
+ON len(p1.FirstName) > len(p2.FirstName);
+```
+
+## SQL self join
+A SQL Self join is a mechanism of joining a table to itself. You would use a self join when you wanted to create a result set joining records in the table with some other records from the same table.
+
+![](https://www.sqlshack.com/wp-content/uploads/2018/09/word-image-259a.png)
+
+```sql
+SELECT e.ename, e.empno, m.ename as manager, e.mgr
+FROM
+    emp e, emp m
+WHERE e.mgr = m.empno
+```
+
+## SQL cross join
+A CROSS join returns all rows for all possible combinations of two tables. It generates all the rows from the left table which is then combined with all the rows from the right table. This type of join is also known as a Cartesian product(A*B).
+
+![](https://www.sqlshack.com/wp-content/uploads/2018/09/word-image-261a.png)
+
+```sql
+SELECT e.BusinessEntityID, d.Name AS Department  
+FROM HumanResources.Employee AS e  
+CROSS join HumanResources.Department AS d
+```
+
+## SQL outer join
+On joining tables with a SQL inner join, the output returns only matching rows from both the tables. When using a SQL outer join, not only it will list the matching rows, it will also list the unmatched rows from the other tables.
+
+![](https://www.sqlshack.com/wp-content/uploads/2018/09/word-image-263a.png)
+
+### SQL left outer join 
+
+will return all the records from the left table in the join clause, regardless of matching records in the right table. The left SQL outer join includes rows where the condition is met plus all the rows from the table on the left where the condition is not met. Fields from the right table with no match will be displayed as null values.
+
+![](https://www.sqlshack.com/wp-content/uploads/2018/09/word-image-264a.png)
+
+Syntax:
+```sql
+SELECT ColumnList from LeftTable L
+LEFT join  RightTable R
+ON L.Column=R.Column
+Where R.Column is NULL
+```
+
+### Right outer join 
+will return all the records in the right table in the join clause, regardless of matching records in the left table. Using the right SQL outer join includes all the rows from the table on the right. The right SQL outer join is considered a special case and many databases don’t support right joins. Generally, a SQL right join can be rewritten as a SQL left join by simply changing the order of the tables in the query. In this instance, fields from the left table with no match will display null values
+
+![](https://www.sqlshack.com/wp-content/uploads/2018/09/word-image-266a.png)
+
+Syntax:
+```sql
+SELECT ColumnList from LeftTable L
+RIGHT join  RightTable R
+ON L.Column=R.Column
+Where L.Column is NULL
+```
+
+### SQL outer join
+
+will return all the rows in both tables. When rows don’t have a match in one of the tables, the field will display a null value. A full SQL outer join combines the effects of the SQL left joins and SQL right joins. Many databases do not support the implementation of full SQL outer joins
+
+![](https://www.sqlshack.com/wp-content/uploads/2018/09/word-image-268a.png)
+
+Syntax:
+```sql
+SELECT ColumnList from LeftTable L
+FULL OUTER join  RightTable R
+ON L.Column=R.Column
+```
+
+# Advanced JOINS in SQL
+
+[Read here](https://visualizeright.com/2019/03/15/joins-and-advanced-joins/)
