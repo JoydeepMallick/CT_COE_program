@@ -781,3 +781,86 @@ ON L.Column=R.Column
 # Advanced JOINS in SQL
 
 [Read here](https://visualizeright.com/2019/03/15/joins-and-advanced-joins/)
+
+# Union and Union ALL
+
+[read](https://www.sqlshack.com/sql-union-vs-union-all-in-sql-server/)
+
+## SQL Union Operator Overview
+ We use the SQL Union operator to combine two or more Select statement result set.
+
+The syntax for the SQL Union operator
+```sql
+SELECT column1, Column2 ...Column (N) FROM tableA
+UNION
+SELECT column1, Column2 ...Column (N) FROM tableB;
+```
+
+We need to take care of following points to write a query with the SQL Union Operator.
+
+- Both the Select statement must have the same number of columns
+- Columns in both the Select statement must have compatible data types
+- Column Order must also match in both the Select statement
+- We can define Group By and Having clause with each Select statement. It is not possible to use them with the result set
+- We cannot use Order By clause with individual Select statement. - We can use it with result set generated from the Union of both Select statements
+
+Assume following example
+
+```sql
+-- Table A having values 1,2,3,4
+CREATE TABLE TableA(
+    ID INT
+);
+ Go
+INSERT INTO TableA
+VALUES(1),(2),(3),(4);
+
+-- Table B having values 3,4,5,6
+CREATE TABLE TableB(
+    ID INT
+);
+ Go
+INSERT INTO TableB
+VALUES(3),(4),(5),(6);
+
+-- If we use SQL Union operator between these two tables
+
+SELECT ID
+  FROM TableA
+UNION
+SELECT ID
+  FROM TableB;
+```
+We get the following output.
+
+<img src="https://www.sqlshack.com/wp-content/uploads/2019/04/sql-union-vs-union-all-sql-union-operator.png" height=230 width=900>
+
+## SQL Union All Operator Overview
+The SQL Union All operator combines the result of two or more Select statement similar to a SQL Union operator with a difference. **The only difference is that it does not remove any duplicate rows from the output of the Select statement.**
+
+The syntax for SQL Union All operator
+```sql
+SELECT column1, Column2 ...Column (N) FROM tableA
+Union All
+SELECT column1, Column2 ...Column (N) FROM tableB;
+```
+Let us rerun the previous examples with SQL Union All operator.
+```sql
+SELECT ID
+  FROM TableA
+UNION All
+SELECT ID
+  FROM TableB;
+```
+<img src= "https://www.sqlshack.com/wp-content/uploads/2019/04/sql-union-all-operator.png">
+
+**If the tables do not have any overlapping rows, SQL Union All output is similar to SQL Union operator.**
+
+## SQL Union Vs Union All Operator
+Union|Union All 
+-----|---------
+It combines the result set from multiple tables with eliminating the duplicate records | It combines the result set from multiple tables without eliminating the duplicate records
+It performs a distinct on the result set. |It does not perform distinct on the result set
+We need to specify Union operator|We need to specify Union All Operator
+SQL Union All gives better performance in query execution in comparison to SQL Union|It gives better performance in comparison with SQL Union Operator
+
