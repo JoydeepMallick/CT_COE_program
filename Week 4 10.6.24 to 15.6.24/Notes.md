@@ -864,3 +864,56 @@ It performs a distinct on the result set. |It does not perform distinct on the r
 We need to specify Union operator|We need to specify Union All Operator
 SQL Union All gives better performance in query execution in comparison to SQL Union|It gives better performance in comparison with SQL Union Operator
 
+# INTERSECT and EXCEPT
+[read more](https://codingsight.com/t-sql-set-operators-part-2-intersect-and-except/)
+
+## What is the INTERSECT operator
+INTERSECT is used to get records common to all data sets retrieved from multiple queries or tables. Here’s a visualization of this:
+
+INTERSECT Diagram
+![](https://codingsight.com/wp-content/uploads/2019/06/1-INTERSECT-Diagram.png)
+
+The syntax of the INTERSECT operator is a follows:
+```sql
+SELECT COLUMN1, 
+       COLUMN2, 
+       COLUMN3, 
+       COLUMN4..FROM TABLE1 
+INTERSECT
+SELECT COLUMN1, 
+       COLUMN2, 
+       COLUMN3, 
+       COLUMN4..FROM TABLE2
+```
+
+## What is the EXCEPT operator
+EXCEPT is used to retrieve records which are found in one query but not in another query. In other words, it returns records which are unique to one result set. This is what it looks like visualized:
+
+EXCEPT Diagram
+
+![](https://codingsight.com/wp-content/uploads/2019/06/2-EXCEPT-Diagram.png)
+
+The syntax of the EXCEPT operator is as follows:
+```sql
+SELECT COLUMN1, 
+       COLUMN2, 
+       COLUMN3, 
+       COLUMN4..FROM TABLE1 
+EXCEPT
+SELECT COLUMN1, 
+       COLUMN2, 
+       COLUMN3, 
+       COLUMN4..FROM TABLE2
+```
+
+## INNER JOIN vs. INTERSECT
+In most cases, INTERSECT and INNER JOIN return the same output, but there are some exceptions. 
+
+INTERSECT and INNER JOIN treat NULL values differently. For INNER JOIN, two NULL values are different, so there are chances that it will skip them while joining two tables.
+
+On the other hand, INTERSECT treats two NULL values as being the same, so records that have NULL values won’t be eliminated. 
+
+## Limitations of INTERSECT and EXCEPT
+We cannot use EXCEPT and INTERSECT in distributed partitioned view definitions with COMPUTE and COMPUTE BY clauses.
+EXCEPT and INTERSECT can be used in Fast forward-only and static cursors.
+EXCEPT and INTERSECT can be used in distributed queries, but can only be executed on the local server. You cannot run them on a remote server.
