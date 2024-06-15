@@ -7,4 +7,4 @@
 | 4       | 12/6/24 | Group by grouping sets till group by cube                                        | 4hrs        | Learnt about different type of grouping by functions like sets, cube, rollup with syntax. Tried solving few assignments.
 | 4       | 13/6/24 | SQL joins till Advanced joins                                        | 4hrs        | Learnt about different joins in SQL, learns more advanced versions of joins, solved one assignment problem.
 | 4       | 14/6/24 |   Union and Union All                                      | 4hrs        | Tried solving assignments and read about union and union all.
-| 4       | 15/6/24  |                                         | 4hrs        |
+| 4       | 15/6/24  | Intersect and Except commands in SQL                                        | 5hrs        | Learnt about interest and except commands in SQL, completed rest assignments.
