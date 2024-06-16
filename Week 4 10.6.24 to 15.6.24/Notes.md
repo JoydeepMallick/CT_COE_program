@@ -914,6 +914,6 @@ INTERSECT and INNER JOIN treat NULL values differently. For INNER JOIN, two NULL
 On the other hand, INTERSECT treats two NULL values as being the same, so records that have NULL values won’t be eliminated. 
 
 ## Limitations of INTERSECT and EXCEPT
-We cannot use EXCEPT and INTERSECT in distributed partitioned view definitions with COMPUTE and COMPUTE BY clauses.
-EXCEPT and INTERSECT can be used in Fast forward-only and static cursors.
-EXCEPT and INTERSECT can be used in distributed queries, but can only be executed on the local server. You cannot run them on a remote server.
+- We cannot use EXCEPT and INTERSECT in distributed partitioned view definitions with COMPUTE and COMPUTE BY clauses.
+- EXCEPT and INTERSECT can be used in Fast forward-only and static cursors.
+- EXCEPT and INTERSECT can be used in distributed queries, but can only be executed on the local server. You cannot run them on a remote server.
