@@ -754,5 +754,213 @@ DROP TABLE ##table_name;
 
 # Index in SQL Server
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/i_FwqzYMUvk?si=GCa1rj0-svWPLSY_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+Video link : https://www.youtube.com/watch?v=i_FwqzYMUvk&t=35s
 
+The CREATE INDEX statement is used to create indexes in tables.
+
+Indexes are used to retrieve data from the database more quickly than otherwise. **The users cannot see the indexes, they are just used to speed up searches/queries**.
+
+**Note:** Updating a table with indexes takes more time than updating a table without (because the indexes also need an update). So, only create indexes on columns that will be frequently searched against.
+
+## CREATE INDEX Syntax
+Creates an index on a table. Duplicate values are allowed:
+```sql
+CREATE INDEX index_name
+ON table_name (column1, column2, ...);
+```
+
+## CREATE UNIQUE INDEX Syntax
+Creates a unique index on a table. Duplicate values are not allowed:
+```sql
+CREATE UNIQUE INDEX index_name
+ON table_name (column1, column2, ...);
+```
+
+**Note:** The syntax for creating indexes varies among different databases. Therefore: Check the syntax for creating indexes in your database.
+
+## CREATE INDEX Example
+The SQL statement below creates an index named "idx_lastname" on the "LastName" column in the "Persons" table:
+```sql
+CREATE INDEX idx_lastname
+ON Persons (LastName);
+```
+If you want to create an index on a combination of columns, you can list the column names within the parentheses, separated by commas:
+```sql
+CREATE INDEX idx_pname
+ON Persons (LastName, FirstName);
+```
+
+## DROP INDEX Statement
+The DROP INDEX statement is used to delete an index in a table.
+```sql
+-- MS Access:
+DROP INDEX index_name ON table_name;
+
+-- SQL Server:
+DROP INDEX table_name.index_name;
+
+-- DB2/Oracle:
+DROP INDEX index_name;
+
+-- MySQL:
+ALTER TABLE table_name
+DROP INDEX index_name;
+```
+
+## Clustered and nonclustered indexes
+
+video link : https://www.youtube.com/watch?v=NGslt99VOCw
+
+[read here](https://www.sqlshack.com/what-is-the-difference-between-clustered-and-non-clustered-indexes-in-sql-server/)
+
+There are two types of Indexes in SQL Server:
+
+1. Clustered Index
+2. Non-Clustered Index
+
+### Clustered Index
+A clustered index **defines the order in which data is physically stored in a table**. Table data can be sorted in only way, therefore, there can be only one clustered index per table. **In SQL Server, the primary key constraint automatically creates a clustered index on that particular column**.
+
+Assume example
+```sql
+CREATE DATABASE schooldb
+          
+CREATE TABLE student
+(
+    id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    gender VARCHAR(50) NOT NULL,
+    DOB datetime NOT NULL,
+    total_score INT NOT NULL,
+    city VARCHAR(50) NOT NULL
+ )
+ ```
+
+Notice here in the “student” table we have set primary key constraint on the “id” column. **This automatically creates a clustered index on the “id” column**. 
+
+To see all the indexes on a particular table execute “`sp_helpindex`” stored procedure. This stored procedure accepts the name of the table as a parameter and retrieves all the indexes of the table. The following query retrieves the indexes created on student table.
+
+```sql
+USE schooldb
+          
+EXECUTE sp_helpindex student
+```
+
+The above query will return this result:
+
+index_name|	index_description|	index_keys
+----------|------------------|------------
+PK__student__3213E83F7F60ED59|	clustered, unique, primary key located on PRIMARY|	id
+
+In the output you can see the only one index. This is the index that was automatically created because of the primary key constraint on the “id” column.
+
+Another way to view table indexes is by going to “`Object Explorer-> Databases-> Database_Name-> Tables-> Table_Name -> Indexes`”. Look at the following screenshot for reference.
+
+![](https://www.sqlshack.com/wp-content/uploads/2017/08/word-image-189.png)
+
+Even though we insert data in different order its stored in sorted order :-
+
+```sql
+USE schooldb
+          
+INSERT INTO student
+ 
+VALUES 
+(2, 'Jon', 'Male', '02-FEB-1974', 545, 'Manchester'),
+(3, 'Sara', 'Female', '07-MAR-1988', 600, 'Leeds'), 
+(1, 'Jolly', 'Female', '12-JUN-1989', 500, 'London'),
+(4, 'Laura', 'Female', '22-DEC-1981', 400, 'Liverpool');
+```
+
+Notice here the records are **inserted in random order of the values** in the “id” column. **But because of the default clustered index on the id column, the records are physically stored in the ascending order of the values** in the “id” column. Execute the following SELECT statement to retrieve the records from the student table.
+
+```sql
+USE schooldb
+          
+SELECT * FROM student
+```
+
+The records will be retrieved in the following order:
+
+id|	name|	gender|	DOB	total_score| city
+--|-----|---------|----------------|-----
+1|	Jolly|	Female|	1989-06-12 00:00:00.000|	500|	London
+2|	Jon|	Male|	1974-02-02 00:00:00.000|	545|	Manchester
+3|	Sara|	Female|	1988-03-07 00:00:00.000|	600|	Leeds
+4|	Laura|	Female|	1981-12-22 00:00:00.000|	400|	Liverpool
+
+### Creating Custom Clustered Index
+You can create your own custom index as well the default clustered index. To create a new clustered index on a table you first have to delete the previous index.
+
+To delete an index go to “Object Explorer-> Databases-> Database_Name-> Tables-> Table_Name -> Indexes”. Right click the index that you want to delete and select DELETE. See the below screenshot.
+
+![](https://www.sqlshack.com/wp-content/uploads/2017/08/word-image-190.png)
+
+
+Now, to create a new clustered Index, execute the following script:
+
+```sql
+use schooldb
+ 
+CREATE CLUSTERED INDEX IX_tblStudent_Gender_Score
+ON student(gender ASC, total_score DESC)
+```
+
+The process of creating clustered index is similar to a normal index with **one exception**. With clustered index, you have to use the keyword “`CLUSTERED`” before “`INDEX`”.
+
+The above script creates a clustered index named “IX_tblStudent_Gender_Score” on the student table. This index is created on the “gender” and “total_score” columns. **An index that is created on more than one column is called “composite index”.**
+
+The above index first sorts all the records in the ascending order of the gender. If gender is same for two or more records, the records are sorted in the descending order of the values in their “total_score” column. You can create a clustered index on a single column as well. Now if you select all the records from the student table, they will be retrieved in the following order:
+
+id|	name|	gender|	DOB|	total_score|	city
+--|-----|---------|----|---------------|---------
+3|	Sara|	Female|	1988-03-07 00:00:00.000|	600|	Leeds
+1|	Jolly|	Female|	1989-06-12 00:00:00.000|	500|	London
+4|	Laura|	Female|	1981-12-22 00:00:00.000|	400|	Liverpool
+2|	Jon|	Male|	1974-02-02 00:00:00.000|	545|	Manchester
+
+### Non-Clustered Indexes
+A non-clustered index **doesn’t sort the physical data inside the table**. In fact, **a non-clustered index is stored at one place and table data is stored in another place**. 
+
+This is similar to a textbook where the book content is located in one place and the index is located in another. This allows for more than one non-clustered index per table.
+
+It is important to mention here that inside the table the data will be sorted by a clustered index. However, inside the non-clustered index data is stored in the specified order. The index contains column values on which the index is created and the address of the record that the column value belongs to.
+
+When a query is issued against a column on which the index is created, the database will first go to the index and look for the address of the corresponding row in the table. It will then go to that row address and fetch other column values. It is due to this additional step that **non-clustered indexes are slower than clustered indexes**.
+
+### Creating a Non-Clustered Index
+The syntax for creating a non-clustered index is similar to that of clustered index. However, in case of non-clustered index keyword “NONCLUSTERED” is used instead of “CLUSTERED”. Take a look at the following script.
+
+```sql
+use schooldb
+ 
+CREATE NONCLUSTERED INDEX IX_tblStudent_Name
+ON student(name ASC)
+```
+
+The above script creates a non-clustered index on the “name” column of the student table. The index sorts by name in ascending order.
+
+As we said earlier, **the table data and index will be stored in different places. The table records will be sorted by a clustered index if there is one(one with primary key)**. The index will be sorted according to its definition and will be stored separately from the table.
+
+id|	name|	gender|	DOB|	total_score|	City
+--|-----|---------|----|---------------|---------
+2|	Jon|	Male|	1974-02-02 00:00:00.000|	545|	Manchester
+3|	Sara|	Female|	1988-03-07 00:00:00.000|	600|	Leeds
+4|	Laura|	Female|	1981-12-22 00:00:00.000|	400|	Liverpool
+5|	Alan|	Male|	1993-07-29 00:00:00.000|	500|	London
+
+**IX_tblStudent_Name Index Data**
+
+name|	Row Address
+----|--------------
+Alan|	Row Address
+Jon	|   Row Address
+Laura|	Row Address
+Sara|	Row Address
+
+Notice, here in the index every row has a column that stores the address of the row to which the name belongs. So if a query is issued to retrieve the gender and DOB of the student named “Jon”, the database will **first search the name “Jon” inside the index**. It will then read the row address of “Jon” and will go directly to that row in the “student” table to fetch gender and DOB of Jon.
+
+**Main notes**
+- There can be only one clustered index per table. However, you can create multiple non-clustered indexes on a single table.
+- Clustered indexes only sort tables. Therefore, they do not consume extra storage. Non-clustered indexes are stored in a separate place from the actual table claiming more storage space.
+- Clustered indexes are faster than non-clustered indexes since they don’t involve any extra lookup step.
