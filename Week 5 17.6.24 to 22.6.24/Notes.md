@@ -754,7 +754,7 @@ DROP TABLE ##table_name;
 
 # Index in SQL Server
 
-Video link : https://www.youtube.com/watch?v=i_FwqzYMUvk&t=35s
+⭐🌟Video link : https://www.youtube.com/watch?v=i_FwqzYMUvk&t=35s
 
 The CREATE INDEX statement is used to create indexes in tables.
 
@@ -809,7 +809,7 @@ DROP INDEX index_name;
 
 ## Clustered and nonclustered indexes
 
-video link : https://www.youtube.com/watch?v=NGslt99VOCw
+⭐🌟video link : https://www.youtube.com/watch?v=NGslt99VOCw
 
 [read here](https://www.sqlshack.com/what-is-the-difference-between-clustered-and-non-clustered-indexes-in-sql-server/)
 
@@ -964,3 +964,283 @@ Notice, here in the index every row has a column that stores the address of the 
 - There can be only one clustered index per table. However, you can create multiple non-clustered indexes on a single table.
 - Clustered indexes only sort tables. Therefore, they do not consume extra storage. Non-clustered indexes are stored in a separate place from the actual table claiming more storage space.
 - Clustered indexes are faster than non-clustered indexes since they don’t involve any extra lookup step.
+
+# VIEWs in SQL server
+
+⭐🌟Video link :- https://www.youtube.com/watch?v=VQpmOmZO2mo&t=2s
+
+⭐⭐[read here in detail (all not covered in notes below)](https://www.sqlshack.com/sql-view-a-complete-introduction-and-walk-through/)
+
+[maybe refer here](https://learn.microsoft.com/en-us/sql/relational-databases/views/views?view=sql-server-ver16)
+
+A view is a virtual table whose contents are defined by a query. Like a table, a view consists of a set of named columns and rows of data. Unless indexed, a view does not exist as a stored set of data values in a database. The rows and columns of data come from tables referenced in the query defining the view and are produced dynamically when the view is referenced.
+
+## Create a SQL VIEW
+The syntax to create a VIEW is as follows:
+```sql
+CREATE VIEW ViewName AS  
+Select column1, Column2...Column N From tables  
+Where conditions;
+```
+**Example 1**: SQL VIEW to fetch all records of a table
+
+It is the simplest form of a VIEW. Usually, we do not use a VIEW in SQL Server to fetch all records from a single table.
+```sql
+CREATE VIEW EmployeeRecords
+AS
+     SELECT *
+     FROM [HumanResources].[Employee];
+```
+Once a VIEW is created, you can access it like a SQL table.
+```sql
+SELECT * FROM EmployeeRecords;
+```
+## Use Sp_helptext to retrieve VIEW definition
+We can use `sp_helptext` system stored procedure to get VIEW definition. It returns the complete definition of a SQL VIEW.
+
+For example, let’s check the view definition for EmployeeRecords VIEW.
+```sql
+sp_helptext EmployeeRecords
+```
+![](https://www.sqlshack.com/wp-content/uploads/2019/07/use-sp_helptext-to-retrieve-view-definition.png)
+
+We can use SSMS as well to generate the script for a VIEW. Expand `database -> Views -> Right click and go to Script view as -> Create To -> New Query Editor Window`.
+
+![](https://www.sqlshack.com/wp-content/uploads/2019/07/ssms-to-generate-the-script-for-a-view.png)
+
+## sp_refreshview to update the Metadata of a SQL VIEW
+Suppose we have a VIEW on a table that specifies select * statement to get all columns of that table.
+```sql
+CREATE VIEW DemoView
+AS
+     SELECT *
+     FROM [AdventureWorks2017].[dbo].[MyTable];
+```
+Once we call the `VIEW DemoView`, it gives the following output.
+![](https://www.sqlshack.com/wp-content/uploads/2019/07/sp_refreshview-to-update-the-metadata-of-a-sql-vie.png)
+
+
+Let’s add a new column in the table using the Alter table statement.
+```sql
+Alter Table [AdventureWorks2017].[dbo].[MyTable] Add City nvarchar(50)
+```
+
+Rerun the select statement to get records from VIEW. It should display the new column as well in the output. **We still get the same output, and it does not contain the newly added column.**
+
+![](https://www.sqlshack.com/wp-content/uploads/2019/07/sp_refreshview-to-update-the-metadata-of-a-view-in.png)
+
+
+**By Default, SQL Server does not modify the schema and metadata for the VIEW. We can use the system stored procedure sp_refreshview to refresh the metadata of any view.**
+```sql
+Exec sp_refreshview DemoView
+```
+Rerun the select statement to get records from VIEW. We can see the City column in the output.
+
+![](https://www.sqlshack.com/wp-content/uploads/2019/07/refresh-the-meta-data.png)
+
+
+## Drop SQL VIEW
+We can drop a VIEW using the `DROP VIEW` statement. In the following query, we want to drop the VIEW demoview in SQL Server.
+```sql
+DROP VIEW demoview;
+```
+## Alter a SQL VIEW
+We can change the SQL statement in a VIEW using the following alter VIEW command. Suppose we want to change the condition in the where clause of a VIEW. Execute the following query.
+```sql
+Alter VIEW DemoView
+AS
+     SELECT *
+     FROM [dbo].[MyTable]
+     WHERE [Codeone] LIKE 'C%'
+WITH CHECK OPTION;
+```
+Starting from SQL Server 2016 SP1, **we can use the CREATE or ALTER statement to create a SQL VIEW or modify it if already exists**. Prior to SQL Server 2016 SP1, we cannot use both CREATE or Alter together.
+```sql
+CREATE OR ALTER VIEW DemoView
+AS SELECT *
+   FROM [dbo].[MyTable]
+   WHERE [Codeone] LIKE 'C%'
+WITH CHECK OPTION;
+```
+
+## Advantages of Views
+- reduce complexity of database schema
+- implement row and column level security
+- present aggregate data and hide detailed data
+
+
+# Subqueries in SQL server
+
+⭐⭐Video link :- https://www.youtube.com/watch?v=JtmfAGM4pfc
+
+⭐⭐[read here](https://www.sqlshack.com/how-to-write-subqueries-in-sql/)
+
+![](https://media.geeksforgeeks.org/wp-content/uploads/20240109190230/Correlated_Subquery.png)
+
+A subquery is a query that is nested inside a SELECT, INSERT, UPDATE, or DELETE statement, or inside another subquery.
+A subquery can be **used anywhere an expression is allowed.**
+
+Let us assume that we need to write a SQL query to retrieve the top ten users in the Stack overflow database and the latest badge earned by each user. Let us consider the following query:
+
+```sql
+SELECT TOP (10) [Id]
+    ,[DisplayName]
+    ,(SELECT TOP 1 [Name] FROM [dbo].[Badges] badges WHERE badges.UserId = users.Id Order By [Date] Desc) as Latest_Badge
+FROM [StackOverflow2013].[dbo].[Users] users
+```
+
+![](https://www.sqlshack.com/wp-content/uploads/2021/08/how-to-write-a-subquery-in-sql-within-the-select-c-e1627996395987.png)
+
+## Writing subqueries in the FROM clause
+In this section, we will illustrate how to write a subquery in SQL within the FROM clause.
+
+Instead of using a table or view name in the FROM clause, we can use a SQL subquery as a data source, noting that assigning an alias is required. Let us try to write the previous query in another way:
+```sql
+SELECT [Id]
+    ,[DisplayName]
+    ,(SELECT TOP 1 [Name] FROM [dbo].[Badges] badges WHERE badges.UserId = users.Id ORDER BY [Date] DESC) as Latest_Badge
+FROM (SELECT TOP 10 * FROM [StackOverflow2013].[dbo].[Users] ) users
+```
+
+
+## Writing subqueries in JOINS
+Besides, we can add joins within the FROM clause while using subqueries. Let us use the following example to illustrate how to write a subquery in SQL within the FROM clause when joins are needed.
+```sql
+SELECT users.[Id]
+    ,[DisplayName]
+    ,latest_posts.[CreationDate]
+FROM [StackOverflow2013].[dbo].[Users] users INNER JOIN 
+(SELECT TOP 10 [OwnerUserId],[CreationDate] FROM [dbo].[Posts] ORDER BY [CreationDate] DESC) latest_posts on users.Id = latest_posts.OwnerUserId
+```
+
+## Writing subqueries in the WHERE clause
+To illustrate how to write subquery in SQL within the WHERE clause, we will edit the previous query to retrieve the users who posted the latest ten posts in the Stack overflow database. Let us use the following query:
+```sql
+SELECT [Id]
+    ,[DisplayName]
+FROM [StackOverflow2013].[dbo].[Users] users 
+WHERE  [Id] IN (SELECT TOP 10 [OwnerUserId] FROM [dbo].[Posts] ORDER BY [CreationDate] DESC)
+```
+
+## Alternatives
+There are many alternatives of using subqueries in SQL:
+
+1. **Using Views**: in some cases, views can replace subqueries to make the query looks simpler. This option does not affect or improve the query performance except in the case of indexed views. You can learn more about views in the following article: [Learn SQL: SQL Views](https://www.sqlshack.com/learn-sql-sql-views/)
+
+2. **Using common table expressions (CTE)**: Common table expressions are an alternative to subqueries. You can learn more about this feature in the following article: [CTEs in SQL Server; Querying Common Table Expressions](https://www.sqlshack.com/ctes-in-sql-server-querying-common-table-expressions/)
+
+
+# Correlated subquery in SQL
+
+⭐⭐Video link :- https://www.youtube.com/watch?v=Ra3ISwvcFlM
+
+[read here](https://www.sqlshack.com/why-do-we-need-correlated-subqueries-in-sql/) and ⭐⭐[here](https://www.geeksforgeeks.org/sql-server-correlated-subquery/)
+
+A correlated subquery is a subquery that depends on the outer query and is evaluated for each instance of the outer query
+
+Because of this dependency, a correlated subquery cannot be executed independently as a simple subquery.
+
+Moreover, a correlated subquery is executed repeatedly, once for each row evaluated by the outer query. The correlated subquery is also known as a repeating subquery.
+
+A correlated subquery is a nested inner query whose results depend on the outer query for its values. The inner query gets executed once for each row evaluated by the outer query. In simple words, the result of the subquery will be dependent on the outer query. Don’t confuse correlated subqueries with the nested queries. In nested queries, the inner query is only executed one time whereas correlated subqueries get executed for every row returned by the outer query. The outer query can consist of UPDATE, DELETE, WHERE, and SELECT clauses in case of correlated subqueries.
+
+```sql
+SELECT CustomerName
+FROM Customers C
+WHERE EXISTS (
+    SELECT 1
+    FROM Orders O
+    WHERE O.CustomerID = C.CustomerID
+);
+```
+
+A non correlated subquery can be :-
+
+```sql
+SELECT Id, Name 
+FROM tblproducts 
+WHERE Id NOT IN (SELECT distinct ProductId FROM tblproducts) 
+```
+
+# Common Table Expression (CTE)
+
+Video link :- 
+https://csharp-video-tutorials.blogspot.com/2012/09/common-table-expressions-part-49.html
+
+[read here](https://www.sqlshack.com/sql-server-common-table-expressions-cte/)
+
+A Common Table Expression, also called as CTE in short form, is a **temporary named result set that you can reference within a SELECT, INSERT, UPDATE, or DELETE statement that immediately follows it. The CTE can also be used in a View.**
+
+## Syntax and Examples for Common Table Expressions
+The CTE query starts with a “With” and is followed by the Expression Name. We will be using this expression name in our select query to display the result of our CTE Query and be writing our CTE query definition.
+
+```sql
+WITH expression_name [ ( column_name [,...n] ) ] 
+AS 
+( CTE_query_definition )
+-- no of columns within CTE must match(if columns explicitly provided) the number of columns in select statement
+```
+To view the CTE result we use a Select query with the CTE expression name.
+
+```sql 
+Select [Column1,Column2,Column3 …..] from expression_name
+ 
+-- Or
+
+ 
+Select * from expression_name
+```
+
+The following code raises error since CTE is not used directly after creation
+
+```sql
+With EmployeeCount(DepartmentId, TotalEmployees)
+as
+(
+    Select DepartmentId, COUNT(*) as TotalEmployees
+    from tblEmployee
+    group by DepartmentId
+)
+
+Select 'Hello'
+
+Select DeptName, TotalEmployees
+from tblDepartment
+join EmployeeCount
+on tblDepartment.DeptId = EmployeeCount.DepartmentId
+order by TotalEmployees
+```
+<span style="color:red">Error</span> :-
+```
+Common table expression defined but not used
+```
+## create multiple CTE's using a single WITH clause.
+```sql
+With EmployeesCountBy_Payroll_IT_Dept(DepartmentName, Total)
+as
+(
+    Select DeptName, COUNT(Id) as TotalEmployees
+    from tblEmployee
+    join tblDepartment 
+    on tblEmployee.DepartmentId = tblDepartment.DeptId
+    where DeptName IN ('Payroll','IT')
+    group by DeptName
+),
+    EmployeesCountBy_HR_Admin_Dept(DepartmentName, Total)
+as
+(
+    Select DeptName, COUNT(Id) as TotalEmployees
+    from tblEmployee
+    join tblDepartment 
+    on tblEmployee.DepartmentId = tblDepartment.DeptId
+    group by DeptName 
+)
+Select * from EmployeesCountBy_HR_Admin_Dept 
+UNION
+Select * from EmployeesCountBy_Payroll_IT_Dept
+```
+
+
+
+
+
