@@ -1240,7 +1240,151 @@ UNION
 Select * from EmployeesCountBy_Payroll_IT_Dept
 ```
 
+# Error handling in SQL server
+
+Detailed video + explanation :- https://csharp-video-tutorials.blogspot.com/2012/10/error-handling-in-sql-server-2005-and_6.html
+
+[read here](https://learn.microsoft.com/en-us/sql/t-sql/language-elements/try-catch-transact-sql?view=sql-server-ver16) and [here](https://www.sqlshack.com/how-to-implement-error-handling-in-sql-server/)
 
 
+Handling errors using TRY…CATCH
+Here’s how the syntax looks like. It’s pretty simple to get the hang of. We have two blocks of code:
+```sql
+BEGIN TRY  
+     --code to try 
+END TRY  
+BEGIN CATCH  
+     --code to run if an error occurs
+--is generated in try
+END CATCH
+```
+In the scope of a CATCH block, the following system functions can be used to obtain information about the error that caused the CATCH block to be executed:
+
+<ul>
+<li><p><a href="https://learn.microsoft.com/en-us/sql/t-sql/functions/error-number-transact-sql?view=sql-server-ver16" data-linktype="relative-path">ERROR_NUMBER()</a> returns the number of the error.</p>
+</li>
+<li><p><a href="https://learn.microsoft.com/en-us/sql/t-sql/functions/error-severity-transact-sql?view=sql-server-ver16" data-linktype="relative-path">ERROR_SEVERITY()</a> returns the severity.</p>
+</li>
+<li><p><a href="https://learn.microsoft.com/en-us/sql/t-sql/functions/error-state-transact-sql?view=sql-server-ver16" data-linktype="relative-path">ERROR_STATE()</a> returns the error state number.</p>
+</li>
+<li><p><a href="https://learn.microsoft.com/en-us/sql/t-sql/functions/error-procedure-transact-sql?view=sql-server-ver16" data-linktype="relative-path">ERROR_PROCEDURE()</a> returns the name of the stored procedure or trigger where the error occurred.</p>
+</li>
+<li><p><a href="https://learn.microsoft.com/en-us/sql/t-sql/functions/error-line-transact-sql?view=sql-server-ver16" data-linktype="relative-path">ERROR_LINE()</a> returns the line number inside the routine that caused the error.</p>
+</li>
+<li><p><a href="https://learn.microsoft.com/en-us/sql/t-sql/functions/error-message-transact-sql?view=sql-server-ver16" data-linktype="relative-path">ERROR_MESSAGE()</a> returns the complete text of the error message. The text includes the values supplied for any substitutable parameters, such as lengths, object names, or times.</p>
+</li>
+</ul>
+
+Example 
+![](https://www.sqlshack.com/wp-content/uploads/2018/06/word-image-31.png)
+
+## [Uncommittable Transactions and XACT_STATE](https://learn.microsoft.com/en-us/sql/t-sql/language-elements/try-catch-transact-sql?view=sql-server-ver16#uncommittable-transactions-and-xact_state)
+If an error generated in a TRY block causes the state of the current transaction to be invalidated, the transaction is classified as an **uncommittable transaction**. 
+
+An error that ordinarily ends a transaction outside a TRY block causes a transaction to enter an uncommittable state when the error occurs inside a TRY block. 
+
+An uncommittable transaction can only perform read operations or a ROLLBACK TRANSACTION. The transaction cannot execute any Transact-SQL statements that would generate a write operation or a COMMIT TRANSACTION. 
+
+ This can be done by simply running and analyzing the `XACT_STATE` function that reports transaction state.
+
+This function returns one of the following three values:
+
+- ` 1` – the transaction is committable
+
+- `-1` – the transaction is uncommittable and should be rolled back
+
+- ` 0` – there are no pending transactions
+
+**The only catch here is to remember to actually do this inside the catch statement because you don’t want to start transactions and then not commit or roll them back**:
+
+![](https://www.sqlshack.com/wp-content/uploads/2018/06/word-image-36.png)
+
+# SQL Server Recursive CTE
+
+[read here](https://www.sqlservertutorial.net/sql-server-basics/sql-server-recursive-cte/)
+
+A recursive common table expression (CTE) is a CTE that references itself. By doing so, the CTE repeatedly executes, returns subsets of data, until it returns the complete result set.
+
+A recursive CTE is useful in querying hierarchical data such as organization charts where one employee reports to a manager or multi-level bill of materials when a product consists of many components, and each component itself also consists of many other components.
+
+The following shows the syntax of a recursive CTE:
+```sql
+WITH expression_name (column_list)
+AS
+(
+    -- Anchor member
+    initial_query  
+    UNION ALL
+    -- Recursive member that references expression_name.
+    recursive_query  
+)
+-- references expression name
+SELECT *
+FROM   expression_name
+```
+
+In general, a recursive CTE has three parts:
+
+1. An initial query that returns the base result set of the CTE. The initial query is called an **anchor member**.
+2. A recursive query that references the common table expression, therefore, it is called the **recursive member**. The recursive member is union-ed with the anchor member using the UNION ALL operator.
+3. A **termination condition** specified in the recursive member that terminates the execution of the recursive member.
+
+The execution order of a recursive CTE is as follows:
+
+1. First, execute the anchor member to form the base result set (R0), use this result for the next iteration.
+2. Second, execute the recursive member with the input result set from the previous iteration (Ri-1) and return a sub-result set (Ri) until the termination condition is met.
+3. Third, combine all result sets R0, R1, … Rn using `UNION ALL` operator to produce the final result set.
+
+The following flowchart illustrates the execution of a recursive CTE:
+
+![](https://www.sqlservertutorial.net/wp-content/uploads/SQL-Server-Recursive-CTE-execution-flow.png)
+
+This example uses a recursive CTE to returns weekdays from Monday to Saturday:
+```sql
+WITH cte_numbers(n, weekday) 
+AS (
+    SELECT 
+        0, 
+        DATENAME(DW, 0)
+    UNION ALL
+    SELECT    
+        n + 1, 
+        DATENAME(DW, n + 1)
+    FROM    
+        cte_numbers
+    WHERE n < 6
+)
+SELECT 
+    weekday
+FROM 
+    cte_numbers;
+```
+
+Here is the result set:
+
+![](https://www.sqlservertutorial.net/wp-content/uploads/SQL-Server-Recursive-CTE-example.png)
+
+The `DATENAME()` function returns the name of the weekday based on a weekday number.
+
+The anchor member returns the Monday
+```sql
+SELECT 
+    0, 
+    DATENAME(DW, 0)
+```
+The recursive member returns the next day starting from the Tuesday till Sunday.
+```sql
+    SELECT    
+        n + 1, 
+        DATENAME(DW, n + 1)
+    FROM    
+        cte_numbers
+    WHERE n < 6
+```
+
+The condition in the `WHERE` clause is the termination condition that stops the execution of the recursive member when n is 6
+```sql
+n < 6
+```
 
 
