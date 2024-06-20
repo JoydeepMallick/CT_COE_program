@@ -1387,4 +1387,170 @@ The condition in the `WHERE` clause is the termination condition that stops the 
 n < 6
 ```
 
+# Dynamic SQL in SQL server
+
+Video + notes:- https://csharp-video-tutorials.blogspot.com/2017/03/dynamic-sql-in-sql-server.html
+
+[read here](https://www.sqlshack.com/dynamic-sql-in-sql-server/)
+
+Dynamic SQL is the SQL statement that is constructed and executed at runtime based on input parameters passed.
+
+Assume following example where we perform a stored procedure to search for certain name :-
+
+```sql
+Create Procedure spSearchEmployees
+@FirstName nvarchar(100),
+@LastName nvarchar(100),
+@Gender nvarchar(50),
+@Salary int
+As
+Begin
+
+     Select * from Employees where
+     (FirstName = @FirstName OR @FirstName IS NULL) AND
+     (LastName  = @LastName  OR @LastName  IS NULL) AND
+     (Gender      = @Gender    OR @Gender    IS NULL) AND
+     (Salary      = @Salary    OR @Salary    IS NULL)
+End
+Go
+```
+
+The stored procedure can get extremely large, complicated and difficult to maintain. One way to reduce the complexity is by using dynamic SQL.
+
+However, you might hear arguments that dynamic sql is bad both in-terms of security and performance. **This is true if the dynamic sql is not properly implemented**. From a security standpoint, **it may open doors for SQL injection attack and from a performance standpoint, the cached query plans may not be reused. If properly implemented, we will not have these problems with dynamic sql**. 
+
+To execute the dynamicl sql we are using system stored procedure `sp_executesql`. 
+
+`sp_executesql` takes two pre-defined parameters and any number of user-defined parameters.
+
+- `@statement` - The is the first parameter which is **mandatory**, and contains the SQL statements to execute
+
+- `@params` - This is the second parameter and is **optional**. This is used to declare parameters specified in @statement
+
+Code using dynamic SQL:
+```sql
+Declare @sql nvarchar(1000)
+Declare @params nvarchar(1000)
+
+Set @sql = 'Select * from Employees where FirstName=@FirstName and LastName=@LastName'
+Set @params = '@FirstName nvarchar(100), @LastName nvarchar(100)'
+
+Execute sp_executesql @sql, @params, @FirstName='Ben',@LastName='Hoskins'
+```
+
+# Merge in SQL server
+
+Video + text :- https://csharp-video-tutorials.blogspot.com/2014/09/part-69-merge-in-sql-server.html
+
+Merge statement introduced in SQL Server 2008 **allows us to perform Inserts, Updates and Deletes in one statement**. This means we no longer have to use multiple statements for performing Insert, Update and Delete.
+
+With merge statement we require 2 tables
+1. Source Table - Contains the changes that needs to be applied to the target table
+2. Target Table - The table that require changes (Inserts, Updates and Deletes)
+
+
+
+The merge statement **joins the target table to the source table by using a common column in both the tables**. Based on how the rows match up as a result of the join, we can then perform insert, update, and delete on the target table. 
+
+Merge statement syntax
+```sql
+MERGE [TARGET] AS T
+USING [SOURCE] AS S
+   ON [JOIN_CONDITIONS]
+ WHEN MATCHED THEN 
+      [UPDATE STATEMENT]
+ WHEN NOT MATCHED BY TARGET THEN
+      [INSERT STATEMENT] 
+ WHEN NOT MATCHED BY SOURCE THEN
+      [DELETE STATEMENT]
+```
+
+### Example 
+ In the example below, INSERT, UPDATE and DELETE are all performed in one statement
+1. When matching rows are found, StudentTarget table is UPDATED (i.e WHEN MATCHED)
+
+2. When the rows are present in StudentSource table but not in StudentTarget table those rows are INSERTED into StudentTarget table (i.e WHEN NOT MATCHED BY TARGET)
+
+3. When the rows are present in StudentTarget table but not in StudentSource table those rows are DELETED from StudentTarget table (i.e WHEN NOT MATCHED BY SOURCE)
+
+![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPZpbdQ8pBJlcRce35brbeoeTpqGl6jTWLDPMjDrzbtw4SBCMmKxVPLOKrze1JCbEiHEDYkcvAtDcXp9lOqcRiJjnLTDxVkkqn4CQtAN6lcT_4-KUFnY_QNHW1gJdLBmjVsHiWgd9IphNS/s1600/merge+statement+in+sql+server.png)
+
+**Note** :- Please Note : Merge statement should end with a semicolon, otherwise you would get an error stating - A MERGE statement must be terminated by a semi-colon (`;`)
+
+# Update JOINS in SQL
+
+[read here](https://www.sqlservertutorial.net/sql-server-basics/sql-server-update-join/)
+
+To query data from related tables, you often use the join clauses, either inner join or left join. In SQL Server, you can use these join clauses in the UPDATE statement to perform a **cross-table update**.
+
+syntax of the UPDATE JOIN clause:
+```sql
+UPDATE 
+    t1
+SET 
+    t1.c1 = t2.c2,
+    t1.c2 = expression,
+    ...   
+FROM 
+    t1
+    [INNER | LEFT] JOIN t2 ON join_predicate
+WHERE 
+    where_predicate;
+```
+
+examples
+```sql
+UPDATE
+    sales.commissions
+SET
+    sales.commissions.commission = 
+        c.base_amount * t.percentage
+FROM 
+    sales.commissions c
+    INNER JOIN sales.targets t
+        ON c.target_id = t.target_id;
+```
+
+# Delete JOINS in SQL server
+
+[read here](https://www.educba.com/sql-delete-join/)
+
+DELETE JOIN is an advanced structured query language(SQL) statement that is used to perform delete operations in multiple tables while using SQL JOIN such that all rows are deleted from the first table and the matching rows in another table or based on the kind of join operation used in the query. **It is basically a combination of DELETE and JOIN statements**.
+
+### basic syntax for Delete Join in SQL Server is as follows:
+```sql
+DELETE t1
+FROM table_name1 AS t1 JOIN {INNER, RIGHT,LEFT,FULL} table_name1 AS t2
+ON t1.column_name = t2.column_name
+WHERE condition;
+```
+### The basic syntax for Delete Join in MySQL is as follows:
+```sql
+DELETE t1.*
+FROM table_name1 AS t1 JOIN {INNER, RIGHT,LEFT, FULL} table_name1 AS t2
+ON t1.column_name = t2.column_name
+WHERE condition;
+```
+### Parameters of SQL Delete Join
+The different parameters used in the syntax are:
+
+- `DELETE t1`: It is used to delete the required table from the database. Here, you may choose from the first table’s instance t1 and the second table’s instance t2.
+- `FROM table_name1 as t1 JOIN table_name2 as t2`: It is used to specify the source from which data has to be fetched and deleted. Here, table_name1 is the name of the left table and table_name2 is the name of the right table. To join, you may choose from INNER, LEFT, FULL and RIGHT joins.
+- `ON t1.column_name = t2.column_name`: It is used to specify the common conditions on which the two tables will be joined. It can be a pair of primary and foreign keys.
+- `WHERE condition`: It is used to specify the conditions to filter records.
+
+### Example
+Suppose in this example, a company wants to shut down the “sales & marketing” department. It would like to remove all the employees from this department from the company’s database.
+```sql
+DELETE t1
+FROM employees AS t1 INNER JOIN department AS t2
+ON t1.departmentid = t2.departmentid
+WHERE t2.departmentname = 'Sales & Marketing';
+```
+
+# Cursors in SQL server
+
+Video + text :- 
+
+
 
