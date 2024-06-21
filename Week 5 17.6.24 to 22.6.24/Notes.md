@@ -1550,7 +1550,119 @@ WHERE t2.departmentname = 'Sales & Marketing';
 
 # Cursors in SQL server
 
-Video + text :- 
+Video :- https://www.youtube.com/watch?v=INw_KGjyfDw
+
+[read here](https://www.sqlservertutorial.net/sql-server-stored-procedures/sql-server-cursor/)
+
+A database cursor is an object that enables traversal over the rows of a result set. It allows you to process individual row returned by a query.
+
+Relational Database Management Systems, including sql server are very good at handling data in SETS. For example, the following "UPDATE" query, updates a set of rows that matches the condition in the "WHERE" clause at the same time. 
+Update tblProductSales Set UnitPrice = 50 where ProductId = 101
 
 
 
+However, **if there is ever a need to process the rows, on a row-by-row basis, then cursors are your choice**. **Cursors are very bad for performance, and should be avoided always**. Most of the time, cursors can be very easily replaced using joins.
+
+There are different types of cursors in sql server as listed below. We will talk about the differences between these cursor types in a later video session. 
+1. Forward-Only
+2. Static
+3. Keyset
+4. Dynamic 
+
+
+![](https://www.sqlservertutorial.net/wp-content/uploads/SQL-Server-Cursor.png)
+
+## Syntax
+First, declare a cursor.
+```sql
+DECLARE cursor_name CURSOR
+    FOR select_statement;
+```
+To declare a cursor, you specify its name after the DECLARE keyword with the CURSOR data type and provide a SELECT statement that defines the result set for the cursor.
+
+Next, open and populate the cursor by executing the SELECT statement:
+```sql
+OPEN cursor_name;
+```
+Then, fetch a row from the cursor into one or more variables:
+```sql
+FETCH NEXT FROM cursor INTO variable_list;
+```
+SQL Server provides the `@@FETCHSTATUS` function that returns the status of the last cursor FETCH statement executed against the cursor; 
+
+If `@@FETCHSTATUS` returns 0, meaning the FETCH statement was successful. You can use the WHILE statement to fetch all rows from the cursor as shown in the following code:
+```sql
+WHILE @@FETCH_STATUS = 0  
+    BEGIN
+        FETCH NEXT FROM cursor_name;  
+    END;
+```
+After that, close the cursor:
+```sql
+CLOSE cursor_name;
+```
+Finally, deallocate the cursor:
+```sql
+DEALLOCATE cursor_name;
+```
+
+## Example
+
+![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjXpnl6WqQPUvcdZ5umq2qxvjFb1adYIOR3xtAplqtXwvggTx_e6SY02iycL6UELRBgXO21DVMUvwCY8nTgfyRj080l2j9ZEo_WYoXP4vxHuJGhbIoL4pCegW81AuogWReUF-nMhvtTIbI0/s1600/tblProducts.png)
+
+![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgVGRNZDxHElONKaPpay0AI17JcBlBblzLLtl_aC9EgiFfaYKwDlp4C7fTc4WQjsWrrD1LTUZxnqvsWeaEswyX2Ux_Eyvoj0D9Shy4cekH3hDKJQwTqyUNSsB_4xkvbI3YnTkBFc4FJdLrE/s1600/tblProductSales.png)
+
+Let us say, I want to update the UNITPRICE column in tblProductSales table, based on the following criteria
+1. If the ProductName = 'Product - 55', Set Unit Price to 55
+2. If the ProductName = 'Product - 65', Set Unit Price to 65
+3. If the ProductName is like 'Product - 100%', Set Unit Price to 1000
+```sql
+Declare @ProductId int
+
+-- Declare the cursor using the declare keyword
+Declare ProductIdCursor CURSOR FOR 
+Select ProductId from tblProductSales
+
+-- Open statement, executes the SELECT statment
+-- and populates the result set
+Open ProductIdCursor
+
+-- Fetch the row from the result set into the variable
+Fetch Next from ProductIdCursor into @ProductId
+
+-- If the result set still has rows, @@FETCH_STATUS will be ZERO
+While(@@FETCH_STATUS = 0)
+Begin
+    Declare @ProductName nvarchar(50)
+    Select @ProductName = Name from tblProducts where Id = @ProductId
+ 
+ if(@ProductName = 'Product - 55')
+ Begin
+    Update tblProductSales set UnitPrice = 55 where ProductId = @ProductId
+ End
+ else if(@ProductName = 'Product - 65')
+ Begin
+    Update tblProductSales set UnitPrice = 65 where ProductId = @ProductId
+ End
+ else if(@ProductName like 'Product - 100%')
+ Begin
+    Update tblProductSales set UnitPrice = 1000 where ProductId = @ProductId
+ End
+ 
+ Fetch Next from ProductIdCursor into @ProductId 
+End
+
+-- Release the row set
+CLOSE ProductIdCursor 
+-- Deallocate, the resources associated with the cursor
+DEALLOCATE ProductIdCursor
+```
+The cursor will loop thru each row in tblProductSales table. As there are 600,000 rows, to be processed on a row-by-row basis, **it takes around 40 to 45 seconds on my machine. We can achieve this very easily using a join, and this will significantly increase the performance**.
+
+To check if the rows have been correctly updated, please use the following query.
+```sql
+Select  Name, UnitPrice 
+from tblProducts join
+tblProductSales on tblProducts.Id = tblProductSales.ProductId
+where (Name='Product - 55' or Name='Product - 65' or Name like 'Product - 100%')
+```
