@@ -19,4 +19,4 @@ FROM SourceDatabase.dbo.SourceTable;
 GO
 ```
 
-We also have a `Copy Database wizard` of SSMS for the same.
+We also have a `Copy Database wizard` of SSMS for the same, leave all to default to get all tables in database copied.
