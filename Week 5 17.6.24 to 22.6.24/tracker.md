@@ -7,4 +7,4 @@
 | 5       | 19/6/24 |  Error handling till Dynamic SQL                                       | 4hrs        | Learnt about Error handling, recursive CTE and Dynamic SQL command
 | 5       | 20/6/24 |   Dynamic SQL commands till Delete joins                                      | 5hrs        | Completed the rest of concept regarding dynamic SQL statement and how they are faster, learnt about how to merge insert, update, delete statements in SQL and also how to merge update and delete commands with joins.
 | 5       | 21/6/24 |  Cursors in SQL and Assignments                                       | 3hrs        | Tried SQl cursor concepts in SQL server and tried understanding the assignment task.
-| 5       | 22/6/24  |                                         | 4hrs        |
+| 5       | 22/6/24  |  Assignment                                       | 4hrs        | Tried understanding assignment and tried deciphering an approximate solution. The assignment seems different from this week's study material.
