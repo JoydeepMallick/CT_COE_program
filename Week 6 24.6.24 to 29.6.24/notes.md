@@ -1,6 +1,8 @@
 ## Entire video playlist is recommended :-
 
-### https://www.youtube.com/playlist?list=PLGjZwEtPN7j8b9dPA0HrtJDptOB69B506
+### 1. https://youtube.com/playlist?list=PLGjZwEtPN7j-Q59JYso3L4_yoCjj2syrM&si=xr3lfwKs1hXt3YUi
+
+### 2.  https://www.youtube.com/playlist?list=PLGjZwEtPN7j8b9dPA0HrtJDptOB69B506
 
 (personally felt above series is good for basics with practical.)
 
@@ -290,3 +292,107 @@ We can even **parameterize pipelines** to further reduce the amount of data wher
 ### See demo video from below
 
 link :- https://youtu.be/pISBgwrdxPM?t=225
+
+# Processing excel files in Azure
+
+Excels files are of prime importance in Business due to :-
+- ease of use
+- a lot of collaborative options
+- support by many platforms
+- support for many data sources
+- rich analytical capabilities
+
+### Excel file is not liked by developers
+
+- excel is a free form editing tool allowing users to put any data in any format in any position.
+
+- external systems  not following standards hence parsing those files later can cause trouble
+
+- different internal formats difficult to parse:-
+        
+        1. XLS - excel 97
+        2. XLSX - open xml version of excel file
+        3. XLSB - binary format
+        4. XLSM - macro format
+
+        Most solutions/tools available can parse XLS and XLSX files  but its hard to find tools to parse XLSB and XLSM files.
+
+## Excel files in Azure
+supported services to parse excel files in Azure
+1. **Data Factory** : native functionalities to input excel files  in your pipelines.
+2. **Data factory with SSIS packages** : if we build entire ETL in SSIS we can out of box be able to parse the excel files. ALthough for simple file extraction this might be heavy.
+3. **Databricks** (Java, Python, R)
+4. **HDInsight** (Java, .NET, Python)
+
+        3 and 4 are big data technologies that allow us to import libraries to parse excel files.
+
+5. **Any Azure Service with custom code** Java, .NET, R, Python like App services, Functions, Container services, machine Learning, etc. These custom codes allow us to leverage custom libraries which have facilities to parse excel files.
+
+6. **Logic apps** : Connectivity to **Sharepoint, Onedrive** allowing to parse excel files which are located there. This gives us short wins. But to extend functionality we need to encounter development and this method possess development challenges.
+
+## Data factory
+
+![alt text](<Screenshot (855).png>)
+
+### SEE demo
+
+https://youtu.be/pc8Kv-lRD8k?list=PLGjZwEtPN7j8b9dPA0HrtJDptOB69B506&t=337
+
+## Databricks
+
+![alt text](<Screenshot (856).png>)
+
+### See DEMO
+
+https://youtu.be/pc8Kv-lRD8k?list=PLGjZwEtPN7j8b9dPA0HrtJDptOB69B506&t=882
+
+
+### Databricks Sparks-Excel
+
+![alt text](<Screenshot (857).png>)
+
+#### DEMO video
+
+https://youtu.be/pc8Kv-lRD8k?list=PLGjZwEtPN7j8b9dPA0HrtJDptOB69B506&t=1119
+
+![alt text](<Screenshot (858).png>)
+#### Demo Video
+https://youtu.be/pc8Kv-lRD8k?list=PLGjZwEtPN7j8b9dPA0HrtJDptOB69B506&t=1195
+
+
+
+![alt text](<Screenshot (859).png>)
+#### DEMO video
+https://youtu.be/pc8Kv-lRD8k?list=PLGjZwEtPN7j8b9dPA0HrtJDptOB69B506&t=1275
+
+![alt text](<Screenshot (860).png>)
+#### Demo video
+https://youtu.be/pc8Kv-lRD8k?list=PLGjZwEtPN7j8b9dPA0HrtJDptOB69B506&t=1378
+
+![alt text](<Screenshot (861).png>)
+#### demo video
+https://youtu.be/pc8Kv-lRD8k?list=PLGjZwEtPN7j8b9dPA0HrtJDptOB69B506&t=1561
+
+![alt text](<Screenshot (862).png>)
+#### demo video
+https://youtu.be/pc8Kv-lRD8k?list=PLGjZwEtPN7j8b9dPA0HrtJDptOB69B506&t=1696
+
+![alt text](<Screenshot (863).png>)
+#### demo video
+https://youtu.be/pc8Kv-lRD8k?list=PLGjZwEtPN7j8b9dPA0HrtJDptOB69B506&t=1810
+
+
+### Extra OPTIONS in Excel
+
+![alt text](<Screenshot (864).png>)
+
+
+# Top level concepts in ADF
+
+Video link :- https://www.youtube.com/watch?v=Pd1QZOJY9eg&embeds_referring_euri=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net%2F&embeds_referring_origin=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net&source_ve_path=OTY3MTQ&feature=emb_imp_woyt
+
+
+
+# Creating first ADF
+
+Video link :- https://www.youtube.com/watch?v=tXqjeMHT2ak&embeds_referring_euri=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net%2F&embeds_referring_origin=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net&source_ve_path=OTY3MTQ&feature=emb_imp_woyt
