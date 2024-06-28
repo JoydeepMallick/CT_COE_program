@@ -483,3 +483,11 @@ Azure Data Factory and Azure Synapse Analytics support the following transformat
 
 Video link :- https://www.youtube.com/watch?v=_Ud_7wL24iM&embeds_referring_euri=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net%2F&embeds_referring_origin=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net&source_ve_path=OTY3MTQ&feature=emb_imp_woyt
 
+- linked services are used to connect Other services with Azure data factory. They are like connection strings for resources to connect.
+
+- datasets are simple points or references the data, which we want to use in our activities as input or output.
+
+![](https://learn.microsoft.com/en-us/azure/data-factory/media/concepts-datasets-linked-services/relationship-between-data-factory-entities.png)
+
+
+ demo link :- https://youtu.be/_Ud_7wL24iM?t=179
