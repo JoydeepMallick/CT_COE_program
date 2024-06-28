@@ -430,5 +430,56 @@ Video link :- https://youtu.be/Pd1QZOJY9eg?t=650
 
 # Creating first ADF
 
+<h3 style="color:red">
+😐 Need azure account demo
+Student account only if university provides on is an option.
+</h3>
+
 Video link :- https://www.youtube.com/watch?v=tXqjeMHT2ak&embeds_referring_euri=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net%2F&embeds_referring_origin=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net&source_ve_path=OTY3MTQ&feature=emb_imp_woyt
+
+# Different way to work with ADF
+
+Video link :- https://www.youtube.com/watch?v=PGG8Y-aNIAw&embeds_referring_euri=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net%2F&embeds_referring_origin=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net&source_ve_path=OTY3MTQ&feature=emb_imp_woyt
+
+Different ways to work with ADF:
+- Azure Portal UI (drag and drop)
+- Azure Powershell
+- .NET 
+- Python
+- REST
+- Resource manager template (Azure powershell Az module)
+
+video link :- https://youtu.be/PGG8Y-aNIAw?t=143
+
+# Pipeline and Activity in ADF
+
+Video link :- https://www.youtube.com/watch?v=V_7bN4MqgcA&embeds_referring_euri=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net%2F&embeds_referring_origin=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net&source_ve_path=OTY3MTQ&feature=emb_imp_woyt
+
+- Pipeline is logical grouping of activities that together perform a task. 
+        
+        e.g. Pipeline can have a set of activities that data from ADLs and perform some transformation of data using U-SQL and load data in to SQL DB.
+- Activities in  a pipeline defines actions to perform on data.
+        
+        e.g. copy data can read data from one location of Blob storage and load it to another location in  blob storage.
+
+Datasets  identify data within different data stores, such as tables, files, folders,  and documents.
+
+![alt text](https://learn.microsoft.com/en-us/azure/data-factory/media/concepts-pipelines-activities/relationship-between-dataset-pipeline-activity.png)
+
+## Types of activities
+- Data movement activities
+- Data transformation activities
+- Control flow activities
+
+[<h2 id="data-movement-activities" class="heading-anchor">Data movement activities</h2>](https://learn.microsoft.com/en-us/azure/data-factory/concepts-pipelines-activities?tabs=data-factory#data-movement-activities)
+
+Copy Activity in Data Factory copies data from a source data store to a sink data store. Data Factory supports the data stores listed in the table in this section. Data from any source can be written to any sink.
+
+[<h2 id="data-transformation-activities" class="heading-anchor">Data transformation activities</h2>](https://learn.microsoft.com/en-us/azure/data-factory/concepts-pipelines-activities?tabs=data-factory#data-transformation-activities)
+
+Azure Data Factory and Azure Synapse Analytics support the following transformation activities that can be added either individually or chained with another activity.
+
+# Linked services and Datasets in ADF
+
+Video link :- https://www.youtube.com/watch?v=_Ud_7wL24iM&embeds_referring_euri=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net%2F&embeds_referring_origin=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net&source_ve_path=OTY3MTQ&feature=emb_imp_woyt
 
