@@ -391,8 +391,44 @@ https://youtu.be/pc8Kv-lRD8k?list=PLGjZwEtPN7j8b9dPA0HrtJDptOB69B506&t=1810
 
 Video link :- https://www.youtube.com/watch?v=Pd1QZOJY9eg&embeds_referring_euri=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net%2F&embeds_referring_origin=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net&source_ve_path=OTY3MTQ&feature=emb_imp_woyt
 
+IMportant top level activities include :-
 
+- Pipeline
+- Activity
+- Datasets
+- Linked services
+- triggers
+
+## Pipeline
+
+- A data factory may have one or more pipelines. A pipeline is a logical group of activities that performs a unit of work.
+
+        e.g. A pipeline can be group of activities that ingest data from a Azure blob,  and then run a hive query on an HDInsight cluster to partition the data.
+
+Demo from here :- https://youtu.be/Pd1QZOJY9eg?t=181
+
+## Activity
+
+Activities represent a processing step in a pipeline. 
+
+        e.g. you might use a copy activity to copy data from one data store to another data store.
+
+Demo link :- https://youtu.be/Pd1QZOJY9eg?t=427
+
+## Linked service
+- much like connection strings, which define the connection information that's needed for Data Factory to connect to external sources.
+- datasets represent data structures within data stores, which simply point to or reference the data you want to use in your activities.
+
+        e.g. Azure-Storage-linked service specifies a connection string to connect to Azure Storage account. Additionally, an Azure blob dataset specifies the blob container and the folder that contains the data.
+Video link :- https://youtu.be/Pd1QZOJY9eg?t=487
+
+## Triggers
+
+Determines when a pipeline execution needs to be kicked off. There are different types of triggers.
+
+Video link :- https://youtu.be/Pd1QZOJY9eg?t=650
 
 # Creating first ADF
 
 Video link :- https://www.youtube.com/watch?v=tXqjeMHT2ak&embeds_referring_euri=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net%2F&embeds_referring_origin=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net&source_ve_path=OTY3MTQ&feature=emb_imp_woyt
+
