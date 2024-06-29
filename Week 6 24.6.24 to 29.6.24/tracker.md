@@ -7,4 +7,4 @@
 | 6       | 26/6/24 | Processing excel files till top level concepts                                        | 4hrs        | Learnt more about ETL, excel files in azure top level concepts in ADF and tried them in Azure portal.
 | 6       | 27/6/24 |  Creating ADF                                      | 3hrs        | Completed video of top level concepts and creating adf. Unable to create account in azure since credit card info needed, student account is not possible since no college mail id issued.
 | 6       | 28/6/24 |  Different ways to work till linked services                                       | 5hrs        | Learnt about different ways to work in ADF, meaning of pipeline and activity in ADF and Linked services and datasets, unable to create azure account since credit card required.
-| 6       | 29/6/24  |                                         | 4hrs        |
+| 6       | 29/6/24  |   Assignment                                      | 6hrs        | Tried solving assignment. failed to create account in azure due to credit card requirement. read blogs and wrote textual answers for assignments till my understanding.

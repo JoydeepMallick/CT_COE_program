@@ -1,0 +1,1 @@
+# Create Incremental load pipeline and automate this on daily basis
