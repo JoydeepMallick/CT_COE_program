@@ -2,7 +2,7 @@
 
 | Week No | Date    | Topic                                   | Hours Spent | Description                                                                                                                                                                        |
 | ------- | ------- | --------------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 7       | 1/7/24 | Install sql server till video guideline of installation | 5hrs        | Installing microsoft sql server and developer tools, learning basics of mysql and learning syntax and basic commands. solved few assignment problems. |
+| 7       | 1/7/24 | Triggers till tumbling windows trigger dependency | 6hrs        | Learnt more on theory of triggers in ADF, its types in detail for schedule trigger and tumbling windows trigger and learnt about tumbling windows trigger dependency. |
 | 7       | 2/7/24 |                                         | 3hrs        |
 | 7       | 3/7/24 |                                         | 4hrs        |
 | 7       | 4/7/24 |                                         | 4hrs        |
