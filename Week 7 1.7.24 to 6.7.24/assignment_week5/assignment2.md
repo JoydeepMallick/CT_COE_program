@@ -1,0 +1,8 @@
+# AssIGNMENT 2
+
+Let's suppose I have 3 data sources 
+1) **Oracle(on-premise)** The monthly Incremental data size will be approx 30 GB and the total table count is 20. 
+2) **Salesforce** The monthly Incremental data size will be approx 50 GB and the total table count is 120. 
+3) **Semi-structured files on FTP** The monthly data size will be approx 5 GB and the Approximate file count per month will be 20.
+
+Now based on this information make an Azure bill of material and share the Link of the same to your mentor for validation with a detail description.

@@ -210,6 +210,11 @@ We only need to create an Azure IR when we would like to explicitly define the l
 
 video link :- https://www.youtube.com/watch?v=Rl1b-pRO4LE&embeds_referring_euri=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net%2F&embeds_referring_origin=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net&source_ve_path=OTY3MTQ&feature=emb_imp_woyt
 
+### ⭐⭐[read here](https://learn.microsoft.com/en-us/azure/data-factory/create-self-hosted-integration-runtime?tabs=data-factory)
+
+![](https://learn.microsoft.com/en-us/azure/data-factory/media/create-self-hosted-integration-runtime/high-level-overview.png)
+
+demo link :- https://youtu.be/Rl1b-pRO4LE?t=267
 
 
 
@@ -218,9 +223,11 @@ video link :- https://www.youtube.com/watch?v=Rl1b-pRO4LE&embeds_referring_euri=
 
 
 
-# Setting up Self Hosted Integration runtime in Azure Data Factory
 
-video link :- https://www.youtube.com/watch?v=Rl1b-pRO4LE&embeds_referring_euri=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net%2F&embeds_referring_origin=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net&source_ve_path=OTY3MTQ&feature=emb_imp_woyt
+
+# Shared Self Hosted Integration runtime in Azure Data Factory
+
+video link :- https://www.youtube.com/watch?v=9BvU_NpntSg&embeds_referring_euri=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net%2F&embeds_referring_origin=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net&source_ve_path=OTY3MTQ&feature=emb_imp_woyt
 
 
 
