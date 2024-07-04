@@ -230,3 +230,37 @@ demo link :- https://youtu.be/Rl1b-pRO4LE?t=267
 video link :- https://www.youtube.com/watch?v=9BvU_NpntSg&embeds_referring_euri=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net%2F&embeds_referring_origin=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net&source_ve_path=OTY3MTQ&feature=emb_imp_woyt
 
 Demo link :- https://youtu.be/9BvU_NpntSg?t=181
+
+
+
+
+
+
+
+
+
+# Parameterize Linked Services in Azure Data Factory
+
+Video link :- https://www.youtube.com/watch?v=M22Mj0rcBcs&embeds_referring_euri=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net%2F&embeds_referring_origin=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net&source_ve_path=OTY3MTQ&feature=emb_imp_woyt
+
+
+
+
+
+
+
+
+# Parameterize Datasets in Azure Data Factory
+
+Video link :- https://www.youtube.com/watch?v=9XSJih4k-l8&embeds_referring_euri=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net%2F&embeds_referring_origin=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net&source_ve_path=OTY3MTQ&feature=emb_imp_woyt
+
+
+
+
+
+
+
+
+# Parameterize Pipelines in Azure Data Factory
+
+Video link :- https://www.youtube.com/watch?v=2u6Mo47A9JA&embeds_referring_euri=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net%2F&embeds_referring_origin=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net&source_ve_path=OTY3MTQ&feature=emb_imp_woyt
