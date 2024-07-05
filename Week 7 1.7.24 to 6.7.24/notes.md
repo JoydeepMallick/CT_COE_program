@@ -243,7 +243,11 @@ Demo link :- https://youtu.be/9BvU_NpntSg?t=181
 
 Video link :- https://www.youtube.com/watch?v=M22Mj0rcBcs&embeds_referring_euri=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net%2F&embeds_referring_origin=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net&source_ve_path=OTY3MTQ&feature=emb_imp_woyt
 
+### You can parameterize a <span style="color:red">linked service</span> and pass dynamic values at run time.
 
+This will help us to use only 1 linked service to pass different databases dynamically instead of creating different linked services for each of these databases.
+
+Demo :- https://youtu.be/M22Mj0rcBcs?t=195
 
 
 
@@ -254,8 +258,11 @@ Video link :- https://www.youtube.com/watch?v=M22Mj0rcBcs&embeds_referring_euri=
 
 Video link :- https://www.youtube.com/watch?v=9XSJih4k-l8&embeds_referring_euri=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net%2F&embeds_referring_origin=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net&source_ve_path=OTY3MTQ&feature=emb_imp_woyt
 
+### You can parameterize a <span style="color:red">Dataset</span> and pass dynamic values at runtime.
 
+Dataset means pointer to data like blog storage or something else.
 
+demo : https://youtu.be/9XSJih4k-l8?t=143
 
 
 
@@ -264,3 +271,15 @@ Video link :- https://www.youtube.com/watch?v=9XSJih4k-l8&embeds_referring_euri=
 # Parameterize Pipelines in Azure Data Factory
 
 Video link :- https://www.youtube.com/watch?v=2u6Mo47A9JA&embeds_referring_euri=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net%2F&embeds_referring_origin=https%3A%2F%2Fct-lms-coe-frontend-dev.azurewebsites.net&source_ve_path=OTY3MTQ&feature=emb_imp_woyt
+
+### You can parameterize a <span style="color:red">Pipeline</span> and pass dynamic values at runtime.
+
+Demo : https://youtu.be/2u6Mo47A9JA?t=51
+
+e.g. we need to copy table1 data to table2 in a SQL server DB. 
+
+Here we need a linked service for the SQL server DB and we need 2 datasets for table1 and table2
+
+
+
+demo link : https://youtu.be/2u6Mo47A9JA?t=141
