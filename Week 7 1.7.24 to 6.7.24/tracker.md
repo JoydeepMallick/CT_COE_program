@@ -7,4 +7,4 @@
 | 7       | 3/7/24 |  Self hosted integration runtime till shared self hosted integration in ADF                                       | 4hrs        | Learning about how to make a self hosted integration runtime and learnt about shared self hosted integration in ADF. Still struggling to make Azure account.
 | 7       | 4/7/24 | Parameterize Linked Services till Parameterize Datasets  | 4hrs        | Learnt about Parameterized linked services in ADF, learnt about parameterized datasets in ADF
 | 7       | 5/7/24 |  Parameterized Datasets till Parameterized Pipelines                                        | 4hrs        | Read more on Parameterized datasets in ADF, learnt about Parameterized pipelines in ADF and made notes. Tried understanding assignment.
-| 7       | 6/7/24  |                                         | 4hrs        |
+| 7       | 6/7/24  |   Assignment                                       | 4hrs        |Tried solving both the assignment manually and made notes of steps involved. Tried calculating billing since it does not need an azure account.
