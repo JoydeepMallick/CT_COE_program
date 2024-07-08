@@ -2,7 +2,7 @@
 
 | Week No | Date    | Topic                                   | Hours Spent | Description                                                                                                                                                                        |
 | ------- | ------- | --------------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 8       | 8/7/24 | Install sql server till video guideline of installation | 5hrs        | Installing microsoft sql server and developer tools, learning basics of mysql and learning syntax and basic commands. solved few assignment problems. |
+| 8       | 8/7/24 | System variables till Variable activity in ADF | 8hrs        | Learnt about System Variables in ADF, Connectors, Supported File Formats, Learnt about copying Data Activity in ADF, monitoring Copy Data Activity, Delete Activity, Variables in ADF, Set Variable Activity and Append Variable Activity in ADF |
 | 8       | 9/7/24 |                                         | 3hrs        |
 | 8       | 10/7/24 |                                         | 4hrs        |
 | 8       | 11/7/24 |                                         | 4hrs        |
