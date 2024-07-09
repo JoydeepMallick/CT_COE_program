@@ -357,7 +357,7 @@ Use append variable activity to add value to an exisiting array variable in Data
 
 # User Properties in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/0QExfRwhhDo?si=e5Y1SgHTH_rYBOgB
 
 
 
@@ -365,7 +365,7 @@ Video link :
 
 # Execute Pipeline Activity in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/nc4IFKkkfXM?si=reIkSFn2TVLpOa-A
 
 
 
@@ -373,7 +373,7 @@ Video link :
 
 # Filter Activity in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/y2KDonUDuPc?si=DCgdbk7RYQmiMcHj
 
 
 
@@ -381,7 +381,7 @@ Video link :
 
 # ForEach Activity in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/KuWYuHlUwD0?si=tpv57z8zpSkoeHx_
 
 
 
@@ -389,7 +389,7 @@ Video link :
 
 # Get Metadata Activity in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/_VNOabanIV4?si=SMCxIemXy_1AGFSi
 
 
 
@@ -397,7 +397,7 @@ Video link :
 
 # If Condition Activity in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/pd-DJJUhnsw?si=H04JWM2nyTKQupUj
 
 
 
@@ -405,7 +405,7 @@ Video link :
 
 # Wait Activity in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/JVNt4unI06Y?si=V1wLWDll4jTGDfnF
 
 
 
@@ -413,7 +413,7 @@ Video link :
 
 # Until Activity in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/n8e_exWMH5k?si=ZzjrWBoqZZeiKsxG
 
 
 
@@ -421,7 +421,7 @@ Video link :
 
 # Web Activity in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/rvIcklXCLVk?si=cDxTTvEV2Ig2AeMg
 
 
 
@@ -429,7 +429,7 @@ Video link :
 
 # WebHook Activity in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/XQExOQ3KLhg?si=mBGS2hiz_8N0sKvZ
 
 
 
@@ -437,7 +437,7 @@ Video link :
 
 # Switch Activity in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/-YwdbnEc_9Q?si=nb_kRJFAIk7f2i61
 
 
 
@@ -445,15 +445,14 @@ Video link :
 
 # Validation Activity in Azure Data Factory
 
-Video link : 
-
+Video link : https://youtu.be/Jesb-nLXtQ4?si=_2jLMxE1TzAKdAPP
 
 
 
 
 # Lookup Activity in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/Jesb-nLXtQ4?si=6xFhaN3BrX0AuWen
 
 
 
