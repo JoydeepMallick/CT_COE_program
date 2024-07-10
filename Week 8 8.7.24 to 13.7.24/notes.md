@@ -1082,16 +1082,23 @@ Video link : https://www.youtube.com/watch?v=4Npu4F6dqMo
 Video link : https://www.youtube.com/watch?v=tdShbtu3shw
 
 
-Data Flow in ADF will allow us to develop graphical data transformation logic that can be executed as activities in ADF pipelines.
+Data Flow in ADF will allow us to **develop graphical data transformation logic that can be executed as activities in ADF pipelines**.
 
 Our Data Flow will execute on your own Azure data bricks cluster  for scaled out data processing using spark.
 
 ADF internally handles all the code translation, spark optimization and exection of transformation.
 
+#### DEMO : https://youtu.be/tdShbtu3shw?t=42
+
+
+
+
+
+
 
 # Mapping Data Flow in Azure Data Factory
 
-Video link : 
+Video link : https://www.youtube.com/watch?v=HgcaPcBYXNI
 
 
 
