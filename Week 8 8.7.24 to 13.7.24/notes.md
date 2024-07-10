@@ -335,7 +335,14 @@ To perform this we need to use **Event based trigger**:-
 ```
 ### demo link : https://youtu.be/6cPv1TlVviA?t=183
 
-## Set Variable Activity in Azure Data Factory
+
+<br/><br/><br/><br/><br/><br/>
+
+# All **control flow** activities
+
+![](https://azurede.com/wp-content/uploads/2020/06/azure-control-flow-activities.png)
+
+## 1. Set Variable Activity in Azure Data Factory
 
 Video link : https://youtu.be/rzDZdRifC40?si=rbMeactaJ97230-P
 
@@ -345,7 +352,7 @@ Use the set variable activity to set the value of an existing variable of type S
 
 
 
-## Append Variable Activity in Azure Data Factory
+## 2. Append Variable Activity in Azure Data Factory
 
 Video link : https://youtu.be/aJuohp8a-fA?si=6VpmF8uU7PfPlwWE
 
@@ -355,7 +362,7 @@ Use append variable activity to add value to an exisiting array variable in Data
 
 
 
-# User Properties in Azure Data Factory
+## User Properties in Azure Data Factory
 
 Video link : https://youtu.be/0QExfRwhhDo?si=e5Y1SgHTH_rYBOgB
 
@@ -370,7 +377,7 @@ We can create only <span style="color:yellow">5 properties under User properties
 
 
 
-# Execute Pipeline Activity in Azure Data Factory
+## 3. Execute Pipeline Activity in Azure Data Factory
 
 Video link : https://youtu.be/nc4IFKkkfXM?si=reIkSFn2TVLpOa-A
 
@@ -382,7 +389,7 @@ The **execute pipeline activity** allows a data factory pipeline to invoke anoth
 
 
 
-# Filter Activity in Azure Data Factory
+## 4. Filter Activity in Azure Data Factory
 
 Video link : https://youtu.be/y2KDonUDuPc?si=DCgdbk7RYQmiMcHj
 
@@ -395,7 +402,7 @@ We can use **filter activity** in a pipeline to apply filter expression to an in
 
 
 
-# ForEach Activity in Azure Data Factory
+## 5. ForEach Activity in Azure Data Factory
 
 Video link : https://youtu.be/KuWYuHlUwD0?si=tpv57z8zpSkoeHx_
 
@@ -415,7 +422,7 @@ The **item property** is a collection of each item inside collection is referred
 
 
 
-# Get Metadata Activity in Azure Data Factory
+## 6. Get Metadata Activity in Azure Data Factory
 
 Video link : https://youtu.be/_VNOabanIV4?si=SMCxIemXy_1AGFSi
 
@@ -529,7 +536,7 @@ The Get Metadata results are shown in the activity output. Following are two sam
 
 
 
-# If Condition Activity in Azure Data Factory
+## 7. If Condition Activity in Azure Data Factory
 
 Video link : https://youtu.be/pd-DJJUhnsw?si=H04JWM2nyTKQupUj
 
@@ -543,7 +550,7 @@ If the expression(s) within if resolve the true then the set of activities withi
 
 
 
-# Wait Activity in Azure Data Factory
+## 8. Wait Activity in Azure Data Factory
 
 Video link : https://youtu.be/JVNt4unI06Y?si=V1wLWDll4jTGDfnF
 
@@ -558,7 +565,7 @@ When we use the **Wait Activity** in a pipeline, the pipeline waits for a specif
 
 
 
-# Until Activity in Azure Data Factory
+## 9. Until Activity in Azure Data Factory
 
 Video link : https://youtu.be/n8e_exWMH5k?si=ZzjrWBoqZZeiKsxG
 
@@ -576,7 +583,7 @@ Similar to do-while loops it executed till the condition is satisfied.
 
 
 
-# Web Activity in Azure Data Factory
+## 10. Web Activity in Azure Data Factory
 
 Video link : https://youtu.be/rvIcklXCLVk?si=cDxTTvEV2Ig2AeMg
 
@@ -591,7 +598,7 @@ Web Activity can call only publicly exposed URLs, its not supported for URLs tha
 
 
 
-# WebHook Activity in Azure Data Factory
+## 11. WebHook Activity in Azure Data Factory
 
 Video link : https://youtu.be/XQExOQ3KLhg?si=mBGS2hiz_8N0sKvZ
 
@@ -618,7 +625,7 @@ e.g. **Web Activity**
 
 
 
-# Switch Activity in Azure Data Factory
+## 12. Switch Activity in Azure Data Factory
 
 Video link : https://youtu.be/-YwdbnEc_9Q?si=nb_kRJFAIk7f2i61
 
@@ -631,7 +638,7 @@ It evaluates a set of activities corresponding to a case that matches the condit
 
 
 
-# Validation Activity in Azure Data Factory
+## 13. Validation Activity in Azure Data Factory
 
 Video link : https://youtu.be/Jesb-nLXtQ4?si=_2jLMxE1TzAKdAPP
 
@@ -643,7 +650,7 @@ We can use Validation in a pipeline to ensure that pipeline continues execution 
 
 
 
-# Lookup Activity in Azure Data Factory
+## 14. Lookup Activity in Azure Data Factory
 
 Video link : https://youtu.be/Jesb-nLXtQ4?si=6xFhaN3BrX0AuWen
 
@@ -653,14 +660,14 @@ Video link : https://youtu.be/Jesb-nLXtQ4?si=6xFhaN3BrX0AuWen
 
 The output from **lookup activity** can be used in subsequent activity.
 
-## [Supported capabilities](https://learn.microsoft.com/en-us/azure/data-factory/control-flow-lookup-activity#supported-capabilities)
+### [Supported capabilities](https://learn.microsoft.com/en-us/azure/data-factory/control-flow-lookup-activity#supported-capabilities)
 
 - The Lookup activity can return up to 5000 rows; if the result set contains more records, the first 5000 rows will be returned.
 - The Lookup activity output supports up to 4 MB in size, activity will fail if the size exceeds the limit.
 - The longest duration for Lookup activity before timeout is 24 hours.
  Note
 
-### NOTE
+#### NOTE
 When you use query or stored procedure to lookup data, make sure to return one and exact one result set. Otherwise, Lookup activity fails.
 
 The following data sources are supported for Lookup activity.
@@ -1031,11 +1038,24 @@ The following data sources are supported for Lookup activity.
 
 
 
-
+<br/><br/><br/><br/><br/><br/>
 
 # Transform Data Activities Overview in Azure Data Factory
 
-Video link : 
+Video link : https://www.youtube.com/watch?v=wsQYuVT4Dpw
+
+**Transform Data activities**   can be used to process and transform data in compute environment such as Azure Data Bricks or Azure HDInsight or Azure Data Analytics, etc.
+
+    Reading logs is difficult directly. Hence we can write scripts to transform logs in readable and useful format by extracting specific parts(transformed data -> DAU, MAU etc)
+
+Above problem is addressed by **different compute engines available in Azure Data factory** like:-
+- DataLake Analytics
+- DataBricks
+- HDInsights
+
+All the different transform data activities are :-
+
+![](./Screenshot%20(874).png)
 
 
 
@@ -1043,7 +1063,15 @@ Video link :
 
 # Stored Procedure Activity in Azure Data Factory
 
-Video link : 
+Video link : https://www.youtube.com/watch?v=4Npu4F6dqMo
+
+**Stored procedure activity** is  one of the transformation activities that Data factory supports. We run stored procedure as one of the step using this Activity.
+
+#### DEMO : https://youtu.be/4Npu4F6dqMo?t=35
+
+
+
+
 
 
 
@@ -1051,10 +1079,14 @@ Video link :
 
 # Data flow in Azure data factory
 
-Video link : 
+Video link : https://www.youtube.com/watch?v=tdShbtu3shw
 
 
+Data Flow in ADF will allow us to develop graphical data transformation logic that can be executed as activities in ADF pipelines.
 
+Our Data Flow will execute on your own Azure data bricks cluster  for scaled out data processing using spark.
+
+ADF internally handles all the code translation, spark optimization and exection of transformation.
 
 
 # Mapping Data Flow in Azure Data Factory
