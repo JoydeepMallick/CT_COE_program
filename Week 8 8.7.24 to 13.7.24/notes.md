@@ -359,6 +359,13 @@ Use append variable activity to add value to an exisiting array variable in Data
 
 Video link : https://youtu.be/0QExfRwhhDo?si=e5Y1SgHTH_rYBOgB
 
+**User properties** help to view additional information while monitoring acitivity runs
+
+We can create only <span style="color:yellow">5 properties under User properties.</span>
+
+#### DEMO : https://youtu.be/0QExfRwhhDo?t=84
+
+
 
 
 
@@ -366,6 +373,10 @@ Video link : https://youtu.be/0QExfRwhhDo?si=e5Y1SgHTH_rYBOgB
 # Execute Pipeline Activity in Azure Data Factory
 
 Video link : https://youtu.be/nc4IFKkkfXM?si=reIkSFn2TVLpOa-A
+
+The **execute pipeline activity** allows a data factory pipeline to invoke another pipeline.
+
+#### DEMO : https://youtu.be/nc4IFKkkfXM?t=54
 
 
 
@@ -375,6 +386,11 @@ Video link : https://youtu.be/nc4IFKkkfXM?si=reIkSFn2TVLpOa-A
 
 Video link : https://youtu.be/y2KDonUDuPc?si=DCgdbk7RYQmiMcHj
 
+We can use **filter activity** in a pipeline to apply filter expression to an input array.
+
+#### DEMO : https://youtu.be/y2KDonUDuPc?t=78
+
+
 
 
 
@@ -382,6 +398,18 @@ Video link : https://youtu.be/y2KDonUDuPc?si=DCgdbk7RYQmiMcHj
 # ForEach Activity in Azure Data Factory
 
 Video link : https://youtu.be/KuWYuHlUwD0?si=tpv57z8zpSkoeHx_
+
+**ForEach activity** defines a repeating control flow in your pipeline. This activity is used to iterate over a collection and executes specified activities in a loop.
+
+The **item property** is a collection of each item inside collection is referred by `@item()`
+
+    If items in an array : [1, 2, 3]
+    @item() returns 1 in first iteration
+                    2 in second iteration
+                    3 in third iteration
+
+#### DEMO : https://youtu.be/KuWYuHlUwD0?t=98
+
 
 
 
@@ -391,6 +419,112 @@ Video link : https://youtu.be/KuWYuHlUwD0?si=tpv57z8zpSkoeHx_
 
 Video link : https://youtu.be/_VNOabanIV4?si=SMCxIemXy_1AGFSi
 
+We can use **Get Metadata activity** to retrieve the metadata of an ADF.
+
+#### DEMO : https://youtu.be/_VNOabanIV4?t=29
+
+#### ⭐⭐Read more [here](https://unstop.com/hackathons/flipkart-grid-60-software-development-track-flipkart-grid-60-flipkart-1024247)
+
+<table aria-label="Table 3" class="table table-sm margin-top-none">
+<thead>
+<tr>
+<th style="text-align: left;">Metadata type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">itemName</td>
+<td style="text-align: left;">Name of the file or folder.</td>
+</tr>
+<tr>
+<td style="text-align: left;">itemType</td>
+<td style="text-align: left;">Type of the file or folder. Returned value is <code>File</code> or <code>Folder</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;">size</td>
+<td style="text-align: left;">Size of the file, in bytes. Applicable only to files.</td>
+</tr>
+<tr>
+<td style="text-align: left;">created</td>
+<td style="text-align: left;">Created datetime of the file or folder.</td>
+</tr>
+<tr>
+<td style="text-align: left;">lastModified</td>
+<td style="text-align: left;">Last modified datetime of the file or folder.</td>
+</tr>
+<tr>
+<td style="text-align: left;">childItems</td>
+<td style="text-align: left;">List of subfolders and files in the given folder. Applicable only to folders. Returned value is a list of the name and type of each child item.</td>
+</tr>
+<tr>
+<td style="text-align: left;">contentMD5</td>
+<td style="text-align: left;">MD5 of the file. Applicable only to files.</td>
+</tr>
+<tr>
+<td style="text-align: left;">structure</td>
+<td style="text-align: left;">Data structure of the file or relational database table. Returned value is a list of column names and column types.</td>
+</tr>
+<tr>
+<td style="text-align: left;">columnCount</td>
+<td style="text-align: left;">Number of columns in the file or relational table.</td>
+</tr>
+<tr>
+<td style="text-align: left;">exists</td>
+<td style="text-align: left;">Whether a file, folder, or table exists. If <code>exists</code> is specified in the Get Metadata field list, the activity won't fail even if the file, folder, or table doesn't exist. Instead, <code>exists: false</code> is returned in the output.</td>
+</tr>
+</tbody>
+</table>
+
+#### DEMO : https://youtu.be/_VNOabanIV4?t=643
+
+### [Sample Output](https://learn.microsoft.com/en-us/azure/data-factory/control-flow-get-metadata-activity#sample-output)
+The Get Metadata results are shown in the activity output. Following are two samples showing extensive metadata options. To use the results in a subsequent activity, use this pattern: `@{activity('MyGetMetadataActivity').output.itemName}`.
+
+#### Get a file's metadata
+```json
+{
+  "exists": true,
+  "itemName": "test.csv",
+  "itemType": "File",
+  "size": 104857600,
+  "lastModified": "2017-02-23T06:17:09Z",
+  "created": "2017-02-23T06:17:09Z",
+  "contentMD5": "cMauY+Kz5zDm3eWa9VpoyQ==",
+  "structure": [
+    {
+        "name": "id",
+        "type": "Int64"
+    },
+    {
+        "name": "name",
+        "type": "String"
+    }
+  ],
+  "columnCount": 2
+}
+```
+
+#### Get a folder's metadata
+```json
+{
+  "exists": true,
+  "itemName": "testFolder",
+  "itemType": "Folder",
+  "lastModified": "2017-02-23T06:17:09Z",
+  "created": "2017-02-23T06:17:09Z",
+  "childItems": [
+    {
+      "name": "test.avro",
+      "type": "File"
+    },
+    {
+      "name": "folder hello",
+      "type": "Folder"
+    }
+  ]
+}
+```
 
 
 
@@ -398,6 +532,12 @@ Video link : https://youtu.be/_VNOabanIV4?si=SMCxIemXy_1AGFSi
 # If Condition Activity in Azure Data Factory
 
 Video link : https://youtu.be/pd-DJJUhnsw?si=H04JWM2nyTKQupUj
+
+**If condition** activity provides the same functionality as an if statement in programming languages.
+
+If the expression(s) within if resolve the true then the set of activities within scope of if runs else not and goes to the else part.
+
+#### DEMO : https://youtu.be/pd-DJJUhnsw?t=111
 
 
 
@@ -407,6 +547,13 @@ Video link : https://youtu.be/pd-DJJUhnsw?si=H04JWM2nyTKQupUj
 
 Video link : https://youtu.be/JVNt4unI06Y?si=V1wLWDll4jTGDfnF
 
+When we use the **Wait Activity** in a pipeline, the pipeline waits for a specified period of time before continuing  with execution of subsequence activities.
+
+#### DEMO : https://youtu.be/JVNt4unI06Y?t=66
+
+
+
+
 
 
 
@@ -414,6 +561,16 @@ Video link : https://youtu.be/JVNt4unI06Y?si=V1wLWDll4jTGDfnF
 # Until Activity in Azure Data Factory
 
 Video link : https://youtu.be/n8e_exWMH5k?si=ZzjrWBoqZZeiKsxG
+
+**Until activity** is like Do-While or Do-Until of programming languages. 
+
+**It guarantees that at least once loops runs since condition is evaluated after loop body is executed.**
+
+Similar to do-while loops it executed till the condition is satisfied.
+
+#### DEMO : https://youtu.be/n8e_exWMH5k?t=82
+
+
 
 
 
@@ -423,6 +580,13 @@ Video link : https://youtu.be/n8e_exWMH5k?si=ZzjrWBoqZZeiKsxG
 
 Video link : https://youtu.be/rvIcklXCLVk?si=cDxTTvEV2Ig2AeMg
 
+**Web activity** can be used to call custom REST endpoint from a Data Factory pipeline.
+
+We can pass datasets and linked services also to REST API
+
+Web Activity can call only publicly exposed URLs, its not supported for URLs that are hosted in a private virtual network.
+
+#### DEMO : https://youtu.be/rvIcklXCLVk?t=93
 
 
 
@@ -430,6 +594,25 @@ Video link : https://youtu.be/rvIcklXCLVk?si=cDxTTvEV2Ig2AeMg
 # WebHook Activity in Azure Data Factory
 
 Video link : https://youtu.be/XQExOQ3KLhg?si=mBGS2hiz_8N0sKvZ
+
+In WebHook Activity we can call an endpoint and pass it a callback 
+
+How it actually happens :-
+    
+    when we issue a call to a REST API
+    ADF adds a callback URL to the request body automatically.
+
+  Here we issue a request then wait for the request to complete successfully, after confirmation we move forward operation. This is the **Synchronous behavior**.
+
+
+In case of **Asynchronous request** we simply issue a request and then move forward the pipeline for the next activity. We do not wait for the confirmation.
+
+e.g. **Web Activity**
+
+<span style="color:yellow"> Read the difference between Web activity and webhook activity to get insights on asynchronous and synchronous behavior  </span>
+
+#### DEMO : https://youtu.be/XQExOQ3KLhg?t=186
+
 
 
 
@@ -439,6 +622,11 @@ Video link : https://youtu.be/XQExOQ3KLhg?si=mBGS2hiz_8N0sKvZ
 
 Video link : https://youtu.be/-YwdbnEc_9Q?si=nb_kRJFAIk7f2i61
 
+**Switch activity** provides the same functionality that switch statement provides in many programming languages
+
+It evaluates a set of activities corresponding to a case that matches the condition evaluation.
+
+#### ⭐⭐⭐See example DEMO : https://youtu.be/-YwdbnEc_9Q?t=66
 
 
 
@@ -448,11 +636,398 @@ Video link : https://youtu.be/-YwdbnEc_9Q?si=nb_kRJFAIk7f2i61
 Video link : https://youtu.be/Jesb-nLXtQ4?si=_2jLMxE1TzAKdAPP
 
 
+We can use Validation in a pipeline to ensure that pipeline continues execution only if it has validated the attached dataset reference exists.
+
+#### DEMO : https://youtu.be/Jesb-nLXtQ4?t=72
+
+
 
 
 # Lookup Activity in Azure Data Factory
 
 Video link : https://youtu.be/Jesb-nLXtQ4?si=6xFhaN3BrX0AuWen
+
+**Lookup activity can retrieve a dataset from any of the ADF supported data sources.**
+
+**Lookup activity** reads and returns  the contents of a configuration file or table. It also returns the result of executing query or stored procedure.
+
+The output from **lookup activity** can be used in subsequent activity.
+
+## [Supported capabilities](https://learn.microsoft.com/en-us/azure/data-factory/control-flow-lookup-activity#supported-capabilities)
+
+- The Lookup activity can return up to 5000 rows; if the result set contains more records, the first 5000 rows will be returned.
+- The Lookup activity output supports up to 4 MB in size, activity will fail if the size exceeds the limit.
+- The longest duration for Lookup activity before timeout is 24 hours.
+ Note
+
+### NOTE
+When you use query or stored procedure to lookup data, make sure to return one and exact one result set. Otherwise, Lookup activity fails.
+
+The following data sources are supported for Lookup activity.
+
+<table aria-label="Table 1" class="table table-sm margin-top-none">
+<thead>
+<tr>
+<th style="text-align: left;">Category</th>
+<th style="text-align: left;">Data store</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Azure</strong></td>
+<td style="text-align: left;"><a href="connector-azure-blob-storage" data-linktype="relative-path">Azure Blob storage</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-azure-cosmos-db" data-linktype="relative-path">Azure Cosmos DB for NoSQL</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-azure-data-explorer" data-linktype="relative-path">Azure Data Explorer (Kusto)</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-azure-data-lake-store" data-linktype="relative-path">Azure Data Lake Storage Gen1</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-azure-data-lake-storage" data-linktype="relative-path">Azure Data Lake Storage Gen2</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-azure-database-for-mariadb" data-linktype="relative-path">Azure Database for MariaDB</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-azure-database-for-mysql" data-linktype="relative-path">Azure Database for MySQL</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-azure-database-for-postgresql" data-linktype="relative-path">Azure Database for PostgreSQL</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-azure-databricks-delta-lake" data-linktype="relative-path">Azure Databricks Delta Lake</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-azure-file-storage" data-linktype="relative-path">Azure Files</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-azure-sql-database" data-linktype="relative-path">Azure SQL Database</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="/en-us/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview" data-linktype="absolute-path">Azure SQL Managed Instance</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-azure-sql-data-warehouse" data-linktype="relative-path">Azure Synapse Analytics</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-azure-table-storage" data-linktype="relative-path">Azure Table storage</a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Database</strong></td>
+<td style="text-align: left;"><a href="connector-amazon-rds-for-oracle" data-linktype="relative-path">Amazon RDS for Oracle</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-amazon-rds-for-sql-server" data-linktype="relative-path">Amazon RDS for SQL Server</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-amazon-redshift" data-linktype="relative-path">Amazon Redshift</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-impala" data-linktype="relative-path">Apache Impala</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-azure-sql-managed-instance" data-linktype="relative-path">Azure SQL Managed Instance</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-db2" data-linktype="relative-path">DB2</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-drill" data-linktype="relative-path">Drill</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-google-adwords" data-linktype="relative-path">Google AdWords</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-google-bigquery" data-linktype="relative-path">Google BigQuery</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-greenplum" data-linktype="relative-path">Greenplum</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-hbase" data-linktype="relative-path">HBase</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-hive" data-linktype="relative-path">Hive</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-informix" data-linktype="relative-path">Informix</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-mariadb" data-linktype="relative-path">MariaDB</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-microsoft-access" data-linktype="relative-path">Microsoft Access</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-mysql" data-linktype="relative-path">MySQL</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-netezza" data-linktype="relative-path">Netezza</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-oracle" data-linktype="relative-path">Oracle</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-phoenix" data-linktype="relative-path">Phoenix</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-postgresql" data-linktype="relative-path">PostgreSQL</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-presto" data-linktype="relative-path">Presto</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-sap-business-warehouse-open-hub" data-linktype="relative-path">SAP Business Warehouse Open Hub</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-sap-business-warehouse" data-linktype="relative-path">SAP Business Warehouse via MDX</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-sap-hana" data-linktype="relative-path">SAP HANA</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-sap-table" data-linktype="relative-path">SAP Table</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-sql-server" data-linktype="relative-path">SQL Server</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-spark" data-linktype="relative-path">Spark</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-sybase" data-linktype="relative-path">Sybase</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-teradata" data-linktype="relative-path">Teradata</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-vertica" data-linktype="relative-path">Vertica</a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>NoSQL</strong></td>
+<td style="text-align: left;"><a href="connector-cassandra" data-linktype="relative-path">Cassandra</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-couchbase" data-linktype="relative-path">Couchbase (Preview)</a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>File</strong></td>
+<td style="text-align: left;"><a href="connector-amazon-simple-storage-service" data-linktype="relative-path">Amazon S3</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-amazon-s3-compatible-storage" data-linktype="relative-path">Amazon S3 Compatible Storage</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-file-system" data-linktype="relative-path">File System</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-ftp" data-linktype="relative-path">FTP</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-google-cloud-storage" data-linktype="relative-path">Google Cloud Storage</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-hdfs" data-linktype="relative-path">HDFS</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-http" data-linktype="relative-path">Generic HTTP</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-microsoft-fabric-lakehouse" data-linktype="relative-path">Microsoft Fabric Lakehouse</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-oracle-cloud-storage" data-linktype="relative-path">Oracle Cloud Storage</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-sftp" data-linktype="relative-path">SFTP</a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Generic protocol</strong></td>
+<td style="text-align: left;"><a href="connector-odata" data-linktype="relative-path">Generic OData</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-odbc" data-linktype="relative-path">Generic ODBC</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-sharepoint-online-list" data-linktype="relative-path">SharePoint Online List</a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Services and apps</strong></td>
+<td style="text-align: left;"><a href="connector-amazon-marketplace-web-service" data-linktype="relative-path">Amazon Marketplace Web Service</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-concur" data-linktype="relative-path">Concur (Preview)</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-dynamics-crm-office-365" data-linktype="relative-path">Dataverse</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-dynamics-crm-office-365" data-linktype="relative-path">Dynamics 365</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-dynamics-ax" data-linktype="relative-path">Dynamics AX</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-dynamics-crm-office-365" data-linktype="relative-path">Dynamics CRM</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-hubspot" data-linktype="relative-path">HubSpot</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-jira" data-linktype="relative-path">Jira</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-azure-data-explorer" data-linktype="relative-path">Azure Data Explorer (Kusto)</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-magento" data-linktype="relative-path">Magento (Preview)</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-marketo" data-linktype="relative-path">Marketo (Preview)</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-oracle-eloqua" data-linktype="relative-path">Oracle Eloqua (Preview)</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-oracle-responsys" data-linktype="relative-path">Oracle Responsys (Preview)</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-oracle-service-cloud" data-linktype="relative-path">Oracle Service Cloud (Preview)</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-paypal" data-linktype="relative-path">PayPal (Preview)</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-quickbooks" data-linktype="relative-path">QuickBooks (Preview)</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-sap-cloud-for-customer" data-linktype="relative-path">SAP Cloud for Customer (C4C)</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-sap-ecc" data-linktype="relative-path">SAP ECC</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-salesforce" data-linktype="relative-path">Salesforce</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-salesforce-marketing-cloud" data-linktype="relative-path">Salesforce Marketing Cloud</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-salesforce-service-cloud" data-linktype="relative-path">Salesforce Service Cloud</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-servicenow" data-linktype="relative-path">ServiceNow</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-shopify" data-linktype="relative-path">Shopify (Preview)</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-snowflake" data-linktype="relative-path">Snowflake</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-square" data-linktype="relative-path">Square (Preview)</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-web-table" data-linktype="relative-path">Web Table (HTML table)</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-xero" data-linktype="relative-path">Xero</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">&nbsp;</td>
+<td style="text-align: left;"><a href="connector-zoho" data-linktype="relative-path">Zoho (Preview)</a></td>
+</tr>
+</tbody>
+</table>
+
+#### ⭐⭐⭐See example DEMO : https://youtu.be/MWuWanhrNoU?t=159
+
+
+
 
 
 
