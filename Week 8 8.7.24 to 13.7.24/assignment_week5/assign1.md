@@ -22,4 +22,40 @@ Perform Following **Queries using PySpark**.
 ### Resources :
 http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml 
 
-Choose `Trip sheet data -> 2018 -> January -> yellow` type https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2020-01.csv
+Choose `Trip sheet data -> 2018 -> January -> yellow` 
+
+Type https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2020-01.csv
+
+
+
+
+# Solution
+
+## <span style="color:red">**NOTE**</span>
+
+The provided [link](https://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) for the trip_record shows
+
+```
+Taxi & Limousine Commission has recently redesigned its website and this page has moved. Please update your bookmark to:
+
+https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page
+
+You will be redirected in 5 seconds, or click on the link above.
+```
+
+### The actual link (🤔Probably) to download can be [found here](https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2018-01.parquet)
+
+The second link for [yellow_tripdata_2020-01.csv](https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2020-01.csv) shows permission denied as follows :-
+
+```xml
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<Error>
+<Code>AccessDenied</Code>
+<Message>Access Denied</Message>
+<RequestId>WPZX6J4XDJNWK8YN</RequestId>
+<HostId>x3zXQTO6jLgQg4Q232lwGnmIeYCksbGLCzPcXqKKGHxm3TDKguWcS65zd6g9q54LgPe2y/OId8E=</HostId>
+</Error>
+```
+ 
+## Steps to approach the problem
+
