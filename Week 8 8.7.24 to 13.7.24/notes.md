@@ -1240,13 +1240,29 @@ A **lookup transformation** is similar to a **left outer join**. All rows from t
 
 Video link : https://youtu.be/XyLVCH-v1Ag 
 
+The sort transformation allow you to sort the incoming rows on the current data stream. 
+
+You choose individual columns and sort them in ascending or descending order.
+
+#### SEE VIDEO🔼
+
 
 
 
 
 # New Branch in Mapping Data Flow in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/tU44UB7cqwk
+
+**Add a new branch to do multiple sets of operations and transformations against same data stream**. 
+
+Adding a new branch is useful when we want to use same source for multiple sinks.
+
+#### SEE VIDEO🔼
+
+
+
+
 
 
 
@@ -1254,7 +1270,12 @@ Video link :
 
 # Select Transformation in Mapping Data Flow in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/wWIiIxf4ME4 
+
+Use the **select transformation** to rename, drop or reorder columns. This transformation does not alter row data, but chooses which columns are propagated downstream.
+
+#### SEE VIDEO🔼
+
 
 
 
@@ -1262,7 +1283,14 @@ Video link :
 
 # Pivot Transformation in Mapping Data Flow in Azure Data Factory
 
-Video link : 
+Video link :  https://youtu.be/ozQYffvt2aI
+
+Use the **pivot transformation** to create multiple columns from the unique row values of a single columns.
+
+#### SEE VIDEO🔼
+
+
+
 
 
 
@@ -1270,7 +1298,15 @@ Video link :
 
 # Unpivot Transformation in Mapping Data Flow in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/BzeFnHF6lIE
+
+Use **Unpilot in ADF mapping data flow as a way to turn  an unormalized dataset into a more normalized version** by expanding values from multiple columns in a single record into multiple records with the same values in same column.
+
+<span style="color:yellow">Completely opposite to pivot transformation </span>
+
+#### SEE VIDEO🔼
+
+
 
 
 
@@ -1278,7 +1314,12 @@ Video link :
 
 # Surrogate Key Transformation in Mapping Data Flow in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/UquN1EVaGaM
+
+Use Surrogate key transformation to add an incrementing key value to each row of data.
+
+#### SEE VIDEO🔼
+
 
 
 
@@ -1286,7 +1327,17 @@ Video link :
 
 # Window Transformation in Mapping Data Flow in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/EMWa8XsmKok
+
+**Window Transformation** is where you define window-based aggregations of columns in your data streams.
+
+In the Expression Builder, you can define different types of aggregations that are based on data or time windows (SQL `OVER` clause) such as `LEAD`, `LAG`, `NTILE`, `CUMEDIST`, `RANK`, etc. 
+
+A new field will be generated in your output that includes these aggregations. We can also include optional group fields.
+
+#### SEE VIDEO🔼
+
+
 
 
 
@@ -1294,7 +1345,14 @@ Video link :
 
 # Alter Row Transformation in Mapping Data Flow in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/12Bt9N5lODA 
+
+USe the **ALter Row transformation to set, insert, delete, update and upsert policies on rows**. We can add one-to-many conditions as expressions. These conditions should be specified in order of priority  as each row will be marked with the policy corresponding to the first-matching expression. Each of those conditions can result in a row (or rows) being inserted, updated, deleted or upserted.
+
+**Alter row transformations will only operate on database or CosmosDB in our data flow**.
+
+#### SEE VIDEO🔼
+
 
 
 
@@ -1302,7 +1360,11 @@ Video link :
 
 # Flatten Transformation in Mapping Data Flow in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/12Bt9N5lODA
+
+Use the flatten transformation to **take array values inside the hierarchical structures such as JSON and unroll them into individual rows**. This process is known as <span style="color:yellow">denormalization</span>.
+
+#### SEE VIDEO🔼
 
 
 
@@ -1314,14 +1376,14 @@ Video link :
 
 
 
-
+#### SEE VIDEO🔼
 
 # Validate Schema in Mapping Data Flow in Azure Data Factory
 
 Video link : 
 
 
-
+#### SEE VIDEO🔼
 
 
 # Schema Drift in Mapping Data Flow in Azure Data Factory
@@ -1329,5 +1391,5 @@ Video link :
 Video link : 
 
 
-
+#### SEE VIDEO🔼
 
