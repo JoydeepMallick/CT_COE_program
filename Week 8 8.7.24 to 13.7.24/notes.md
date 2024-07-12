@@ -1100,29 +1100,48 @@ ADF internally handles all the code translation, spark optimization and exection
 
 Video link : https://www.youtube.com/watch?v=HgcaPcBYXNI
 
+**Mapping data flows** are visually designed data transformations in ADF. Data flows allow data engineers to develop graphical data transformation logic without writing code.
+
+Data flows are executed as activities with ADF pipelines using Data Flow Activities.
+
+ADF internally handles all the code translation, spark optimization and execution of transformation.
+
+#### SEE VIDEO🔼
 
 
 
 
 # Data Flow Activity in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/FxkN1vctsB4
 
+Use Dat Flow Activity to execute Data flows in our pipeline.
+#### SEE VIDEO🔼
 
 
 
 
 # Mapping Data Flow Debug Mode in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/1MrnawEbO2U
 
+**ADF Mapping data flow's debug mode** allows us to **interactively watch the data shape transform while you build and debug our data flows**.
 
+To turn on debug mode, use the "`Data Flow Debug`" button at the top of the design surface.
 
+A cluster with eight cores of general compute with a 60 minute time to live will be spun up.
+
+The session will close once you turn debug off in ADF.
+#### SEE VIDEO🔼
 
 
 # Filter Transformation in Mapping Data Flow in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/hpXePPFqJCs
+
+**Filter transforms** allow row transformation based upon a condition. The output stream includes all rows that mathing the filter condition. **The filter transformation is similar to a WHERE clause in SQL**.
+
+#### SEE VIDEO🔼
 
 
 
@@ -1130,7 +1149,12 @@ Video link :
 
 # Aggregate Transformation in Mapping Data Flow in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/-sxpg-6zgww
+
+The **Aggregate transformation** defines aggregation of columns in your data streams. Using the Expression Builder, you can define different types of aggregations such **SUM**, **MIN**, **MAX**, and **COUNT** grouped by existing or computed columns.
+
+#### SEE VIDEO🔼
+
 
 
 
@@ -1138,7 +1162,16 @@ Video link :
 
 # JOIN Transformation in Mapping Data Flow in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/hq5BtHbATIc
+
+Use **Join Transformation** to combine data from two sources or streams in a mapping data flow. The **output stream will include all columns from both sources matched based on a join condition**.
+
+#### SEE VIDEO🔼
+
+
+
+
+
 
 
 
@@ -1146,15 +1179,23 @@ Video link :
 
 # Conditional Split Transformation in Mapping Data Flow in Azure data factory
 
-Video link : 
+Video link : https://youtu.be/20iyvIrW7mg
 
+**Conditional Split transformation** routes data rows to different streams based on matching conditions. **The conditional split transformation is similar to a CASE decision structure in a programming language**.
+
+#### SEE VIDEO🔼
 
 
 
 
 # Derived Column Transformation in Mapping Data Flow in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/a5KClu7LboQ
+
+Use the **derived column transformation** to generate new columns in your data flow or to modify existing fields.
+
+#### SEE VIDEO🔼
+
 
 
 
@@ -1162,31 +1203,42 @@ Video link :
 
 # Exists Transformation in Mapping Data Flow in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/a5KClu7LboQ
 
+The **Exists transformation is a row filtering transformation** that checks whether your data exists in another source or stream.
+
+**The output stream includes all rows in the left stream that either exist or don't exist in the right stream.**
+
+The Exists transformation is similar to SQL `WHERE EXISTS` and SQL `WHERE NOT EXISTS`.
+
+#### SEE VIDEO🔼
 
 
 
 
 # Union Transformation in Mapping Data Flow in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/vFCNbHqWct8
 
+Union will combine multiple data streams into one, with the **SQL Union of those streams as the output** from the union transformation.
 
+We can combine n number of streams in the settings table by selecting the `+` icon next to each configured row, including both source data as well as streams from existing transformations in  your data flow.
 
-
+#### SEE VIDEO🔼
 
 # Lookup Transformation in Mapping Data Flow in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/Z4xfVDYbNNE
 
+A **lookup transformation** is similar to a **left outer join**. All rows from the primary stream will exist in the output stream with additional columns from the lookup stream.
 
+#### SEE VIDEO🔼
 
 
 
 # Sort Transformation in Mapping Data Flow in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/XyLVCH-v1Ag 
 
 
 
