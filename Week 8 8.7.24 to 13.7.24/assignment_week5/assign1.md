@@ -57,5 +57,94 @@ This XML file does not appear to have any style information associated with it. 
 </Error>
 ```
  
+
+#### <span style="color:red">PySpark was not covered in the current course week and this assignment seem unrelated to current content being taught hence referred to google and chatGPT for the assignment</span>
+
+
 ## Steps to approach the problem
+
+### Step 1 :**Upload the CSV File** 
+
+Once the file is downloaded from the new link, upload it to a container in our Azure storage account.
+
+
+Read basic of Pyspark [here](https://www.datacamp.com/tutorial/pyspark-tutorial-getting-started-with-pyspark)
+
+### Step 2 : Loading data with PySpark
+
+```py
+from pyspark.sql import SparkSession
+# Load if exists or create a new one
+spark = SparkSession.builder \
+    .appName("NYC Taxi Data Analysis") \
+    .getOrCreate()
+
+# Load data into DataFrame
+df = spark.read.option("header", "true").csv("/mnt/nyc-taxi/yellow_tripdata_2020-01.csv")
+```
+
+### Step 3 : Queries
+
+#### Query 1 solution
+Add a Revenue Column
+```py
+from pyspark.sql.functions import col
+# revenue = fare_amount + extra + mta_tax + improvement_surcharge + trip_amount + tolls_amount + total_amount
+df = df.withColumn("Revenue", col("Fare_amount") + col("Extra") + col("MTA_tax") +
+                   col("Improvement_surcharge") + col("Tip_amount") + col("Tolls_amount") + col("Total_amount"))
+df.show()
+```
+
+#### Query 2 solution
+Increasing Count of Total Passengers by Area
+```py
+df.groupBy("PULocationID").sum("passenger_count").withColumnRenamed("sum(passenger_count)", "total_passengers").orderBy("total_passengers", ascending=False).show()
+
+```
+
+#### Query 3 solution
+Average Fare/Total Earning Amount Earned by 2 Vendors
+```py
+df.groupBy("VendorID").avg("total_amount").withColumnRenamed("avg(total_amount)", "average_earning").show()
+
+```
+
+#### Query 4 solution
+Count of Payments Made by Each Payment Mode
+```py
+df.groupBy("payment_type").count().withColumnRenamed("count", "payment_count").show()
+
+```
+
+#### Query 5 solution
+Highest Two Gaining Vendors on a Particular Date with No of Passengers and Total Distance by Cab
+```py
+from pyspark.sql.functions import to_date
+
+specific_date = "2020-01-15"
+df_filtered = df.filter(to_date(df.tpep_pickup_datetime) == specific_date)
+df_filtered.groupBy("VendorID").agg(
+    {"total_amount": "sum", "passenger_count": "sum", "trip_distance": "sum"}
+).withColumnRenamed("sum(total_amount)", "total_earning").withColumnRenamed("sum(passenger_count)", "total_passengers").withColumnRenamed("sum(trip_distance)", "total_distance").orderBy("total_earning", ascending=False).show(2)
+
+```
+
+#### Query 6 Solution
+Most No of Passengers Between a Route of Two Locations
+
+```py
+df.groupBy("PULocationID", "DOLocationID").sum("passenger_count").withColumnRenamed("sum(passenger_count)", "total_passengers").orderBy("total_passengers", ascending=False).show(1)
+```
+
+
+#### Query 7 Solution
+Top Pickup Locations with Most Passengers in Last 5/10 Second
+```py
+from pyspark.sql.functions import unix_timestamp, window
+
+# Assuming current_time is the latest timestamp in the data
+current_time = df.select(unix_timestamp(col("tpep_pickup_datetime"))).orderBy(unix_timestamp(col("tpep_pickup_datetime")), ascending=False).first()[0]
+
+df.withColumn("pickup_time", unix_timestamp(col("tpep_pickup_datetime"))).filter(col("pickup_time") > (current_time - 10)).groupBy("PULocationID").sum("passenger_count").withColumnRenamed("sum(passenger_count)", "total_passengers").orderBy("total_passengers", ascending=False).show()
+```
 

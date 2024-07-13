@@ -1372,24 +1372,44 @@ Use the flatten transformation to **take array values inside the hierarchical st
 
 # Parameterize Mapping Data Flow in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/6rKZ7Om1gKo 
 
+**Mapping data flows in ADF** support the use of parameters. We can define parameters inside of our data flow defination, which can then be **reused throughout our expressions**.
 
+We can use this capability to make our data flows general purpose, flexible and reusable.
 
 #### SEE VIDEO🔼
+
+
+
+
+
+
+
 
 # Validate Schema in Mapping Data Flow in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/6rKZ7Om1gKo
 
+**Validate schema** option in source will look for the schema in source. **If any changes in the schema then it will make data flow to fail**.
 
 #### SEE VIDEO🔼
+
+
+
+
+
 
 
 # Schema Drift in Mapping Data Flow in Azure Data Factory
 
-Video link : 
+Video link : https://youtu.be/LS0u7DxhpDI
 
+**Schema drift** is the case when our <span style="color:orange">sources often change metadata.</span>
+
+**Field, columns and types can be added, removed, or changed on the go.**
+
+Without handling for schema drift, your data flow becomes vulnerable to upstream data changes.
 
 #### SEE VIDEO🔼
 
