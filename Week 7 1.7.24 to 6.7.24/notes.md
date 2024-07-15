@@ -9,7 +9,7 @@ Video link :- https://www.youtube.com/watch?v=LFdROd_jhaI&embeds_referring_euri=
 
 - **multiple triggers can kick of a single pipeline or a single trigger can kick off multiple pipelines**.
 
-#### demo link :- https://youtu.be/LFdROd_jhaI?t=134
+#### Demo link :- https://youtu.be/LFdROd_jhaI?t=134
 
 ## Types of triggers
 
