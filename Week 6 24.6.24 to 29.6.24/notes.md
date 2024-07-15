@@ -1,4 +1,4 @@
-## Entire video playlist is recommended :-
+## Entire video playlists below is recommended :-
 
 ### 1. https://youtube.com/playlist?list=PLGjZwEtPN7j-Q59JYso3L4_yoCjj2syrM&si=xr3lfwKs1hXt3YUi
 
