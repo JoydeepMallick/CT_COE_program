@@ -283,6 +283,41 @@ Following are the components that collectively form a Hadoop ecosystem:
 
 Video link : https://youtu.be/9mN3N3aoF2w
 
+⭐⭐Read [amazon awws blog](https://aws.amazon.com/what-is/apache-spark/)  
+
+**Apache Spark is an open-source, distributed processing system used for big data workloads**. It utilizes in-memory caching, and optimized query execution for fast analytic queries against data of any size. **It provides development APIs in Java, Scala, Python and R, and supports code reuse across multiple workloads—batch processing, interactive queries, real-time analytics, machine learning, and graph processing**. You’ll find it used by organizations from any industry, including at FINRA, Yelp, Zillow, DataXu, Urban Institute, and CrowdStrike.
+
+![](https://www.databricks.com/en-website-assets/static/5e953f5a26d3e6b7949bff788ef5a2af/largest-open-source-apache-spark1679038543.png)
+
+### History
+Apache Spark started in 2009 as a research project at UC Berkley’s AMPLab, a collaboration involving students, researchers, and faculty, focused on data-intensive application domains. The goal of Spark was to create a new framework, optimized for fast iterative processing like machine learning, and interactive data analysis, while retaining the scalability, and fault tolerance of Hadoop MapReduce. The first paper entitled, “Spark: Cluster Computing with Working Sets” was published in June 2010, and Spark was open sourced under a BSD license. In June, 2013, Spark entered incubation status at the Apache Software Foundation (ASF), and established as an Apache Top-Level Project in February, 2014. Spark can run standalone, on Apache Mesos, or most frequently on Apache Hadoop.
+
+### How does Apache Spark work?
+**Hadoop MapReduce is a programming model for processing big data sets with a parallel, distributed algorithm**. Developers can write massively parallelized operators, without having to worry about work distribution, and fault tolerance. However, **a challenge to MapReduce is the sequential multi-step process it takes to run a job. With each step, MapReduce reads data from the cluster, performs operations, and writes the results back to HDFS. Because each step requires a disk read, and write, MapReduce jobs are slower due to the latency of disk I/O**.
+
+**Spark was created to address the limitations to MapReduce, by doing processing in-memory, reducing the number of steps in a job, and by reusing data across multiple parallel operations**. With Spark, **only one-step is needed where data is read into memory, operations performed, and the results written back—resulting in a much faster execution**. Spark also reuses data by using an in-memory cache to greatly speed up machine learning algorithms that repeatedly call a function on the same dataset. Data re-use is accomplished through the creation of DataFrames, an abstraction over Resilient Distributed Dataset (RDD), which is a collection of objects that is cached in memory, and reused in multiple Spark operations. This dramatically lowers the latency making Spark multiple times faster than MapReduce, especially when doing machine learning, and interactive analytics.
+
+### Apache Spark vs. Apache Hadoop
+Outside of the differences in the design of Spark and Hadoop MapReduce, **many organizations have found these big data frameworks to be complimentary, using them together to solve a broader business challenge**.
+
+Hadoop is an **open source framework that has the Hadoop Distributed File System (HDFS) as storage**, YARN as a way of managing computing resources used by different applications, and an implementation of the MapReduce programming model as an execution engine. **In a typical Hadoop implementation, different execution engines are also deployed such as Spark, Tez, and Presto**.
+
+Spark is an open source framework focused on interactive query, machine learning, and real-time workloads.**It does not have its own storage system, but runs analytics on other storage systems like HDFS, or other popular stores like Amazon Redshift, Amazon S3, Couchbase, Cassandra, and others**. Spark on Hadoop leverages YARN to share a common cluster and dataset as other Hadoop engines, ensuring consistent levels of service, and response.
+
+### Why Apache Spark came into Picture?
+
+⭐⭐See this [video](https://youtu.be/v_uodKAywXA?t=119) 
+
+<span style="color:red">2 main issues with hadoop </span>
+
+- Hadoop relied **storing data on harddisks** which made storing and fetching and writing data much much slower.
+
+- It processes data in batches i.e. **we need to wait for one process to complete before any other job can start**. Hence processing much end at all slave nodes before it could be put together at master node and master node can move to the next job.
+
+hence a need of more real time data processing system was needed.
+
+
+
 
 
 <br/><br/><br/><br/><br/><br/>
