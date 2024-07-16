@@ -2,7 +2,7 @@
 
 | Week No | Date    | Topic                                   | Hours Spent | Description                                                                                                                                                                        |
 | ------- | ------- | --------------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 9       | 15/7/24 | Install sql server till video guideline of installation | 5hrs        | Installing microsoft sql server and developer tools, learning basics of mysql and learning syntax and basic commands. solved few assignment problems. |
+| 9       | 15/7/24 | Introduction to Big Data till Apache Spark | 6hrs        | Learnt about big data, how data is generated, 5Vs of big data, smart meter concept, problems with big data, hadoop concept and storage solutions and a little bit introduction into Apache Spark |
 | 9       | 16/7/24 |                                         | 3hrs        |
 | 9       | 17/7/24 |                                         | 4hrs        |
 | 9       | 18/7/24 |                                         | 4hrs        |
