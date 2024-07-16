@@ -32,6 +32,7 @@ Essentially 5 important V's needed :-
 Volume is a huge amount of data.
 
 To determine the value of data, size of data plays a very crucial role. **If the volume of data is very large, then it is actually considered as a ‘Big Data’**. This means whether a particular data can actually be considered as a Big Data or not, is dependent upon the volume of data.
+
 ![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzkP5KIJXF17VHswVYH9NnWQ_ixdBzdx8xiw&s)
 
 ### 2. Velocity 
@@ -138,7 +139,139 @@ Big data can be a mixture of various forms and kinds of data and extracting exac
 
 ![alt text](<Screenshot (891).png>)
 
+### 4. Data Quality
+the accuracy, relevance, and completeness of the data—is another common pain point. Human decision-making and machine learning require ample and reliable data, but larger datasets are more likely to contain inaccuracies, incomplete records, errors, and duplicates. Not correcting quality issues leads to ill-informed decisions and lost revenue.
 
+Before analyzing big data, it must be run through automated cleansing tools that check for and correct duplicates, anomalies, missing information, and other errors. Setting specific data quality standards and measuring these benchmarks regularly will also help by highlighting where data collection and cleansing techniques must change.
+
+### 5. Ethical Issues
+Big data also comes with some ethical concerns. Gathering that much information means increased likelihood of personally identifiable information being part of it. In addition to questions about user privacy, biases in data can lead to biased AI that carries human prejudices even further.
+
+To avoid ethical concerns, businesses should form a data ethics committee or at least have a regular ethical review process to review data collection and usage policies and ensure the company doesn’t infringe on people’s privacy. Scrubbing data of identifying factors like race, gender, and sexuality will also help remove bias-prone information from the equation.
+
+### 6. Lack Of Experience
+Technical issues may be the easiest challenges to recognize, but user-side challenges deserve attention too—and one of the biggest is a lack of big data experience. Making sense of big data and managing its supporting infrastructure requires a skillset lacking in many organizations. There’s a nationwide shortage of jobseekers with the skills being sought by enterprises, and it’s not getting any better.
+
+## Hadoop🐘
+
+According to [Wikipedia](https://en.wikipedia.org/wiki/Apache_Hadoop),
+
+Apache Hadoop is a collection of open-source software utilities that facilitates **using a network of many computers to solve problems involving massive amounts of data and computation**. It provides a software framework for distributed storage and processing of big data using the MapReduce programming model.
+
+### History
+
+Apache Software Foundation is the developers of Hadoop, and it’s co-founders are **Doug Cutting** and **Mike Cafarella**. **It’s co-founder Doug Cutting named it on his son’s toy elephant**. In October 2003 the first paper release was Google File System. In January 2006, MapReduce development started on the Apache Nutch which consisted of around 6000 lines coding for it and around 5000 lines coding for HDFS. In April 2006 Hadoop 0.1.0 was released.
+
+![](https://alchetron.com/cdn/doug-cutting-1c09e78b-fa6d-4b1e-af24-2b2c8f5fcc7-resize-750.jpg)
+
+Doug Cutting with Hadoop elephant toy
+
+
+### ⭐⭐Read [medium blog](https://medium.com/cdapio/the-need-for-abstraction-in-hadoop-b004b822f6ff)
+
+### Hadoop has two main components:
+1. **HDFS (Hadoop Distributed File System)**: This is the **storage component** of Hadoop, which allows for the storage of large amounts of data across multiple machines. It is designed to work with commodity hardware, which makes it cost-effective.
+2. **YARN (Yet Another Resource Negotiator)**: This is the **resource management component** of Hadoop, which manages the allocation of resources (such as CPU and memory) for processing the data stored in HDFS.
+
+Hadoop also includes several additional modules that provide additional functionality, such as **Hive (a SQL-like query language), Pig (a high-level platform for creating MapReduce programs), and HBase (a non-relational, distributed database)**.
+
+Hadoop is commonly used in big data scenarios such as data warehousing, business intelligence, and machine learning. It’s also used for data processing, data analysis, and data mining. It enables the distributed processing of large data sets across clusters of computers using a simple programming model.
+
+### Hadoop Distributed File System
+
+It has **distributed file system** known as HDFS and this HDFS **splits files into blocks and sends them across various nodes in form of large clusters**. Also in case of a node failure, the system operates and data transfer takes place between the nodes which are facilitated by HDFS.
+
+![alt text](<Screenshot (892).png>)
+It kind of master-slave architecture. The master node contains metadata about the slave nodes containing information like :-
+
+- how data is stored in different Data nodes
+- which datanode contains what data
+- which datanodes stored replicated data for failure control
+
+.... so on.
+
+This solves various problems:-
+
+### 1. Storing large data of multiple small storage systems
+
+Assume I have 1 TB of big data now we can store it into multiple 256 GB or any smaller than 1 TB of storages in different nodes/ computers by breaking them into pieces as required. This wont force us to get a node of 1TB to store the data.
+
+![alt text](<Screenshot (893).png>)
+
+### 2. Storing different kinds of data is easy
+
+We can now store different forms of data more easily since **HDFS does not perform any schema validation during dumping data and also allows write once read many (WORM)**.
+
+![alt text](<Screenshot (894).png>)
+
+### 3. Processing Data Faster
+
+In master slave architecture processing can take place in individual nodes instead of a single node storing all data and processing all data and processing them all at once. Hence parallel processing is employed which is faster and efficient.
+
+Chunks of output from all slave node is then combined at master node to provide user the output.
+
+![alt text](<Screenshot (895).png>)
+
+
+### Hadoop ecosystem
+
+⭐⭐Read [gfg](https://www.geeksforgeeks.org/hadoop-ecosystem/) and [databricks blog](https://www.databricks.com/glossary/hadoop-ecosystem)
+
+Apache Hadoop ecosystem **refers to the various components of the Apache Hadoop software library**; it includes open source projects as well as a complete range of complementary tools. Some of the most well-known tools of the Hadoop ecosystem include HDFS, Hive, Pig, YARN, MapReduce, Spark, HBase, Oozie, Sqoop, Zookeeper, etc. Here are the major Hadoop ecosystem components that are used frequently by developers.
+
+![](https://www.edureka.co/blog/wp-content/uploads/2016/10/HADOOP-ECOSYSTEM-Edureka.png)
+
+####  What is HDFS?
+Hadoop Distributed File System (HDFS), is one of the largest Apache projects and primary storage system of Hadoop. It employs a NameNode and DataNode architecture. It is a distributed file system able to store large files running over the cluster of commodity hardware
+
+#### What is Hive?
+Hive is an ETL and Data warehousing tool used to query or analyze large datasets stored within the Hadoop ecosystem. Hive has three main functions: data summarization, query, and analysis of unstructured and semi-structured data in Hadoop. It features a SQL-like interface, HQL language that works similar to SQL and automatically translates queries into MapReduce jobs.
+
+#### What is Apache Pig?
+This is a high-level scripting language used to execute queries for larger datasets that are used within Hadoop. Pig's simple SQL-like scripting language is known as Pig Latin and its main objective is to perform the required operations and arrange the final output in the desired format.
+
+#### What is MapReduce?
+
+![](https://www.databricks.com/sites/default/files/inline-images/map-reduce.png)
+
+This is another data processing layer of Hadoop. It has the capability to process large structured and unstructured data as well as to manage very large data files in parallel by dividing the job into a set of independent tasks (sub-job).
+
+#### What is YARN?
+**YARN stands for Yet Another Resource Negotiator**, but it's commonly referred to by the acronym alone. It is one of the core components in open source Apache Hadoop suitable for resource management. It is responsible for managing workloads, monitoring, and security controls implementation. It also allocates system resources to the various applications running in a Hadoop cluster while assigning which tasks should be executed by each cluster nodes. YARN has two main components:
+
+- Resource Manager
+- Node Manager
+
+#### What is Apache Spark?
+
+![](https://www.databricks.com/sites/default/files/inline-images/spark.png)
+
+Apache Spark is a fast, in-memory data processing engine suitable for use in a wide range of circumstances. Spark can be deployed in several ways, it features Java, Python, Scala, and R programming languages, and supports SQL, streaming data, machine learning, and graph processing, which can be used together in an application.
+
+
+
+![alt text](<Screenshot (896).png>)
+
+
+Following are the components that collectively form a Hadoop ecosystem: 
+<ul>
+<li value="1"><b><strong>HDFS: </strong></b><span>Hadoop Distributed File System</span></li>
+<li value="2"><b><strong>YARN:</strong></b><span> Yet Another Resource Negotiator</span></li>
+<li value="3"><b><strong>MapReduce:</strong></b><span> Programming based Data Processing</span></li>
+<li value="4"><b><strong>Spark:</strong></b><span> In-Memory data processing</span></li>
+<li value="5"><b><strong>PIG, HIVE:</strong></b><span> Query based processing of data services</span></li>
+<li value="6"><b><strong>HBase: </strong></b><span>NoSQL Database</span></li>
+<li value="7"><b><strong>Mahout, Spark MLLib:</strong></b><span> </span><a href="https://www.geeksforgeeks.org/machine-learning/"><span>Machine Learning </span></a><span>algorithm libraries</span></li>
+<li value="8"><b><strong>Solar, Lucene:</strong></b><span> Searching and Indexing</span></li>
+<li value="9"><b><strong>Zookeeper:</strong></b><span> Managing cluster</span></li>
+<li value="10"><b><strong>Oozie:</strong></b><span> Job Scheduling</span></li>
+</ul>
+
+![](https://media.geeksforgeeks.org/wp-content/cdn-uploads/HadoopEcosystem-min.png)
+
+### Advantages and Disadvantages
+
+⭐⭐Read [gfg](https://www.geeksforgeeks.org/hadoop-an-introduction/)
 
 
 
