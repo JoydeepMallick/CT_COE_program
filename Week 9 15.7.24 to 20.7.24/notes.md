@@ -483,4 +483,114 @@ Read here : https://www.geeksforgeeks.org/big-challenges-with-big-data/
 
 Read here : https://intellipaat.com/blog/top-big-data-challenges/
 
+## Challenges with Big data and remedies
+
+### 1. Data Growth
+One of the most pressing Big Data challenges is storage. Data is growing exponentially with time, and with that, enterprises are struggling to store large amounts of data. Much of this data is extracted from images, audio, documents, text files, etc., that are unstructured and not in databases. It is difficult to extract and analyze all unstructured data. These issues are a part of Big Data infrastructure challenges.
+
+#### Solution:
+ Dealing with rapid data growth can be facilitated through converged and hyper-converged infrastructure and software-defined storage. Additionally, compression, tiering, and deduplication can reduce space consumption as well as cut storage costs. Enterprises also use tools such as Big Data Analytics software, Hadoop and NoSQL databases, Spark, AI, Machine Learning, BI applications, etc., to deal with this issue.
+
+
+### 2. Real-time Insights
+Data sets are a treasure trove of insights. However, data sets are of no value if no real-time insights are drawn from them. Now, some may define real-time as instantaneous while others may consider it as the time taken between data extraction and analysis. However, the core idea is to generate actionable insights to bring about efficiency in result-oriented tasks such as:
+
+- Establishing new avenues for innovation and disruption
+- Speeding up the process of service deployment
+- Cutting costs through operational cost efficiencies
+- New product launches and service offerings
+- Encouraging a data-driven culture
+#### Solution: 
+One of the Big Data challenges is the generation of timely reports and insights. To achieve that, enterprises are looking to invest in ETL and analytics tools with real-time capabilities to have a level playing field with competitors in the market.
+
+
+### 3. Data Validation
+Data validation on a Big Data scale can be rather difficult. An organization can get similar sets of data from different sources but the data from these sources may not always be similar. Getting the data to agree with each other and looking out for accuracy, usability, and security fall under a process called data governance. According to a 2016 survey by AtScale, the fastest-growing concern was data governance.
+
+#### Solution:
+ Tackling Big Data management challenges and data governance can be complex with all the policy changes combined with technology. Special teams are assigned to handle data governance and invest in ad-hoc data management solutions that ensure data accuracy.
+
+
+### 4. Data Security
+Security can be one of the most daunting Big Data challenges especially for organizations that have sensitive company data or have access to a lot of personal user information. Vulnerable data is an attractive target for cyberattacks and malicious hackers.
+
+When it comes to data security, most organizations believe that they have the right security protocols in place that are sufficient for their data repositories. Only a few organizations invest in additional measures exclusive to Big Data such as identity and access authority, data encryption, data segregation, etc. Often, organizations are more immersed in activities involving data storage and analysis. Data security is usually put on the back burner, which is not a wise move at all as unprotected data can fast become a serious problem. Stolen records can cost an organization millions.
+
+#### Solution: 
+The following are the ways how an enterprise can tackle the security challenges of Big Data:
+
+- Recruiting more cybersecurity professionals
+- Data encryption and segregation
+- Identity and access authorization control
+- Endpoint security
+- Real-time monitoring
+- Using Big Data security tools such as IBM Guardium
+
+### 5. Big Data Skills
+Running Big Data tools requires expertise that is possessed by data scientists, data engineers, and data analysts. They have the skills to handle Big Data challenges and come up with valuable insights for the company they work in. The problem is not the demand but the lack of such skills that, in turn, becomes a challenge. Big Data salaries have drastically increased over the years. According to ZipRecruiter, as of January 2021, the average annual compensation offered to Big Data Specialists in the United States is US$107,892. Although organizations are spending on recruiting professionals with such skills, organizations are also investing in training their existing staff as well.
+
+#### Solution:
+ Data professionals are not able to keep up with the rate data handling tools are evolving. Hence, organizations invest in AI- or ML-powered data analytics solutions. This allows even non-experts to easily run tools with basic knowledge. This way, companies can cut recruitment costs and achieve Big Data goals.
+
+ ### 6. Increasing Salaries of Skilled Big Data Professionals
+Big Data salaries have increased significantly. According to the 2017 Robert Half Technology Salary Guide, big data engineers have salaries between US$135,000 and US$196,000 on average. while data scientists earn around US$116,000 to US$163, 500. BI analysts make around US$118,000 to US$138,750 annually.
+
+#### Solution: 
+To deal with the shortage of talent, organizations have had to increase their budgets as well as the efforts to recruit and retain. Therefore, these organizations are training their current staff members in an attempt to have the skills from within the company.
+
+Some are also looking to technology like analytics solutions that have self-service as well as machine learning capabilities. These solutions are designed to be used by professionals without extensive knowledge in data science. In this way, it is possible to achieve big data goals without spending on big data experts.
+
+
+### 7. Resistance to Big Data Adoption
+It is not only about the technological challenges of conventional systems in Big Data but also about the resistance that is faced by Big Data adoption. While many want to introduce data-driven culture in their organizations, only a few are able to adopt it successfully. Why is it a challenge? It is observed to be because of three major reasons:
+
+- Business resistance due to lack of understanding
+- Lack of organizational alignment
+- Lack of middle management understanding and adoption
+
+Primarily, due to the lack of understanding of Big Data, organizations fail in their initiatives to adopt Big Data. Most employees are unaware of what data is, let alone have any idea of its importance. If employees do not understand the importance of Big Data, they may not follow the correct procedures or protocols that are necessary for handling Big Data and, as a result, introduce unseen setbacks.
+
+#### Solution: 
+Introducing Big Data can bring about a tremendous change in any organization, which can be difficult. Workshops, seminars, and training programs are a great way to introduce employees at all levels to the world of Big Data. Decision-making will improve with strong leadership that knows how to capitalize on the opportunities provided by Big Data. Thus, the challenges associated with Big Data’s adoption and implementation are still continuing to hamper the organizations’ progress.
+
+## Big Data Risks in Other Sectors
+
+### 1. Big Data Challenges in Healthcare
+Here are some of the challenges in healthcare analytics platform:
+
+- Efficiency of diagnoses
+- Prescribing preventive medicine
+- Providing medical results in a digital form
+- Using predictive analysis to identify patterns
+- Real-time monitoring
+- Developing data exchange and interoperability architecture for personalized patient care
+- Developing AI-based analytical platform for the integration of multi-sourced data
+- Predictive and prescriptive modeling platform to minimize the semantic gap for an accurate diagnosis
+
+
+### 2. Big Data Challenges in Security Management
+- Fake data generation
+- Granular access control
+- Challenges in data security in systems
+- Data provenance
+- Real-time data security
+
+
+### 3. Big Data Challenges in Hadoop-Data Lake Migration
+Migration from Hadoop can happen due to a variety of reasons. Below are some of the common reasons why migration becomes a challenge:
+
+- Poor data scalability and reliability
+- Blocked projects
+- Cost of time and resource
+- Runtime quality issues
+- Unsupportive service
+
+
+### 4. Big Data Challenges in Cloud Security Governance
+Some of the challenges in cloud security governance are:-
+
+- Performance management
+- Cost management
+- Security issues
+- Governance/control
 

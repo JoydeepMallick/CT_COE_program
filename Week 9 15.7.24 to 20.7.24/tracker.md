@@ -4,7 +4,7 @@
 | ------- | ------- | --------------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 9       | 15/7/24 | Introduction to Big Data till Apache Spark | 6hrs        | Learnt about big data, how data is generated, 5Vs of big data, smart meter concept, problems with big data, hadoop concept and storage solutions and a little bit introduction into Apache Spark |
 | 9       | 16/7/24 | Apache Spark, Problems with Big Data, Java installation                                        | 7hrs        | Read about apache spark from various blogs and videos available on internet, made notes of the same. Learnt its benefits over Hadoop, concept of RDDs and how batch processing in MapReduce is slow, how big data causes problems and also verified my pervious java installation.
-| 9       | 17/7/24 |                                         | 4hrs        |
+| 9       | 17/7/24 |   Apache Sparks Installation, Hadoop                                      | 4hrs        | Learnt more details into pache Spark, minimum system requirements to install it and also tried installing it. Read about the challenges with big data.
 | 9       | 18/7/24 |                                         | 4hrs        |
 | 9       | 19/7/24 |                                         | 4hrs        |
 | 9       | 20/7/24  |                                         | 4hrs        |
