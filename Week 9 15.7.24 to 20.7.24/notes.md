@@ -449,7 +449,7 @@ Read here : https://spark.apache.org/downloads.html
 
 Read here : https://www.oracle.com/java/technologies/downloads/
 
-Installed JDK 18 already before. 
+**NOTE** : (🔴**specific to my system**🔴) Installed JDK 18 already before. 
 
 
 <br/><br/><br/><br/><br/><br/>
@@ -457,6 +457,9 @@ Installed JDK 18 already before.
 # Apache spark & python installation
 
 Read here : https://www.sundog-education.com/spark-python/
+
+**NOTE** : (🔴**specific to my system**🔴) 
+Python 3.10.0 Installed already and also conda installed with default python version 3.11.3
 
 
 
