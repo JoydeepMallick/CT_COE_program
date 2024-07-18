@@ -382,7 +382,58 @@ To support graph computation, it supports fundamental operations like subgraph, 
 
 Read here : https://www.databricks.com/blog/2016/02/17/introducing-databricks-community-edition-apache-spark-for-all.html
 
+## Whis is Databricks?
 
+According to [wikipedia](https://en.wikipedia.org/wiki/Databricks),
+
+Databricks, Inc. is a **global data, analytics and artificial intelligence company** founded by the original creators of Apache Spark. **The company provides a cloud-based platform to help enterprises build, scale, and govern data and AI, including generative AI and other machine learning models**.
+
+Databricks is used for building, testing, and deploying machine learning and analytics applications to help achieve better business outcomes.
+
+Databricks integrates with cloud services like **Azure, GCP, AWS**.
+
+## Difference between Databricks and Azure Databricks
+
+Read this [reddit post](https://www.reddit.com/r/dataengineering/comments/v4a7gr/what_is_the_difference_between_azure_databricks/) and [microsoft community forum](https://techcommunity.microsoft.com/t5/analytics-on-azure/data-bricks-in-azure-vs-aws/m-p/1776174)
+
+Databricks is available on all major platforms like Azure, Aws, and Google cloud.
+
+<span style="color:yellow">
+The main thing is databricks is available on aws and google cloud as third party service.
+</br></br>
+But on Azure it is available as first party service meaning you have a unified billing.
+</span>
+
+Azure databricks is using the same thing from databricks but just provides you a unified billing platform where all your databricks and storage cost are coming from Azure.
+
+**At a high level, Azure Databricks is a first party service on Azure. What that means is that it's more than a partnership- there are deep integrations between Azure services and Azure Databricks.** Examples of what this entails:
+
+- **Azure Key Vault Secret Stores in Databricks** - Users can work with secrets they have access to, without the secrets ever being exposed to the end user
+- **Azure Active Directory Support** - User credentials on Azure used to authenticate to Azure Databricks, and data in Azure Data Lake Storage accessed through those credentials 'passed through' from Azure Databricks. This allows teams to configure permissions on files to users and groups, and Azure Databricks authenticates the rest
+- **Top level integration with Azure Data Factory**, allowing scheduling of notebooks as jobs in a data estate
+- **Integrating easily with other Azure Data Services (Cosmos DB, Synapse) through service endpoints on private networks**
+
+As a general rule, the integrations to the rest of the Azure platform are deeper on Azure Databricks, compared to how even Databricks on AWS integrates with other AWS services. Overall, this builds a more seamless and streamlined experience for building out your data estate with Databricks.
+
+## 🔥🔥Which one is free to use🤔
+
+**Community edition with limited features is free to use**
+
+### ⭐⭐⭐READ THIS : https://databricks.com/try-databricks
+
+
+### <span style="color:red">Please note that Free Trial is different from community edition hence please read the above link before signing up</span>
+
+If you sign up for free trial it ends in 14 days but community edition does not
+
+### Read databricks own article  
+https://www.databricks.com/product/faq/community-edition
+
+As mentioned 
+
+`
+The Databricks Community Edition access is not time-limited and users will not incur AWS costs for their cluster usage.
+`
 
 <br/><br/><br/><br/><br/><br/>
 
