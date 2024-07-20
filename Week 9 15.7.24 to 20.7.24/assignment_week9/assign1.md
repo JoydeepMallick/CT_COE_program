@@ -12,8 +12,8 @@
 
 Here's a step-by-step guide to solving this assignment using Azure Databricks and PySpark:
 
-### Step 1: Load a Random Customer Dataset
-First, load a sample dataset into Databricks. For this example, we'll use a CSV file containing customer data.
+### Step 1: Loading a Random Customer Dataset
+For this example, we'll use a CSV file [`customer_dataset.csv`](./customer_dataset.csv).
 
 ```python
 # Load dataset into a DataFrame
@@ -51,6 +51,10 @@ enriched_customer_df.show()
 ```
 
 ### Step 4: Write Enriched Table Back to Azure SQL
+**NOTE** : 😐 Could not perform this step due to no account in Azure. ChatGPT just gave me insights
+
+
+
 Finally, write the enriched DataFrame back to Azure SQL.
 
 ```python
@@ -72,12 +76,3 @@ enriched_customer_df.write \
     .option("password", password) \
     .save()
 ```
-
-### Summary of the Steps:
-
-1. **Load Data**: Load a random customer dataset into a DataFrame.
-2. **Identify Duplicates**: Use a composite key (combination of Name and Address) to identify duplicate customers.
-3. **Assign Master ID**: Assign a unique Master ID to each group of duplicate customers.
-4. **Write to Azure SQL**: Save the enriched DataFrame with Master IDs back to an Azure SQL database.
-
-This workflow ensures that duplicate customers are identified and assigned a unique Master ID, and the enriched data is stored back in Azure SQL for further use.

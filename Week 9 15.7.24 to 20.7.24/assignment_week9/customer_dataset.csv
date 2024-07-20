@@ -1,0 +1,11 @@
+CustomerID,Name,Address,Email
+1,John Doe,123 Elm St,john@example.com
+2,Jane Smith,456 Oak St,jane@example.com
+3,John Doe,123 Elm St,john2@example.com
+4,Alice Brown,789 Pine St,alice@example.com
+5,Charlie Black,234 Maple St,charlie@example.com
+6,Eve White,567 Birch St,eve@example.com
+7,John Doe,123 Elm St,john3@example.com
+8,Jane Smith,456 Oak St,jane2@example.com
+9,Alice Brown,789 Pine St,alice2@example.com
+10,Eve White,567 Birch St,eve2@example.com
