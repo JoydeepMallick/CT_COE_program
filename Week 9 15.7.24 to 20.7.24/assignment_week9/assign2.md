@@ -76,10 +76,3 @@ df = read_parquet_files_between_dates(start_date, end_date)
 df.show()
 ```
 
-### Summary
-
-1. **Create Parquet Files**: Generate and save parquet files for each date between 2018-01-01 and 2020-10-23 in folders named by Year-Month.
-2. **Save in Data Lake**: Ensure files are saved under folders based on their Year-Month.
-3. **Read Function**: Implement a function to read parquet files between two dates and merge them into a single DataFrame.
-
-This setup will help you manage your data efficiently in the Azure Data Lake and enable you to perform date range-based queries seamlessly.
