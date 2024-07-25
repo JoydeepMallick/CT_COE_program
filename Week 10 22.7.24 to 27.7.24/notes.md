@@ -210,177 +210,199 @@ used to rename column name in dataframe.
 # StructType() & StructField()
 Video link : https://youtu.be/D0Xoyd7rpV0?si=0Gn6TOF7GU-Y8ijN
 
-
+![](./Screenshot%20(924).png)
+![](./Screenshot%20(925).png)
 
 ### ⭐⭐see demo in video
 
-# explode(),split(),array_contains,array() functions
-Video link : 
+# ArrayType Columns in PySpark
 
+Video link : https://youtu.be/jN5kRJ0TOf4?si=BYX6LT8QfK4lRtK8
 
+![](./Screenshot%20(926).png)
+![](./Screenshot%20(927).png)
+
+### ⭐⭐see demo in video
+
+# explode(),split(),array_contains(),array() functions
+
+Video link : https://youtu.be/DSiIiDv3fMQ?si=-pIJHjqvr_trup96
+
+![](./Screenshot%20(928).png)
+![](./Screenshot%20(930).png)
+![](./Screenshot%20(931).png)
+![](./Screenshot%20(932).png)
 
 ### ⭐⭐see demo in video
 
 # Maptype
-Video link : 
+Video link : https://youtu.be/k5K3L9c2HaE?si=JYO_Qwj8GWW-dxUx
 
+![](./Screenshot%20(933).png)
+![](./Screenshot%20(934).png)
 
+### ⭐⭐see demo in video
 
+<span style="color:yellow"><Video 16 in the series skipped></span>
 
 
 # row() class in pyspark
-Video link : 
+Video link : https://youtu.be/Xb592yRvV8A?si=FCf57qHYezJms6DU
 
+![](./Screenshot%20(935).png)
+![](./Screenshot%20(936).png)
+![](./Screenshot%20(937).png)
 
-
-
+### ⭐⭐see demo in video
+<span style="color:yellow"><Video 18 in the series skipped></span>
 
 # when() & otherwise() functions
-Video link : 
+Video link : https://youtu.be/a0KDOOcN4Oc?si=W46CWaaxGinsiPyM
 
+![](./Screenshot%20(938).png)
 
+### ⭐⭐see demo in video
 
+# alias(), asc(), desc(), cast() & like() 
+Video link : https://youtu.be/cDLW_GzvMSA?si=AeCwShOVWKT7FE-m
 
+![](./Screenshot%20(940).png)
+![](./Screenshot%20(941).png)
+
+### ⭐⭐see demo in video
 
 # filter() & where() functions
-Video link : 
+Video link : https://youtu.be/YHWIGvBjCNc?si=pSe_jNHW2slHJlTg
 
+![](./Screenshot%20(939).png)
 
-
-
-
-# alias(),asc(),desc()
-Video link : 
-
-
-
-
+### ⭐⭐see demo in video
 
 # distinct()& dropDuplicates()
-Video link : 
+Video link : https://youtu.be/YwvGkA9L92c?si=DRZzLQpWlsdw0EgN
 
+![](./Screenshot%20(942).png)
 
-
-
+### ⭐⭐see demo in video
 
 # orderBy() & sort()
-Video link : 
+Video link : https://youtu.be/wuxhIe6WzSU?si=aCuNICn4Thht_R2V
 
+![](./Screenshot%20(943).png)
 
-
-
+### ⭐⭐see demo in video
 
 # union& unionAll()
-Video link : 
+Video link : https://youtu.be/yt1HAaoUQbg?si=TNCqmFiH_kxuhwAq
 
+![](./Screenshot%20(944).png)
 
-
-
+### ⭐⭐see demo in video
 
 # groupBy()
-Video link : 
+Video link : https://youtu.be/IQVMZKjrIH0?si=AHlDjscEbZGCGvA3
 
+![](./Screenshot%20(945).png)
 
+### ⭐⭐see demo in video
 
+# groupBy agg()
+Video link :  https://youtu.be/wRHfkdh4s60?si=Ovcf9CsUT2Wv9OLj
 
+![](./Screenshot%20(946).png)
 
-# groupBy() agg
-Video link : 
-
-
-
-
+### ⭐⭐see demo in video
 
 # UnionByName()
-Video link : 
+Video link : https://youtu.be/CWClMij6KHQ?si=h_Z2qmBnIoXvADxk
 
+![](./Screenshot%20(947).png)
 
-
-
+### ⭐⭐see demo in video
 
 # select()
-Video link : 
+Video link : https://youtu.be/IR9nX5lS924?si=bUKKzMbCto2dijIC
 
+![](./Screenshot%20(948).png)
 
-
-
+### ⭐⭐see demo in video
 
 # joins part 1
-Video link : 
+Video link : https://youtu.be/6mWi5T7SAug?si=r6mjACEjebOH9ijm
 
+![](./Screenshot%20(949).png)
 
-
-
+### ⭐⭐see demo in video
 
 # joins part 2
-Video link : 
+Video link : https://youtu.be/3hynmMg80Nk?si=s4Yihk6FDi0Mk0gq
 
+![](./Screenshot%20(950).png)
 
-
-
+### ⭐⭐see demo in video
 
 # pivot
 Video link : 
 
 
 
-
+### ⭐⭐see demo in video
 
 # unpivot
 Video link : 
 
 
 
-
+### ⭐⭐see demo in video
 
 # fill()& fillna()
 Video link : 
 
 
 
-
+### ⭐⭐see demo in video
 
 # collect()
 Video link : 
 
 
 
-
+### ⭐⭐see demo in video
 
 # createOrReplaceTempView()
 Video link : 
 
 
 
-
+### ⭐⭐see demo in video
 
 # UDF
 Video link : 
 
 
 
-
+### ⭐⭐see demo in video
 
 # partitionBy()
 Video link : 
 
 
 
-
+### ⭐⭐see demo in video
 
 # convert RDD to dataframe
 Video link : 
 
 
 
-
+### ⭐⭐see demo in video
 
 # Timestamp Functions
 Video link : 
 
 
 
-
+### ⭐⭐see demo in video
 
 # Window Functions
 Video link : 
@@ -388,3 +410,4 @@ Video link :
 
 
 
+### ⭐⭐see demo in video
