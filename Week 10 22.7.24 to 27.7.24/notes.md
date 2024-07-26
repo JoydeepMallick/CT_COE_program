@@ -342,72 +342,86 @@ Video link : https://youtu.be/3hynmMg80Nk?si=s4Yihk6FDi0Mk0gq
 ### ⭐⭐see demo in video
 
 # pivot
-Video link : 
+Video link : https://www.youtube.com/watch?v=pmPLyMweDSo&t=37s
 
-
+![](./Screenshot%20(951).png)
 
 ### ⭐⭐see demo in video
 
 # unpivot
-Video link : 
+Video link : https://www.youtube.com/watch?v=vi4G7N7msh4
 
-
+![](./Screenshot%20(952).png)
 
 ### ⭐⭐see demo in video
 
 # fill()& fillna()
-Video link : 
+Video link : https://www.youtube.com/watch?v=YuTKuqOlntw
 
-
+![](./Screenshot%20(953).png)
 
 ### ⭐⭐see demo in video
+
+<span style="color:yellow"><Video 34 in the series skipped></span>
 
 # collect()
-Video link : 
+Video link : https://www.youtube.com/watch?v=eID3bi5_lgM
 
-
+![](./Screenshot%20(954).png)
 
 ### ⭐⭐see demo in video
+
+<span style="color:yellow"><Videos 36 and 37 in the series skipped></span>
 
 # createOrReplaceTempView()
-Video link : 
+Video link : https://www.youtube.com/watch?v=SMuq5zar6Bw
 
-
+![](./Screenshot%20(955).png)
 
 ### ⭐⭐see demo in video
+
+<span style="color:yellow"><Video 39 in the series skipped></span>
 
 # UDF
-Video link : 
+Video link : https://www.youtube.com/watch?v=deJ0XQfDLFM
 
-
-
-### ⭐⭐see demo in video
-
-# partitionBy()
-Video link : 
-
-
+![](./Screenshot%20(956).png)
+![](./Screenshot%20(957).png)
+![](./Screenshot%20(958).png)
 
 ### ⭐⭐see demo in video
 
 # convert RDD to dataframe
-Video link : 
+Video link : https://www.youtube.com/watch?v=7R_-_K7HxZw
 
-
+![](./Screenshot%20(960).png)
+![](./Screenshot%20(961).png)
 
 ### ⭐⭐see demo in video
+
+
+<span style="color:yellow"><Videos 42, 43 in the series skipped></span>
+
+# partitionBy()
+Video link : https://www.youtube.com/watch?v=JFVl-9YB84U
+
+![](./Screenshot%20(959).png)
+
+### ⭐⭐see demo in video
+
 
 # Timestamp Functions
-Video link : 
+Video link : https://youtu.be/a7pAOHf-9ko?si=nzf0S5kpxZ1t0BDp
 
-
+![](./Screenshot%20(962).png)
 
 ### ⭐⭐see demo in video
 
+<span style="color:yellow"><Video 53 in the series skipped></span>
+
 # Window Functions
-Video link : 
+Video link : https://youtu.be/fxh0CSVBlbk?si=abkjp_H4sRd-furM
 
-
-
+![](./Screenshot%20(963).png)
 
 ### ⭐⭐see demo in video
