@@ -73,19 +73,41 @@ The shortcut link displays keyboard shortcuts for working with notebooks.
 #### ⭐⭐see demo
 
 # Working with spark jobs in databricks
-Video link : 
+Video link : https://www.youtube.com/watch?v=9p4Evw7EzTw
+
+## Create and Run a spark job
+
+**Cluster** is a set of computational resources and configurations on which we can run workloads.
+
+**Notebook** is a web based interface to a document that contains runnable code, visualizations and narrative text.
+
 
 
 #### ⭐⭐see demo
 
 # Azure Databricks architecture
-Video link : 
+Video link : https://www.youtube.com/watch?v=hpK0QaZSyEc
 
+Azure Databricks is structured to enable secure cross functional team collaboration while keeping a significant amount of backend services managed by Azure  Databricks so we can stay focused on our data science, data analytics, and data engineering tasks.
+
+Azure databricks operated on **<span style="color:yellow">control plane</span>** and **<span style="color:yellow">data plane</span>**.
+
+* The **control plane** includes the backend services that Azure Databricks manages in its own Azure account. Notebook commands and many other workspace configurations are stored in the control plane and encrypted in the rest.
+
+* The **data plane** is managed by our Azure account and is where our data resides. This is also where the data is processed.
+
+### Read [microsoft docs](https://learn.microsoft.com/en-us/azure/databricks/getting-started/overview) and also [read this](https://www.bluetab.net/en/databricks-on-azure-an-architecture-perspective-part-1/)
+
+![](https://learn.microsoft.com/en-us/azure/databricks/_static/images/getting-started/architecture-azure.png)
+
+![](https://www.graphable.ai/wp-content/uploads/2023/10/databricks_06-1024x962.png)
+
+![](https://www.bluetab.net/wp-content/uploads/2022/02/image10.png)
 
 #### ⭐⭐see demo
 
 # Databricks utilities
-Video link : 
+Video link : https://www.youtube.com/watch?v=nThRHMgbIVw
 
 
 #### ⭐⭐see demo
