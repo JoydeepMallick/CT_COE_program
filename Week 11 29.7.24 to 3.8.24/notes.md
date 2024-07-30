@@ -109,6 +109,33 @@ Azure databricks operated on **<span style="color:yellow">control plane</span>**
 # Databricks utilities
 Video link : https://www.youtube.com/watch?v=nThRHMgbIVw
 
+Databricks utlities (`dbutils`) makes it easy to perform powerful combination of tasks.
+
+* to parameterise notebooks
+* to chain notebooks
+* to work with secrets
+
+`dbutils` is available in Python, R and Scala notesbooks.
+
+### List available utilities
+
+To list available utilities with a short description for each utility, run `dbutils.help()` for python or scala.
+```py
+dbutils.help()
+```
+
+### List available commands for utility
+
+To list available commands for an utility with a short desciption of each command, run `.help()` after the programmatic name for the utility.
+
+```py
+dbutils.fs.help()
+```
+
+To display help for a command run `help("<Command Name>")`.
+```py
+dbutils.fs.help("cp")
+```
 
 
 
