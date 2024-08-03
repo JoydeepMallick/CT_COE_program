@@ -40,11 +40,9 @@ Refer the sample output given below:
 
 # Solution
 
-To implement SCD Type-2 using an insert trigger in SQL, follow these steps:
+<span style="color:red">took help of chatGPT, unsure about SCD and not related to current week's learning</span>
 
-1. **Create the CustomerDim table**.
-2. **Create the insert trigger `trg_dim`** to handle the SCD Type-2 logic.
-3. **Insert the new records** and observe the changes.
+To implement SCD Type-2 using an insert trigger in SQL:
 
 ### Step 1: Create the CustomerDim Table
 
@@ -160,5 +158,4 @@ CustomerID | CustomerName  | Address     | EffectiveStartDate | EffectiveEndDate
 5          | Eva Dsouza    | Mumbai      | 2023-09-11         | 9999-12-31       | 1
 ```
 
-This setup should handle the SCD Type-2 logic as described in your assignment.
 
