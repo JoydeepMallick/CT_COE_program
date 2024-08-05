@@ -37,30 +37,39 @@ Video link : https://youtu.be/RmRBNJkp77w
 
 
 ⭐⭐See Demo from [here](https://youtu.be/RmRBNJkp77w?t=618)
+
 # On-heap vs Off-heap
 Video link : https://youtu.be/cTjHokox5Is
 
-
+![](./Screenshot%20(991).png)
+![](./Screenshot%20(992).png)
+![](./Screenshot%20(993).png)
+![](./Screenshot%20(994).png)
 
 ⭐⭐See Demo
 # Cluster deployment
 Video link : https://youtu.be/OzgOJfztsFY
 
+![](./Screenshot%20(995).png)
+![](./Screenshot%20(996).png)
+![](./Screenshot%20(997).png)
+![](./Screenshot%20(998).png)
 
 
-⭐⭐See Demo
+⭐⭐See Demo from [here](https://youtu.be/OzgOJfztsFY?t=337)
+
 # Filter condition
 Video link : https://youtu.be/bsZHHAueS-c
 
+![](./Screenshot%20(999).png)
 
-
-⭐⭐See Demo
+⭐⭐See Demo from [here](https://youtu.be/bsZHHAueS-c?t=166)
 # join types
 Video link : https://youtu.be/nJGjFMPBlTg
 
+![](./Screenshot%20(1000).png)
 
-
-⭐⭐See Demo
+⭐⭐See Demo from [here](https://youtu.be/nJGjFMPBlTg?t=226)
 # Spark streaming
 Video link : https://youtu.be/zx5H82fmUPU
 
