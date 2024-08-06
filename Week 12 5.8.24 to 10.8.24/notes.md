@@ -70,22 +70,36 @@ Video link : https://youtu.be/nJGjFMPBlTg
 ![](./Screenshot%20(1000).png)
 
 ⭐⭐See Demo from [here](https://youtu.be/nJGjFMPBlTg?t=226)
+
 # Spark streaming
 Video link : https://youtu.be/zx5H82fmUPU
 
+![](./Screenshot%20(1001).png)
+![](./Screenshot%20(1002).png)
+![](./Screenshot%20(1003).png)
+
+⭐⭐See Demo from [here](https://youtu.be/zx5H82fmUPU?t=373)
 
 
-⭐⭐See Demo
 # Repartition vs Coalesce
 Video link : https://youtu.be/QhaELILKk38
 
+![](./Screenshot%20(1004).png)
+![](./Screenshot%20(1005).png)
+![](./Screenshot%20(1006).png)
+![](./Screenshot%20(1007).png)
+![](./Screenshot%20(1008).png)
+![](./Screenshot%20(1009).png)
 
+⭐⭐See Demo [HERE](https://youtu.be/QhaELILKk38?t=608)
 
-⭐⭐See Demo
 # Cache & persist
 Video link : https://youtu.be/p6_0qdd6X08
 
-
+![](./Screenshot%20(1010).png)
+![](./Screenshot%20(1011).png)
+![](./Screenshot%20(1012).png)
+![](./Screenshot%20(1013).png)
 
 ⭐⭐See Demo
 # Catalyst Optimizer
