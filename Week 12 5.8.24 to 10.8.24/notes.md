@@ -105,30 +105,61 @@ Video link : https://youtu.be/p6_0qdd6X08
 # Catalyst Optimizer
 Video link : https://youtu.be/iLXgijtyvTc
 
-
+![](./Screenshot%20(1015).png)
+![](./Screenshot%20(1016).png)
+![](./Screenshot%20(1017).png)
+![](./Screenshot%20(1018).png)
+![](./Screenshot%20(1019).png)
+![](./Screenshot%20(1020).png)
 
 ⭐⭐See Demo
 # Broadcast variable
 Video link : https://youtu.be/HDiXK3Gl-hs
 
+![](./Screenshot%20(1021).png)
+![](./Screenshot%20(1022).png)
+![](./Screenshot%20(1023).png)
+![](./Screenshot%20(1024).png)
 
+⭐⭐See Demo from [here](https://youtu.be/HDiXK3Gl-hs?t=477)
 
-⭐⭐See Demo
 # AQE
 Video link : https://youtu.be/SK0Rit3GmKE
 
+![](./Screenshot%20(1025).png)
+![](./Screenshot%20(1026).png)
+![](./Screenshot%20(1027).png)
+![](./Screenshot%20(1028).png)
+![](./Screenshot%20(1029).png)
+![](./Screenshot%20(1030).png)
+![](./Screenshot%20(1031).png)
+![](./Screenshot%20(1032).png)
+![](./Screenshot%20(1033).png)
 
 
 ⭐⭐See Demo
 # Handling Null
 Video link : https://youtu.be/XPpMmKofgx4
 
+![](./Screenshot%20(1034).png)
+![](./Screenshot%20(1035).png)
 
+⭐⭐See Demo from [here](https://youtu.be/XPpMmKofgx4?t=199)
 
-⭐⭐See Demo
 # Data skew optimization
 Video link : https://youtu.be/EQhldyLWPwI
 
-
+![](./Screenshot%20(1036).png)
+![](./Screenshot%20(1037).png)
+![](./Screenshot%20(1038).png)
+![](./Screenshot%20(1039).png)
+![](./Screenshot%20(1040).png)
+![](./Screenshot%20(1041).png)
+![](./Screenshot%20(1042).png)
+![](./Screenshot%20(1043).png)
+![](./Screenshot%20(1044).png)
+![](./Screenshot%20(1045).png)
+![](./Screenshot%20(1046).png)
+![](./Screenshot%20(1047).png)
 
 ⭐⭐See Demo
