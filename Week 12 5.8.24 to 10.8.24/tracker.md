@@ -6,5 +6,5 @@
 | 12       | 6/8/24 | Filter condition till Cache and persist                                        | 7hrs        | Learnt about Filter condition ,join types, Spark streaming, Repartition vs Coalesce, Cache & persist
 | 12       | 7/8/24 |  Catalyst optimizer till Broadcast variable                                       | 4hrs        |Learnt about Catalyst Optimizer, Broadcast variable
 | 12       |  8/8/24 |  From AQE till Handling Null                                       | 4hrs        | Learnt about AQE and Handling Null
-| 12       | 9/8/24 |                                         | 4hrs        |
-| 12       | 10/8/24  |                                         | 4hrs        |
+| 12       | 9/8/24 |  Data skew optimization till Assignment                                       | 3hrs        | Learnt about Data skew optimization and tried solving Assignment
+| 12       | 10/8/24  |                                         | 3hrs        |
