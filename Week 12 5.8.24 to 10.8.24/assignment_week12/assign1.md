@@ -13,6 +13,8 @@
 
 ## Solution
 
+<span style="color:red">Complete help of ChatGPT</span>
+
 To implement Unity Catalog in an Azure Databricks environment, follow these steps. Unity Catalog is a governance solution for data in Databricks, providing fine-grained controls and enabling the management of access policies for your data.
 
 ### Step 1: Set Up Unity Catalog Metastore in Azure Databricks
@@ -124,7 +126,3 @@ To implement Unity Catalog in an Azure Databricks environment, follow these step
 
 2. **Test the Setup:**
    - Test the row-level security and column filtering by accessing the views as different users.
-
-### Conclusion
-
-By following these steps, you can successfully implement Unity Catalog in your Azure Databricks environment, create managed and external tables, and enforce security measures like row-level security and column-level filtering.
