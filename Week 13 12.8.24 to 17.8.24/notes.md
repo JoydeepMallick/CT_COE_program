@@ -250,7 +250,7 @@ Example from video
 
 ![](./Screenshot%20(1067).png)
 
-## Create a Delta Lake Table from a DataFrame
+## 3. Create a Delta Lake Table from a DataFrame
 
 We can write out a PySpark DataFrame to Delta Lake, thereby creating a Delta Lake table.
 
@@ -315,13 +315,119 @@ Example from video
 ![](./Screenshot%20(1069).png)
 ![](./Screenshot%20(1070).png)
 
+## 4. Create a Delta Lake table from CSV
+
+Suppose you have the following `students1.csv` file:
+
+```csv
+student_name,graduation_year,major
+someXXperson,2023,math
+liXXyao,2025,physics
+```
+
+You can read this CSV file into a Spark DataFrame and write it out as a Delta Lake table using these commands:
+
+```py
+df = spark.read.option("header", True).csv("students1.csv")
+df.write.format("delta").saveAsTable("students")
+```
+For a single CSV file, you don’t even need to use Spark: you can simply use `delta-rs`, which doesn’t have a Spark dependency, and create the Delta Lake from a Pandas DataFrame. 
+
+If you have multiple CSV files, using PySpark is usually better because it can read multiple files in parallel.
+
+Here’s how to create a Delta Lake table with multiple CSV files:
+
+```py
+df = spark.read.option("header", True).csv("path/with/csvs/")
+df.write.format("delta").save("some/other/path")
+```
+
+## 5. Create a Delta Lake table from Parquet
+You could follow a similar design pattern to convert Parquet files to a Delta Lake, reading them into a Spark DataFrame and then writing them out to a Delta Lake – but there’s an even easier approach.
+
+Delta Lakes store data in Parquet files and metadata in a transaction log. When creating a Delta Lake from Parquet files, you don’t need to rewrite the data: you can perform an in-place operation and simply add the transaction log to the existing folder with the Parquet files. Here’s how to perform this operation:
+
+```py
+DeltaTable.convertToDelta(spark, "parquet.`tmp/lake1`")
+```
+Suppose you have the following Parquet files stored in tmp/lake1:
+
+```
+tmp/lake1
+├── _SUCCESS
+├── part-00000-1f1cc136-76ea-4185-84d6-54f7e758bfb7-c000.snappy.parquet
+├── part-00003-1f1cc136-76ea-4185-84d6-54f7e758bfb7-c000.snappy.parquet
+├── part-00006-1f1cc136-76ea-4185-84d6-54f7e758bfb7-c000.snappy.parquet
+└── part-00009-1f1cc136-76ea-4185-84d6-54f7e758bfb7-c000.snappy.parquet
+```
+Here’s what the files will look like after they’ve been converted to a Delta Lake:
+
+```
+tmp/lake1
+├── _SUCCESS
+├── _delta_log
+│   ├── 00000000000000000000.checkpoint.parquet
+│   ├── 00000000000000000000.json
+│   └── _last_checkpoint
+├── part-00000-1f1cc136-76ea-4185-84d6-54f7e758bfb7-c000.snappy.parquet
+├── part-00003-1f1cc136-76ea-4185-84d6-54f7e758bfb7-c000.snappy.parquet
+├── part-00006-1f1cc136-76ea-4185-84d6-54f7e758bfb7-c000.snappy.parquet
+└── part-00009-1f1cc136-76ea-4185-84d6-54f7e758bfb7-c000.snappy.parquet
+```
+
+
+## Create a Delta Lake table from other technologies
+The open nature of Delta Lake allows for a robust connector ecosystem. This means you can create a Delta Lake with a variety of other technologies. Here are some examples:
+
+The `delta-rs` Python bindings let you create a Delta Lake from a pandas DataFrame.
+**kafka-delta-ingest** is a highly efficient way to stream data from Kafka into a Delta Lake.
+The connectors repo contains Delta Standalone, a Java library that doesn’t depend on Spark, which allows for Java-based connectors like **Hive** and **Flink**.
+
 ### ⭐⭐⭐See Demo
 # Delta table instance
-Video link : https://youtu.be/RTIcUB_oi4E
+Video link : https://www.youtube.com/watch?v=DVUwIpIlNss
+
+![](./Screenshot%20(1071).png) 
+![](./Screenshot%20(1072).png) 
+
+![](./Screenshot%20(1079).png)
 
 
 
-See Demo
+First create a table and insert values
+
+![](./Screenshot%20(1073).png) 
+
+## Approach 1 : Using `forPath`
+Viewing table and creating an instance
+
+![](./Screenshot%20(1074).png) 
+
+After delete operation
+
+![](./Screenshot%20(1076).png) 
+
+Table will look like 
+
+![](./Screenshot%20(1078).png)
+
+<span style="color:red"> **NOTE** </span>
+Now **updated table from same instance** will look something like 
+
+![](./Screenshot%20(1077).png) 
+
+## Approach 2 : Using `forName`
+
+![](./Screenshot%20(1080).png)
+
+<span style="color:red"> **NOTE** </span>
+In general all SQL commnands have a alternative here and can be used for example:-
+
+![](./Screenshot%20(1081).png)
+![](./Screenshot%20(1082).png)
+
+
+### ⭐⭐⭐See video for sure
 
 # SCD types
 Video link : https://youtu.be/DVUwIpIlNss
