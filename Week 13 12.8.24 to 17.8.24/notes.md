@@ -522,18 +522,55 @@ Now we perform join operation
 ![](./Screenshot%20(1115).png)
 
 # SCD type 2
-Video link : https://youtu.be/i5oM2bUyH0o
+Video link : https://www.youtube.com/watch?v=GhBlup-8JbE
 
+Lets assume an example 
 
+![](./Screenshot%20(1116).png)
+![](./Screenshot%20(1117).png)
+![](./Screenshot%20(1118).png)
 
-See Demo
+### ⭐⭐⭐See Demo from [current timestamp](https://youtu.be/GhBlup-8JbE?t=728)
+
+Creating table
+
+![](./Screenshot%20(1119).png)
+
+Creating instance
+
+![](./Screenshot%20(1121).png)
+
+Now we create schema 
+
+![](./Screenshot%20(1123).png)
+
+then create a sample dataframe
+
+![](./Screenshot%20(1122).png)
+
+now we join 
+
+![](./Screenshot%20(1124).png)
+![](./Screenshot%20(1125).png)
+
+![](./Screenshot%20(1126).png)
+
+![](./Screenshot%20(1127).png)
+
+![](./Screenshot%20(1128).png)
+
+![](./Screenshot%20(1129).png)
+
+![](./Screenshot%20(1130).png)
+
+![](./Screenshot%20(1131).png)
+
 
 # CDC
 Read Blog : https://www.databricks.com/blog/2021/06/09/how-to-simplify-cdc-with-delta-lakes-change-data-feed.html 
 
 
 
-See Demo
 
 # Time travel
 Video link : https://youtu.be/3av7ctZ1uoo
