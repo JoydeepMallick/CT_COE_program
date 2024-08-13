@@ -478,9 +478,48 @@ Now we perform merge operations and see the update
 # Audit log table
 Video link : https://youtu.be/GhBlup-8JbE
 
+![](./Screenshot%20(1100).png)
 
+Assume below example
 
-See Demo
+![](./Screenshot%20(1101).png)
+
+When we perform following steps and following outputs is expected as shown below:
+
+![](./Screenshot%20(1102).png)
+![](./Screenshot%20(1103).png)
+
+### ⭐⭐⭐See Demo from [current timestamp](https://youtu.be/GhBlup-8JbE?t=731)
+
+Now we perform a real demo
+
+![](./Screenshot%20(1104).png)
+
+Now we create an instance of table 
+
+![](./Screenshot%20(1105).png)
+
+Now we create schema and also a source data frame.
+
+![](./Screenshot%20(1106).png)
+![](./Screenshot%20(1107).png)
+
+Now we perform join operation
+
+![](./Screenshot%20(1108).png)
+![](./Screenshot%20(1109).png)
+
+![](./Screenshot%20(1110).png)
+
+![](./Screenshot%20(1111).png)
+
+![](./Screenshot%20(1112).png)
+
+![](./Screenshot%20(1113).png)
+
+![](./Screenshot%20(1114).png)
+
+![](./Screenshot%20(1115).png)
 
 # SCD type 2
 Video link : https://youtu.be/i5oM2bUyH0o
