@@ -430,21 +430,60 @@ In general all SQL commnands have a alternative here and can be used for example
 ### ⭐⭐⭐See video for sure
 
 # SCD types
-Video link : https://youtu.be/DVUwIpIlNss
+Video link : https://youtu.be/i5oM2bUyH0o
+
+
+First lets create a DELTA table :
+
+![](./Screenshot%20(1083).png)
+![](./Screenshot%20(1084).png)
 
 
 
-See Demo
+## 1. Merge(Upsert) using SparkSQL
+
+In SparkSQL we need to set source and target as table in order to perform any SQL operations. 
+
+![](./Screenshot%20(1087).png)
+![](./Screenshot%20(1085).png)
+![](./Screenshot%20(1089).png)
+
+With some more examples we will do testing
+
+![](./Screenshot%20(1091).png)
+![](./Screenshot%20(1092).png)
+
+Hence `source_view` contains 2 records now as shown above but delta table has only one record as shown below:
+
+![](./Screenshot%20(1093).png)
+
+## 2. Merge using PySpark
+In order to merge using PySpark **we need to keep data in Dataframe format and not in Table format**.
+
+![](./Screenshot%20(1096).png)
+Now we create a delta dataframe
+
+![](./Screenshot%20(1097).png)
+
+Now we perform merge operations and see the update
+
+![](./Screenshot%20(1098).png)
+![](./Screenshot%20(1099).png)
+
+
+
+
+### ⭐⭐⭐See Demo
 
 # Audit log table
-Video link : https://youtu.be/i5oM2bUyH0o
+Video link : https://youtu.be/GhBlup-8JbE
 
 
 
 See Demo
 
 # SCD type 2
-Video link : https://youtu.be/GhBlup-8JbE
+Video link : https://youtu.be/i5oM2bUyH0o
 
 
 
