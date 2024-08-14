@@ -569,6 +569,19 @@ now we join
 # CDC
 Read Blog : https://www.databricks.com/blog/2021/06/09/how-to-simplify-cdc-with-delta-lakes-change-data-feed.html 
 
+We see CDC used in an **ingestion to analytics architecture called the medallion architecture**. The medallion architecture that takes raw data landed from source systems and refines the data through bronze, silver and gold tables. CDC and the medallion architecture provide multiple benefits to users since only changed or added data needs to be processed. In addition, the different tables in the architecture allow different personas, such as Data Scientists and BI Analysts, to use the correct up-to-date data for their needs. 
+
+![](https://www.databricks.com/wp-content/uploads/2021/06/How-to-Simplify-CDC-with-Delta-Lakes-Change-Data-Feed-blog-image6.jpg)
+
+### Why is the CDF feature needed?
+
+Biggest issues before CDF
+* Quality Control 
+* Inefficiency 
+
+After CDF biggest achievements
+* Simplicity and convenience
+* Efficiency
 
 
 
