@@ -588,9 +588,81 @@ After CDF biggest achievements
 # Time travel
 Video link : https://youtu.be/3av7ctZ1uoo
 
+⭐⭐Read [mircrosoft blog](https://learn.microsoft.com/en-us/azure/databricks/delta/history)
+
+Each operation that modifies a Delta Lake table creates a new table version. You can use history information to audit operations, rollback a table, or query a table at a specific point in time using **time travel**.
+
+### Retrieve Delta table history
+You can retrieve information including the operations, user, and timestamp for each write to a Delta table by running the `history` command. The operations are returned in reverse chronological order.
+
+Table history retention is determined by the table setting `delta.logRetentionDuration`, which is 30 days by default.
 
 
-See Demo
+```SQL
+DESCRIBE HISTORY table_name       -- get the full history of the table
+
+DESCRIBE HISTORY table_name LIMIT 1  -- get the last operation only
+```
+
+
+Assume following delta table:-
+
+![](./Screenshot%20(1132).png)
+![](./Screenshot%20(1133).png)
+
+## Using table history command from SQL
+
+![](./Screenshot%20(1134).png)
+
+## Pyspark approaches
+
+### Method 1 : PySpark - **`Timestamp + Table`**
+
+![](./Screenshot%20(1135).png)
+
+### Method 2 : PySpark - **`Version + Table`**
+
+Here instead of `path` option we need to provide `load` option where the value is the location of table.
+
+![](./Screenshot%20(1137).png)
+
+### Method 3 : PySpark - **`Version + Path`**
+
+Here instead of timstamp we need to provide the version number.
+
+![](./Screenshot%20(1138).png)
+
+### Method 4 : PySpark - **`Version + Table`**
+
+![](./Screenshot%20(1139).png)
+
+
+## SQL approaches
+
+### Method 5 : SQL - **`Version + Table`**
+
+![](./Screenshot%20(1140).png)
+
+### Method 6 : SQL - **`Version + Path`**
+
+![](./Screenshot%20(1141).png)
+
+### Method 7 : SQL - **`Timestamp + Table`**
+
+![](./Screenshot%20(1142).png)
+
+### Method 8 : SQL - **`Timestamp + Path`**
+
+![](./Screenshot%20(1143).png)
+
+
+
+
+
+
+
+
+### ⭐⭐⭐See Demo from video
 
 # Restore command
 Video link : https://youtu.be/CHfP2UxZn1g
