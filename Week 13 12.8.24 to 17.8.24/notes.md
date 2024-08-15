@@ -761,21 +761,116 @@ We here restore to version 4 when only 4 records present and table output is as 
 # Vacuum command
 Video link : https://youtu.be/G_RzisFeA5U
 
+⭐⭐Read [databricks docs](https://docs.databricks.com/en/sql/language-manual/delta-vacuum.html#:~:text=On%20Delta%20tables%2C%20Databricks%20does,the%20specified%20data%20retention%20period.)
+
+**Remove unused files from a table directory.**
+
+## Vacuum a Delta table
 
 
-See Demo
+Recursively **vacuum directories associated with the Delta table**. 
+
+`VACUUM` **removes all files from the table directory that are not managed by Delta, as well as data files that are no longer in the latest state of the transaction log for the table and are older than a retention threshold**. 
+
+<span style="color:yellow">VACUUM will skip all directories that begin with an underscore `(_)`, which includes the _delta_log.</span>
+
+
+**Partitioning your table on a column that begins with an underscore is an exception to this rule**; VACUUM scans all valid partitions included in the target Delta table. Delta table data files are deleted according to the time they have been logically removed from Delta’s transaction log plus retention hours, not their modification timestamps on the storage system. The default threshold is 7 days.
+
+**On Delta tables, Databricks does not automatically trigger VACUUM operations**.
+
+If you run VACUUM on a Delta table, you lose the ability to time travel back to a version older than the specified data retention period.
+
+Syntax
+```SQL
+VACUUM table_name [RETAIN num HOURS] [DRY RUN]
+```
+### Parameters
+* `table_name` : Identifies an existing Delta table. The name must not include a temporal specification.
+
+* `RETAIN num HOURS` : The retention threshold.
+
+* `DRY RUN` : Return a list of up to 1000 files to be deleted.
+
+## Vacuum a non-Delta table
+Recursively **vacuums directories associated with the non-Delta table and remove uncommitted files older than a retention threshold**. The default threshold is 7 days.
+
+**On non-Delta tables, Databricks automatically triggers VACUUM operations as data is written**.
+
+Syntax
+```SQL
+VACUUM table_name [RETAIN num HOURS]
+```
+
+### Parameters
+
+* `table_name` : Identifies an existing table by name or path.
+
+* `RETAIN num HOURS` : The retention threshold.
+
+
+
+Assume following example table
+
+![](./Screenshot%20(1154).png)
+![](./Screenshot%20(1155).png)
+
+
+<span style="color:red">**NOTE**</span>: Each insertion/update **creates a new file version inside `delta_log` in the delta lake file system**. Its kind of like the files are like the version history with the latest and most updated file always being referred.
+
+![](./Screenshot%20(1156).png)
+
+Rest other files can be deleted/vacuumed.
+
+Now lets check the history of updates
+
+![](./Screenshot%20(1157).png)
+
+and see the table data
+
+![](./Screenshot%20(1158).png)
+
+and then check list all the files present
+
+![](./Screenshot%20(1159).png)
+
+### VACUUM command with DRY RUN
+
+It **justs list all the files** that are to be deleted, it does not delete all the files.
+
+![](./Screenshot%20(1160).png)
+
+By default retain limit is `7 days i.e.168 hours` but its configurable and suppose we set it 30 days then value will be 720 hours
+
+![](./Screenshot%20(1161).png)
+
+Since our files were made 10 days before in current example hence we do not have any files which were invalidated 30 days before.
+
+If we want to check for invalid files from current time we can do the following :-
+
+![](./Screenshot%20(1163).png)
+
+### VACUUM
+
+This commands deletes all invalid files with default retain limit of 7 days
+
+![](./Screenshot%20(1164).png)
+verifying file structure confirms deletion
+![](./Screenshot%20(1165).png)
+
+### ⭐⭐⭐See Demo from video
 
 # Z-Order command
 Video link : https://youtu.be/89cInDvqXCY
  
 
 
-See Demo
+### ⭐⭐⭐See Demo from video
 
 # Schmea Evolution
 Video link : https://youtu.be/NOYL0yRoUeo
 
 
 
-See Demo
+### ⭐⭐⭐See Demo from video
 
