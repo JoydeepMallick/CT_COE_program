@@ -655,28 +655,108 @@ Here instead of timstamp we need to provide the version number.
 
 ![](./Screenshot%20(1143).png)
 
-
-
-
-
-
-
-
 ### ⭐⭐⭐See Demo from video
 
 # Restore command
 Video link : https://youtu.be/CHfP2UxZn1g
 
+⭐⭐Read [databricks docs](se.iitk.ac.in/users/piyush/courses/ml_autumn16/771A_lec27_slides.pdf)
 
+Restores a Delta table to an earlier state. Restoring to an earlier version number or a timestamp is supported.
+
+Syntax
+```SQL
+RESTORE [ TABLE ] table_name [ TO ] time_travel_version
+
+time_travel_version
+ { TIMESTAMP AS OF timestamp_expression |
+   VERSION AS OF version }
+```
+
+
+### Parameters
+* `table_name` : Identifies the Delta table to be restored. The table name must not use a temporal specification.
+
+* `timestamp_expression` can be any one of :
+
+  1. `'2018-10-18T22:15:12.013Z'`, that is, a string that can be cast to a timestamp
+
+  2. `cast('2018-10-18 13:36:32 CEST' as timestamp)`
+
+  3. `'2018-10-18'`, that is, a date string
+
+  4. `current_timestamp()` - interval 12 hours
+
+  5. `date_sub(current_date(), 1)`
+
+  6. Any other expression that is or can be cast to a timestamp
+
+* `version` is a long value that can be obtained from the output of `DESCRIBE HISTORY table_spec`.
+
+Neither `timestamp_expression` nor `version` can be subqueries.
+
+Examples
+
+```SQL
+-- Restore the employee table to a specific timestamp
+> RESTORE TABLE employee TO TIMESTAMP AS OF '2022-08-02 00:00:00';
+ table_size_after_restore num_of_files_after_restore num_removed_files num_restored_files removed_files_size restored_files_size
+                      100                          3                 1                  0                574                   0
+
+-- Restore the employee table to a specific version number retrieved from DESCRIBE HISTORY employee
+> RESTORE TABLE employee TO VERSION AS OF 1;
+ table_size_after_restore num_of_files_after_restore num_removed_files num_restored_files removed_files_size restored_files_size
+                      100                          3                 1                  0                574                   0
+
+-- Restore the employee table to the state it was in an hour ago
+> RESTORE TABLE employee TO TIMESTAMP AS OF current_timestamp() - INTERVAL '1' HOUR;
+ table_size_after_restore num_of_files_after_restore num_removed_files num_restored_files removed_files_size restored_files_size
+                      100                          3                 1                  0                574                   0
+```
+
+Now assume following SQL table being made as a Delta table
+
+![](./Screenshot%20(1144).png)
+![](./Screenshot%20(1145).png)
+![](./Screenshot%20(1146).png)
 
 See Demo
 
 # Optimize command
 Video link : https://youtu.be/F9tc8EgIn3c
 
+Now we create an instance
+
+![](./Screenshot%20(1147).png)
+
+## Listing the version history
+Now depending on delta table instance we display the history
+
+![](./Screenshot%20(1148).png)
+
+## Restore using 
+
+### 1. version number
+
+We can restore using version number. Here in example after restoration table contains 6 records instead of 5 as in previous output
+
+![](./Screenshot%20(1149).png)
+![](./Screenshot%20(1150).png)
 
 
-See Demo
+### 2. Timestamp
+
+We here restore to version 4 when only 4 records present and table output is as intended
+
+![](./Screenshot%20(1151).png)
+![](./Screenshot%20(1152).png)
+
+
+## Viewing history after 2 restore operations were performed(above)
+
+![](./Screenshot%20(1153).png)
+
+### ⭐⭐⭐See Demo from video
 
 # Vacuum command
 Video link : https://youtu.be/G_RzisFeA5U
