@@ -862,14 +862,88 @@ verifying file structure confirms deletion
 
 # Z-Order command
 Video link : https://youtu.be/89cInDvqXCY
- 
 
+⭐⭐Read [the databricks blog](https://docs.databricks.com/en/delta/data-skipping.html)
+
+**Z-ordering** is a technique to **colocate related information in the same set of files**. This co-locality is automatically used by Delta Lake on Databricks data-skipping algorithms. This behavior dramatically <span style="color:yellow">reduces the amount of data that Delta Lake on Databricks needs to read.</span> To Z-order data, you specify the columns to order on in the `ZORDER BY` clause:
+
+```SQL
+OPTIMIZE events
+WHERE date >= current_timestamp() - INTERVAL 1 day
+ZORDER BY (eventType)
+```
+
+If you expect a column to be commonly used in query predicates and if that column has high cardinality (that is, a large number of distinct values), then use `ZORDER BY`.
+
+
+Assume following example:-
+
+![](./Screenshot%20(1166).png)
+
+Now simple syntax to perform Z order so as to combine multiple delta lake files so as to reduce space based on related data.
+
+```SQL
+OPTIMIZE TableName
+ZORDER ColumnName
+```
+
+![](./Screenshot%20(1167).png)
 
 ### ⭐⭐⭐See Demo from video
 
-# Schmea Evolution
+# Schema Evolution
 Video link : https://youtu.be/NOYL0yRoUeo
 
+
+
+Assume we receive csv files of data of first structure of below example. But then suddenly we receive schema structure of second example and then third our **incoming data schema is actually evolving with time** hence a delta lake with fixed schema structure will surely fail and needs to be handled!!
+
+![](./Screenshot%20(1168).png)
+
+First lets create employee demo table
+
+![](./Screenshot%20(1169).png)
+
+
+and insert 1 record into table
+
+![](./Screenshot%20(1170).png)
+
+Now lets see the schema
+
+![alt text](<Screenshot (1172).png>) 
+![alt text](<Screenshot (1171).png>)
+
+Now lets assume we receive next data from `csv` file which contains an additional column `additionalcolumn1` as shown. We create a dataframe and view it. 
+
+![](./Screenshot%20(1174).png)
+
+Now if we try to append this dataframe to our table using append we receive an <span style="color:red">**ERROR**</span> due to mismatch in schema.
+
+![](./Screenshot%20(1176).png)
+![](./Screenshot%20(1175).png)
+
+
+### To handle this Databricks provide a feature of `mergeSchema`
+
+![](./Screenshot%20(1178).png)
+
+<span style="color:yellow"> As we can see empty columns where data is missing it assigns by default value **NULL**</span>
+
+Now we can verify the schema also :-
+
+![](./Screenshot%20(1179).png)
+
+
+Lets add another dataframe now with additional column `additionalcolumn2` and <span style="color:red"> **does not contain** `additionalcolumn1`</span> as in previous dataframe.
+
+![](./Screenshot%20(1180).png)
+
+Now we again merge by similar method
+
+![](./Screenshot%20(1181).png)
+
+As we can see both `additionalcolumn1` and `additionalcolumn2` both are preserved in new schema.
 
 
 ### ⭐⭐⭐See Demo from video
