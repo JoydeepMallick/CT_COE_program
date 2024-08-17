@@ -14,7 +14,7 @@
 
 # Solution
 
-Let's break down the assignment into clear steps to help you understand what needs to be done:
+Took help of <span style="color:red">ChatGPT</span>
 
 ### 1. Create 4 Notebooks in Databricks
 Each notebook should read data from a single table and insert/update data into 5 respective output Delta tables. Here's a general structure for each notebook:
@@ -85,5 +85,3 @@ Create similar clusters for both jobs using the [Databricks Clusters API](https:
 2. **Create the orchestration notebooks** as described.
 3. **Use the Databricks Jobs API** to create and schedule the jobs.
 4. **Monitor and compare** the runtime of both jobs.
-
-This approach should help you complete your assignment effectively. Let me know if you need code snippets or further clarification on any of these steps!
