@@ -1,65 +1,64 @@
 # Unity Catalog
 
-Video Link : 
+Read blog : https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/
+ 
 
-
-Watch DEMO
 # Auto loader
 
-Video Link : 
+Video Link : https://youtu.be/DEDcJ3R54mo
 
 
 Watch DEMO
 # Data Sharing
 
-Video Link : 
+Read blog : https://learn.microsoft.com/en-us/azure/databricks/data-sharing/
 
 
-Watch DEMO
+
 # Delta Table
 
-Video Link : 
+Read blog : https://hevodata.com/learn/databricks-delta-tables/ 
 
 
-Watch DEMO
+
 # Databricks Photon Engine
 
-Video Link : 
+Read blog : https://learn.microsoft.com/en-us/azure/databricks/clusters/photon 
 
 
-Watch DEMO
+
+
 # Delta Lake
 
-Video Link : 
+Read blog : https://learn.microsoft.com/en-us/azure/databricks/delta/
 
 
-Watch DEMO
+
 # Data warehousing
 
-Video Link : 
+Read blog : https://learn.microsoft.com/en-us/azure/databricks/sql/
 
 
-Watch DEMO
+
 # Data Lakehouse
 
-Video Link : 
+Read blog : https://learn.microsoft.com/en-us/azure/databricks/lakehouse-architecture/
 
 
-Watch DEMO
+
 # Delta Live tables
 
-Video Link : 
+Read blog : https://learn.microsoft.com/en-us/azure/databricks/delta-live-tables/
 
 
-Watch DEMO
+
 # Advancing in DLT
 
-Video Link : 
+Video Link : https://youtu.be/0K_CLhwRHAM
 
 
 Watch DEMO
 # Structured Streaming
-Video Link : 
+Read blog : https://learn.microsoft.com/en-us/azure/databricks/structured-streaming/
 
 
-Watch DEMO
