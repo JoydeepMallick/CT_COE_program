@@ -124,20 +124,151 @@ Databricks releases new functionality that shrinks this list regularly.
 
 # Auto loader
 
-Video Link : https://youtu.be/DEDcJ3R54mo
+### ⭐⭐Video Link : https://youtu.be/DEDcJ3R54mo
 
+Autoloader allows Databricks users to incrementally ingest data into **Delta Lake** from a variety of data sources. AutoLoader is an optimized cloud file source for **Apache Spark** that loads data continuously and efficiently from cloud storage as new data arrives. A data ingestion network of partner integrations allow you to ingest data from hundreds of data sources directly into Delta Lake.
 
-Watch DEMO
+![](./Screenshot%20(1184).png)
+![](./Screenshot%20(1185).png)
+![](./Screenshot%20(1186).png)
+![](./Screenshot%20(1187).png)
+![](./Screenshot%20(1188).png)
+
+### See demo from current [timeline](https://youtu.be/DEDcJ3R54mo?t=393)
+
 # Data Sharing
 
-Read blog : https://learn.microsoft.com/en-us/azure/databricks/data-sharing/
+Read blog : https://learn.microsoft.com/en-us/azure/databricks/data-sharing/  or https://docs.databricks.com/en/data-sharing/index.html
 
+## Share data and AI assets securely with users in other organizations
 
+This article introduces the following features that enable you to share the data and AI assets you have in Azure Databricks with users outside your organization or on different metastores within your Azure Databricks account:
+
+- **Delta Sharing** is the core of the Azure Databricks secure data sharing platform, enabling you to share data and AI assets in Databricks with users outside your organization, whether those users use Databricks or not. Also available as an open-source project for sharing tabular data, using it in Databricks adds on the ability to share non-tabular, unstructured data (volumes), AI models, views, filtered data, and notebooks. Delta Sharing also provides the backbone for Databricks Marketplace and Databricks Clean Rooms.
+- **Databricks Marketplace** is an open forum for exchanging data products. Providers must have a Databricks account, but recipients can be anybody. Marketplace assets include **datasets, Databricks notebooks, Databricks Solution Accelerators, and machine learning (AI) models**. Datasets are typically made available as catalogs of tabular data, although non-tabular data, in the form of Azure Databricks volumes, is also supported. Solution Accelerators are available as clonable Git repos.
+- **Clean Rooms** uses Delta Sharing and serverless compute to provide a secure and privacy-protecting environment where multiple parties can share sensitive enterprise data and collaborate without direct access to each other’s data. With Clean Rooms, users from other Databricks accounts can collaborate to generate unique insights about shared projects, such as advertising campaigns, investment decisions, or research and development, without sharing access to sensitive underlying data. When you collaborate in a clean room, your data stays in place and you are always in control of where and how the data is being used.
 
 # Delta Table
 
 Read blog : https://hevodata.com/learn/databricks-delta-tables/ 
 
+ **Databricks’ Delta Table** is designed to handle batch as well as streaming data on big feeds to reduce transmit-time and send the updated data to facilitate Data Pipelines at ease.
+
+## Need for Databricks Delta Lakes
+
+Organizations collect large amounts of data from different sources that can be — **schema-based, schema-less, or streaming data**. Such large volumes of data can be stored either in a data warehouse or data lake. Companies are often in a **dilemma while selecting appropriate data storage tools for storing incoming data and then streamlining the flow of data for analysis**. 
+
+However, Databricks fuses the performance of data warehouses and the affordability of data lakes in a **single Cloud-based repository** called <span style="color:yellow">Lake House</span>. The **Lake House (Data Lake + Data Warehouse) Architecture** built on top of the data lake is called <span style="color:yellow">Delta Lake</span>. Below are a few aspects that describe the need for Databricks’ Delta Lake:
+
+* It is an **open format storage layer** that delivers reliability, security, and performance on your Data Lake for both streaming and batch operations.
+* It not only houses structured, semi-structured, and unstructured data but also provides Low-cost Data Management solutions. 
+* Databricks Delta Lake also handles **ACID** (Atomicity, Consistency, Isolation, and Durability) transactions, scalable metadata handling, and data processing on existing data lakes.
+
+
+## Delta Live Tables: Data pipelines
+Delta Live Tables **handle the flow of data between several Delta tables, making it easier for data engineers to create and manage ETL**. Delta Live Tables pipeline serves as its primary execution unit. Delta Live Tables enables declarative pipeline building, better data reliability, and cloud-scale production. Users can run both streaming and batch operations on the same table, and the data is readily available for querying. You define the transformations to be applied to your data, and Delta Live Tables handles job orchestration, monitoring, cluster management, data quality, and error management. Delta Live Tables Enhanced Autoscaling can manage spiky and erratic streaming workloads.
+
+## Delta Lake: Open Source Data Management for Data Lake
+Delta Lake is an **open-source storage layer** that improves data lake dependability by providing a transactional storage layer to cloud-stored data. **It supports data versioning, ACID transactions, and rollback capabilities**. It helps you manage batch and streaming data in a cohesive manner.
+
+Delta tables are constructed on top of this storage layer and provide a table abstraction, making it simple to interact with vast amounts of structured data via SQL and the DataFrame API.
+
+
+## 5 Databricks Delta Functionalities
+
+Below are a few functionalities offered by Delta to derive compelling solutions for Data Engineers:
+
+### 1) Query Performance
+As the data grows exponentially over time, query performance becomes a crucial factor. **Delta improves the performance from 10 to 100 times faster as compared to Apache Spark on the Parquet (human unreadable) file format**. Below are some techniques that assist in improving the performance:
+
+- Indexing: Databricks Delta creates and maintains Indexes on the tables to arrange queried data.
+- Skipping: Databricks Delta helps maintain file statistics so that only relevant portions of the data are read.
+- Compression: Databricks Delta consumes less memory space by efficiently managing Parquet files to optimize queries.
+- Caching: Databricks Delta automatically caches highly accessed data to improve run times for commonly run queries.
+
+### 2) Optimize Layout
+Delta optimizes table size with a built-in “`optimize`” command. End users can optimize certain portions of the Databricks Delta Table that are most relevant instead of querying an entire table. It **saves the overhead cost of storing metadata and can help speed up queries**.
+
+### 3) System Complexity
+System Complexity increases the effort required to complete data-related tasks, making it difficult while responding to any changes. With Delta, organizations solve system complexities by:
+
+- Providing flexible Data Analytics Architecture and response to any changes.
+- Writing Batch and Streaming data into the same table.
+- Allow a simpler architecture and quicker Data Ingestion to query results.
+- The ability to ‘infer schemas’ for the data input reduces the effort required to manage schema changes.
+
+
+### 4) Automated Data Engineering
+Data engineering can be simplified with Delta Live Tables that provide a simpler way to build and manage Data Pipelines for the latest, high-quality data in Delta Lake. It aids Data Engineering teams in developing and managing ETL process with Declarative Pipeline Development as well as Cloud-scale production operation to build Lake House foundations to ensure good data movement.
+
+### 5) Time Travel
+Time travel allows users to roll back in case of bad writes. Some Data Scientists run models on datasets for a specific time, and this ability to reference previous versions becomes useful for Temporal Data Management. A user can query Delta Tables for a specific timestamp because any change in Databricks Delta Table creates new table versions. These tasks help data pipelines to audit, roll back accidental deletes, or reproduce experiments and reports. 
+
+## What is Databricks Delta Table?
+A Databricks Delta Table **records version changes or modifications in a feature class of table in Delta Lake**. Unlike traditional tables that store data in a row and column format, the Databricks Delta Table facilitates ACID transactions and time travel features to store metadata information for quicker Data Ingestion. Data stored in a Databricks Delta Table is a secure Parquet file format that is an encoded layer over data.
+
+**These stale data files and logs of transactions are converted from `‘Parquet’` to `‘Delta’` format to reduce custom coding in the Databricks Delta Table**. It also facilitates some advanced features that provide a history of events, and more flexibility in changing content — **update, delete and merge operations** — to avoid dDduplication.
+
+Every transaction performed on a Delta Lake table contains an ordered record of a transaction log called <span style="color:yellow">DeltaLog</span>. Delta Lake breaks the process into discrete steps of one or more actions whenever a user performs modification operations in a table. It facilitates multiple readers and writers to work on a given Databricks Delta Table at the same time. These actions are recorded in the ordered transaction log known as commits. For instance, if a user creates a transaction to add a new column to a Databricks Delta Table while adding some more data, Delta Lake would break that transaction into its consequent parts.
+
+Once the transaction is completed in the Databricks Delta Table, the files are added to the transaction log like the following commits:
+
+- Update Metadata: To change the Schema while including the new column to the Databricks Delta Table.
+- Add File: To add new files to the Databricks Delta Table.
+
+
+## Delta Table Operation and Commands
+* ### Time Travel
+    * **Feature Overview**: Delta Lake’s time travel feature allows users to access and query historical versions of a Delta table. This is achieved by querying the table as it existed at a specific time or using a version number.
+    * **Use Cases**:
+        * **Data Audits**: Review historical changes and track modifications over time for auditing purposes.
+        * **Debugging**: Investigate issues or discrepancies by examining the state of the data at previous points in time.
+* ### Vacuum Command
+    * **Command Overview**: The VACUUM command removes old, obsolete data files from a Delta table, which are no longer needed after data deletions or updates.
+    * **Managing Data Retention Policies**: Use the VACUUM command to configure retention policies and specify how long to keep historical data before it is eligible for removal. This helps balance data retention needs and storage optimization.
+* ### MERGE Command
+    * **Data Synchronization**: Integrate updates from external data sources into the Delta table while maintaining consistency.
+    * **Data Enrichment**: Apply changes and updates to existing data while inserting new records to ensure the table reflects the most current state of the data.
+
+## Delta Table Use Cases and Applications
+Delta tables offer robust features for managing and processing large-scale data, making them highly versatile across various use cases and applications. Here are some key use cases and applications of Delta tables:
+
+* Delta Lake extends the capabilities of data lakes by adding transactional support, schema enforcement, and data quality features. It enables data lakes to handle large datasets efficiently and reliably.
+* Delta tables are ideal for data warehousing environments where historical data needs to be stored, queried, and analyzed. They support ACID transactions, ensuring data integrity and consistency.
+
+## Delta Tables vs. Delta Live Tables
+
+Delta table | Delta Live tables
+------------|------------------
+Delta tables are a way of storing data in tables| Delta Live Tables enable you to explain the flow of data across these tables explicitly. Delta Live Tables is an explicit framework that can manage multiple delta tables by building them and keeping them updated. 
+In essence, Delta Tables is an architecture of data tables. |On the other hand, Delta Live Tables is a framework of data pipelines.
+
+## Features of Databricks Delta Table
+Delta Live Table (DLT) is a framework that can be used for building reliable, maintainable, and testable data processing pipelines on Delta Lake. It simplifies ETL Development, automatic data testing, and deep visibility for monitoring as well as recovery of pipeline operation. To create a Databricks Delta Table, one can use an existing **Apache Spark SQL code** and change the written format from **parquet, CSV, or JSON to Delta**.
+
+The Delta Lake consists of a transaction log that solely serves as a source of truth — **the central repository that tracks all changes made by users in a Databricks Delta Table**. The transaction log is the mechanism through which Delta Lake guarantees one of the ACID properties called Atomicity. It assures users whether an operation (like INSERT or UPDATE) performed on a Data Lake is either complete or incomplete.
+
+Below are a few features offered by Databricks Delta Live Table:
+
+- **Automate Data Pipeline**: Defines an end-to-end Data Pipeline by specifying Data Source, Transformation Logic, and Destination state of Data instead of manually combining complicated data processing jobs. Delta Live Table automatically maintains all data dependencies across the Pipeline and reuse ETL pipelines with independent Data Management. It can also run batch or streaming data while specifying incremental or complete computation for each Databricks Delta Table.
+- **Automatic Testing**: Prevents bad data from flowing into tables through validation and integrity checks, it avoids Data Quality errors. It also allows you to monitor Data Quality trends to derive insight about required changes and the performance of data.
+- **Automatic Error-Handling**: Reduces downtime and timestamp of Data Pipelines. Delta Live Table gains deeper visibility into Pipeline operation with tools that visually track operational statistics and data lineage. It also speeds up maintenance with single-click deployment and upgrades.
+
+## More Delta things on Azure Databricks
+Following are descriptions of other delta features included in Databricks.
+
+### Delta Sharing
+Delta Sharing is an **open standard for secure data sharing that allows organizations to share data regardless of the computing platform**.
+
+### Delta Engine
+Databricks has a **large data query optimizer that makes use of open-source Delta Lake technology**. The Delta engine improves the performance of Databricks SQL, Spark SQL, and DataFrame operations by shifting computation onto the data.
+
+### Delta Lake Transaction Log (AKA DeltaLogs)
+DeltaLogs is the only source that tracks all modifications made to the table by users and the method that ensures atomicity through Delta Lake. The transaction log is critical for understanding Delta Lake since it is the common pattern that runs through its most important features.
+
+- ACID transactions
+- Scalable metadata handling
+- Time travel
 
 
 # Databricks Photon Engine
