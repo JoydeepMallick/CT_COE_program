@@ -1,6 +1,6 @@
 # Unity Catalog
 
-Read blog : https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/
+### ⭐⭐⭐Read blog : https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/
  
 Unity Catalog provides **centralized access control, auditing, lineage, and data discovery capabilities across Azure Databricks workspaces**.
 
@@ -70,6 +70,57 @@ In addition to the database objects and AI assets that are contained in schemas,
 
 
 ## Granting and revoking access to database objects and other securable objects in Unity Catalog
+
+You can grant and revoke access to securable objects at any level in the hierarchy, including the metastore itself. Access to an object implicitly grants the same access to all children of that object, unless access is revoked.
+
+You can use typical ANSI SQL commands to grant and revoke access to objects in Unity Catalog. For example:
+
+```SQL
+GRANT CREATE TABLE ON SCHEMA mycatalog.myschema TO `finance-team`;
+```
+
+You can also use Catalog Explorer, the Databricks CLI, and REST APIs to manage object permissions.
+
+![](https://learn.microsoft.com/en-us/azure/databricks/_static/images/unity-catalog/catalog-explorer-grant.png)
+
+
+## File format support
+Unity Catalog supports the following table formats:
+
+* **Managed tables** must use the **delta table** format.
+* **External tables**can use **delta, CSV, JSON, avro, parquet, ORC, or text**.
+
+## Limitations
+Unity Catalog has the following limitations. Some of these are specific to older Databricks Runtime versions and compute access modes.
+
+Structured Streaming workloads have additional limitations, depending on Databricks Runtime and access mode. See Compute access mode limitations for Unity Catalog.
+
+Databricks releases new functionality that shrinks this list regularly.
+
+- Groups that were previously created in a workspace (that is, workspace-level groups) **cannot be used** in Unity Catalog `GRANT`   statements. This is to **ensure a consistent view of groups that can span across workspaces**. To use groups in `GRANT` statements, create your groups at the account level and update any automation for principal or group management (such as SCIM, Okta and Microsoft Entra ID connectors, and Terraform) to reference account endpoints instead of workspace endpoints. See Difference between account groups and workspace-local groups.
+
+- Workloads in R do not **support the use of dynamic views for row-level or column-level security on compute running Databricks Runtime 15.3 and below**.
+
+- Use a single-user compute resource running Databricks Runtime 15.4 LTS or above for workloads in R that query dynamic views (Public Preview). Such workloads also **require a workspace that is enabled for serverless compute**. 
+
+- Shallow clones are unsupported in Unity Catalog on compute running Databricks Runtime 12.2 LTS and below. You can use shallow clones to create managed tables on Databricks Runtime 13.3 LTS and above. **You cannot use them to create external tables, regardless of Databricks Runtime version**. 
+
+- **Bucketing is not supported for Unity Catalog tables.** If you run commands that try to create a bucketed table in Unity Catalog, it will **throw an exception**.
+
+- Writing to the same path or Delta Lake table from workspaces in multiple regions **can lead to unreliable performance if some clusters access Unity Catalog and others do not**.
+
+- Custom partition schemes created using commands like `ALTER TABLE ADD PARTITION` are not supported for tables in Unity Catalog. Unity Catalog **can access tables that use directory-style partitioning**.
+
+- Overwrite mode for DataFrame write operations into Unity Catalog is supported only for Delta tables, **not for other file formats**. The user must have the `CREATE` privilege on the parent schema and must be the owner of the existing object or have the `MODIFY` privilege on the object.
+
+- **Python UDFs are not supported in Databricks Runtime 12.2 LTS and below**. This includes UDAFs, UDTFs, and Pandas on Spark (applyInPandas and mapInPandas). Python scalar UDFs are supported in Databricks Runtime 13.3 LTS and above.
+
+- **Scala UDFs are not supported in Databricks Runtime 14.1 and below on shared clusters**. Scala scalar UDFs are supported in Databricks Runtime 14.2 and above on shared clusters.
+
+- **Standard Scala thread pools are not supported. Instead, use the special thread pools in `org.apache.spark.util.ThreadUtils`**, for example, `org.apache.spark.util.ThreadUtils.newDaemonFixedThreadPool`. However, the following thread pools in `ThreadUtils` are **not supported**: `ThreadUtils.newForkJoinPool` and any `ScheduledExecutorService` thread pool.
+
+- **Audit logging is supported for Unity Catalog events at the workspace level only**. Events that take place at the account level without reference to a workspace, such as creating a metastore, are not logged.
+
 
 # Auto loader
 
