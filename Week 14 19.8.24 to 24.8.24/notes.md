@@ -555,9 +555,31 @@ The following limitations apply:
 
 Video Link : https://youtu.be/0K_CLhwRHAM
 
+Please see the video of how to implement delta live table in pipelines. 
 
-Watch DEMO
+#### <span style="color:red">It cannot be testing since its a paid feature and not for people who are broke😥</span>
+
+
 # Structured Streaming
 Read blog : https://learn.microsoft.com/en-us/azure/databricks/structured-streaming/
 
+We can use Azure Databricks for near **real-time data ingestion**, processing, machine learning, and AI for streaming data.
+
+**Azure Databricks offers numerous optimzations for streaming and incremental processing**. For most streaming or incremental data processing or ETL tasks, Databricks recommends Delta Live Tables.
+
+
+**Most incremental and streaming workloads on Azure Databricks are powered by Structured Streaming**, including Delta Live Tables and Auto Loader.
+
+Delta Lake and Structured Streaming have tight integration to power incremental processing in the Databricks lakehouse.
+
+## Structured Streaming
+
+**Apache Spark Structured Streaming is a near-real time processing engine that offers end-to-end fault tolerance with exactly-once processing guarantees using familiar Spark APIs**. Structured Streaming lets you express computation on streaming data in the same way you express a batch computation on static data. The Structured Streaming engine performs the computation incrementally and continuously updates the result as streaming data arrives.
+
+## What streaming sources and sinks does Azure Databricks support?
+Databricks **recommends using Auto Loader to ingest supported file types from cloud object storage into Delta Lake**. For **ETL pipelines, Databricks recommends using Delta Live Tables**(which uses Delta tables and Structured Streaming). You can also configure incremental ETL workloads by streaming to and from Delta Lake tables.
+
+In addition to Delta Lake and Auto Loader, Structured Streaming can connect to messaging services such as Apache Kafka.
+
+You can also Use foreachBatch to write to arbitrary data sinks.
 
