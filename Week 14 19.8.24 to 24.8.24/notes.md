@@ -273,10 +273,91 @@ DeltaLogs is the only source that tracks all modifications made to the table by 
 
 # Databricks Photon Engine
 
-Read blog : https://learn.microsoft.com/en-us/azure/databricks/clusters/photon 
+### ⭐⭐Read blog : https://learn.microsoft.com/en-us/azure/databricks/clusters/photon 
+
+Photon is a **high-performance Azure Databricks-native vectorized query engine** that runs your SQL workloads and DataFrame API calls faster to reduce your total cost per workload.
+
+The following are key features and advantages of using Photon :-
+
+<ul>
+<li>Support for SQL and equivalent DataFrame operations with Delta and Parquet tables.</li>
+<li>Accelerated queries that process data faster and include aggregations and joins.</li>
+<li><b>Faster performance when data is accessed repeatedly from the disk cache.</b></li>
+<li>Robust scan performance on tables with many columns and many small files.</li>
+<li>Faster Delta and Parquet writing using <code>UPDATE</code>, <code>DELETE</code>, <code>MERGE INTO</code>, <code>INSERT</code>, and <code>CREATE TABLE AS SELECT</code>, including wide tables that contain thousands of columns.</li>
+<li>Replaces sort-merge joins with hash-joins.</li>
+<li>For AI and ML workloads, Photon improves performance for applications using Spark SQL, Spark DataFrames, feature engineering, GraphFrames, and xgboost4j.</li>
+</ul>
+
+## Get started with Photon
+Photon is enabled by default on clusters running **Databricks Runtime 9.1 LTS** and above. Photon is also available on clusters running Databricks Runtime 15.2 for Machine Learning and above.
+
+To manually disable or enable Photon on your cluster, select the **Use Photon Acceleration checkbox** when you create or edit the cluster.
+
+If you create a cluster using the Clusters API, set `runtime_engine` to `PHOTON`.
+
+## Instance types
+Photon supports a number of instance types on the driver and worker nodes. Photon instance types consume DBUs at a different rate than the same instance type running the non-Photon runtime. For more information about Photon instances and DBU consumption, see the Azure Databricks pricing page.
 
 
+## Operators, expressions, and data types
 
+The following are the operators, expressions, and data types that Photon covers.
+
+### Operators
+<ul>
+<li>Scan, Filter, Project</li>
+<li>Hash Aggregate/Join/Shuffle</li>
+<li>Nested-Loop Join</li>
+<li>Null-Aware Anti Join</li>
+<li>Union, Expand, ScalarSubquery</li>
+<li>Delta/Parquet Write Sink</li>
+<li>Sort</li>
+<li>Window Function</li>
+</ul>
+
+### Expressions
+
+<ul>
+<li>Comparison / Logic</li>
+<li>Arithmetic / Math (most)</li>
+<li>Conditional (IF, CASE, etc.)</li>
+<li>String (common ones)</li>
+<li>Casts</li>
+<li>Aggregates(most common ones)</li>
+<li>Date/Timestamp</li>
+</ul>
+
+### Data types
+
+<ul>
+<li>Byte/Short/Int/Long</li>
+<li>Boolean</li>
+<li>String/Binary</li>
+<li>Decimal</li>
+<li>Float/Double</li>
+<li>Date/Timestamp</li>
+<li>Struct</li>
+<li>Array</li>
+<li>Map</li>
+</ul>
+
+## Features that require Photon
+The following are features that require Photon.
+
+- Predictive I/O for read and write. 
+- H3 geospatial expressions.
+- Dynamic file pruning. 
+
+## Limitations
+
+<ul>
+<li><b>Structured Streaming</b>: Photon currently supports stateless streaming with Delta, Parquet, CSV, and JSON. Stateless Kafka and Kinesis streaming is supported when writing to a Delta or Parquet sink.</li>
+<li><b>Photon does not support UDFs or RDD APIs.</b></li>
+<li><b>Photon doesn’t impact queries that normally run in under two seconds.</b></li>
+</ul>
+
+Features not supported by Photon run the same way they would with Databricks Runtime.
 
 # Delta Lake
 
