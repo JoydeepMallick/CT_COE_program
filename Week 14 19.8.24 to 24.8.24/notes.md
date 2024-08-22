@@ -364,22 +364,190 @@ Features not supported by Photon run the same way they would with Databricks Run
 Read blog : https://learn.microsoft.com/en-us/azure/databricks/delta/
 
 
+### Delta Lake Overview
+- **Delta Lake** is an optimized storage layer that adds ACID transactions and scalable metadata handling to Parquet files, providing a foundation for tables in the Databricks lakehouse.
+- **Open Source**: Delta Lake is open source and fully compatible with Apache Spark APIs, enabling batch and streaming operations with incremental processing at scale.
+- **Default Format**: All tables on Azure Databricks are Delta tables by default unless specified otherwise.
+
+### Delta Lake Features
+- **ACID Transactions**: Provides atomicity, consistency, isolation, and durability for data operations.
+- **Schema Management**: Validates schema on write and allows schema evolution, enabling updates without rewriting data.
+- **Optimized for Streaming**: Delta Lake supports structured streaming, allowing seamless use for both batch and streaming data.
+- **Versioning**: Each write creates a new table version, allowing you to query previous versions.
+
+### Data Operations with Delta Lake
+- **Upserts and Merges**: Delta Lake supports upserts using the merge operation.
+- **Selective Overwrites**: You can overwrite data selectively using filters and partitions.
+- **Schema Evolution**: Update table schemas automatically or manually without rewriting existing data.
+
+### Data Management and Optimization
+- **Liquid Clustering**: Helps optimize data file layout for efficient queries.
+- **Data Skipping**: Reduces the number of files scanned to fulfill queries by leveraging metadata and data layout.
+- **Vacuum**: Removes unused data files to manage storage effectively.
+- **File Size Control**: Configurations are available to control the size of data files.
+
+### Delta Lake Integration and Compatibility
+- **Medallion Architecture**: Encourages processing data through layers (bronze, silver, gold) to clean and enrich data using Delta Live Tables.
+- **Compatibility**: Delta Lake features are versioned, and not all features are available in every Databricks Runtime version. Binary compatibility is maintained across APIs in Databricks Runtime.
+- **APIs**: You can use Spark SQL or Apache Spark DataFrame APIs for most Delta Lake operations.
+
+### Tools and Utilities
+- **Delta Live Tables**: Simplifies ETL workloads with optimized execution and automated infrastructure deployment.
+- **Review and Configure Settings**: Delta Lake settings can be configured at the table or session level, with tools available to review table details.
+
 
 # Data warehousing
 
 Read blog : https://learn.microsoft.com/en-us/azure/databricks/sql/
 
+    ![](https://learn.microsoft.com/en-us/azure/databricks/_static/images/data-warehousing/lakehouse-dw-highlight.png)
+
+### Data Warehousing in the Lakehouse
+- **Lakehouse Architecture**: Combines the best of data lakes and data warehouses, enabling you to model a performant, cost-effective data warehouse directly on your data lake. This approach eliminates data silos and redundant copies, ensuring data remains fresh and accessible.
+- **Unified System**: Integrates all your data into a single system, leveraging features like Unity Catalog for governance and Delta Lake for ACID transactions and schema evolution.
+
+### Databricks SQL
+- **Databricks SQL**: A suite of services that brings data warehousing capabilities to your data lakes. It supports open formats and ANSI SQL, providing an in-platform SQL editor and dashboarding tools for collaboration.
+- **SQL Warehouses**: Databricks SQL is powered by scalable SQL compute resources, decoupled from storage, which allows efficient query execution against lakehouse tables.
+- **Tool Integration**: Databricks SQL integrates with various tools, enabling analysts to work in familiar environments without needing to adjust to a new platform.
+- **Unity Catalog Integration**: Facilitates data discovery, audit, and governance from a single platform.
+
+### Data Modeling in the Lakehouse
+
+![](https://learn.microsoft.com/en-us/azure/databricks/_static/images/data-warehousing/dw-lakehouse-layers.png)
+
+- **Medallion Architecture**: A data design pattern that structures data in a series of layers (bronze, silver, and gold) within the lakehouse, each representing increasing data quality.
+  - **Bronze Layer**: The landing space for raw data in its original format. Data enters the lakehouse through batch or streaming and is converted to Delta tables.
+  - **Silver Layer**: Curates data from different sources and integrates it to build a data warehouse that aligns with business processes. This layer is often modeled in Third Normal Form (3NF) or Data Vault, with primary and foreign key constraints to define table relationships.
+  - **Gold Layer**: The presentation layer containing data marts, which are dimensional models capturing specific business perspectives. It also includes departmental and data science sandboxes for self-service analytics and data science, with separate compute clusters to prevent data copies outside the lakehouse.
+
+### Key Concepts and Features
+- **Data Warehouse Modeling**: Modeled at the silver layer to serve as the single source of truth, optimized for change, and schema-on-write with atomic operations.
+- **Data Marts**: In the gold layer, these are specialized, dimensional models designed for specific business needs.
+- **Self-Service Analytics**: The gold layer enables business teams to access data through sandboxes without duplicating it outside the lakehouse.
+
+### Advantages of the Lakehouse Approach
+- **Unified Governance**: Unity Catalog provides a unified governance model, securing and auditing data access while providing lineage information.
+- **Data Reliability and Scalability**: Delta Lake ensures data reliability with ACID transactions and supports schema evolution to keep data high-quality.
+- **Flexibility and Agility**: The architecture supports various data modeling styles and adapts quickly to changing business requirements, ensuring the data warehouse remains relevant and accurate.
+
 
 
 # Data Lakehouse
 
-Read blog : https://learn.microsoft.com/en-us/azure/databricks/lakehouse-architecture/
+### ⭐⭐Read blog : https://learn.microsoft.com/en-us/azure/databricks/lakehouse-architecture/ and https://www.databricks.com/blog/2020/01/30/what-is-a-data-lakehouse.html
 
+![](https://www.databricks.com/wp-content/uploads/2020/01/data-lakehouse-new.png)
 
+### Key Questions to Consider
+- **Scope of the Lakehouse**: Understanding the capabilities and personas involved in the lakehouse is crucial. The first step in designing your data architecture is to comprehend the building blocks of the Databricks Data Intelligence Platform and how they integrate with your systems.
+- **Vision for the Lakehouse**: This involves defining the purpose and future direction of the lakehouse, which will guide decisions related to data, analytics, and AI architecture.
+- **Integration with Cloud Architecture**: Ensuring that the lakehouse integrates seamlessly with the customer’s existing cloud architecture is a critical aspect of the implementation process.
+
+### Articles on Lakehouse Architecture
+- **Scope of the Lakehouse**: The platform’s scope includes understanding its fundamental components and their integration into your overall data architecture. This article helps outline the essential building blocks of the lakehouse platform.
+- **Guiding Principles for the Lakehouse**: These are the foundational rules that influence the architecture of your lakehouse. They articulate the vision for the lakehouse and serve as a basis for making informed decisions on data management, analytics, and AI.
+- **Downloadable Lakehouse Reference Architectures**: These are blueprints that provide recommended setups for the Databricks platform and its integration with cloud provider services. The blueprints are available in downloadable PDF format, offering a practical reference for implementation.
+
+### The Seven Pillars of the Well-Architected Lakehouse
+- **Framework Overview**: This section introduces a framework that outlines best practices for developing and maintaining a lakehouse that is safe, reliable, efficient, and cost-effective.
+- **Architectural Best Practices**: The framework helps you understand the implications of architectural decisions, ensuring that the lakehouse aligns with best practices in areas such as security, performance, cost management, and operational excellence.
+
+Read more [here](https://learn.microsoft.com/en-us/azure/databricks/lakehouse-architecture/well-architected)
 
 # Delta Live tables
 
 Read blog : https://learn.microsoft.com/en-us/azure/databricks/delta-live-tables/
+
+Delta Live Tables is a **declarative framework for building reliable, maintainable, and testable data processing pipelines**. You define the transformations to perform on your data and Delta Live Tables manages task orchestration, cluster management, monitoring, data quality, and error handling.
+
+### <span style="color:red"> PAID plan of databricks😥</span>
+
+**Instead of defining your data pipelines using a series of separate Apache Spark tasks, you define streaming tables and materialized views that the system should create and keep up to date**. Delta Live Tables manages how your data is transformed based on queries you define for each processing step. You can also enforce data quality with Delta Live Tables expectations, which allow you to define expected data quality and specify how to handle records that fail those expectations.
+
+
+## Delta Live Tables datasets
+
+Delta Live Tables datasets are the streaming tables, materialized views, and views maintained as the results of declarative queries. The following table describes how each dataset is processed:
+
+<table aria-label="Table 1" class="table table-sm margin-top-none">
+<thead>
+<tr>
+<th>Dataset type</th>
+<th>How are records processed through defined queries?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/delta-live-tables/#streaming-table">Streaming table</a></td>
+<td>Each record is processed exactly once. This assumes an append-only source.</td>
+</tr>
+<tr>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/delta-live-tables/#materialized-view">Materialized views</a></td>
+<td>Records are processed as required to return accurate results for the current data state. Materialized views should be used for data processing tasks such as transformations, aggregations, or pre-computing slow queries and frequently used computations.</td>
+</tr>
+<tr>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/delta-live-tables/#views">Views</a></td>
+<td>Records are processed each time the view is queried. Use views for intermediate transformations and data quality checks that should not be published to public datasets.</td>
+</tr>
+</tbody>
+</table>
+
+#### Click on the links to know more!!!
+
+## Delta Live Tables pipeline
+
+A pipeline is the **main unit used to configure and run data processing workflows with Delta Live Tables.**
+
+A pipeline contains **materialized views and streaming tables declared in Python or SQL source files.** Delta Live Tables infers the dependencies between these tables, ensuring updates occur in the correct order. For each dataset, Delta Live Tables compares the current state with the desired state and proceeds to create or update datasets using efficient processing methods.
+
+The settings of Delta Live Tables pipelines fall into two broad categories:
+
+1. **Configurations that define a collection of notebooks or files** (known as source code or libraries) that use Delta Live Tables syntax to declare datasets.
+2. **Configurations that control pipeline infrastructure, dependency management, how updates are processed**, and how tables are saved in the workspace.
+
+
+Most configurations are optional, but some require careful attention, especially when configuring production pipelines. These include the following:
+
+- To make **data available outside the pipeline, you must declare a target schema to publish to the Hive metastore or a target catalog and target schema to publish to Unity Catalog**.
+- **Data access permissions are configured through the cluster used for execution**. Make sure your cluster has appropriate permissions configured for data sources and the target storage location, if specified.
+
+## pipeline update
+
+Pipelines deploy infrastructure and recompute data state when you start an update. An update does the following:
+
+<ul>
+<li>Starts a cluster with the correct configuration.</li>
+<li>Discovers all the tables and views defined, and checks for any analysis errors such as invalid column names, missing dependencies, and syntax errors.</li>
+<li>Creates or updates tables and views with the most recent data available.</li>
+</ul>
+
+## Ingest data with Delta Live Tables
+
+Delta Live Tables **supports all data sources available in Azure Databricks**.
+
+Databricks recommends using streaming tables for most ingestion use cases. For files arriving in cloud object storage, Databricks recommends Auto Loader. You can directly ingest data with Delta Live Tables from most message buses.
+
+## Monitor and enforce data quality
+
+You can use **expectations to specify data quality controls on the contents of a dataset**. Unlike a `CHECK` constraint in a traditional database which prevents adding any records that fail the constraint, **expectations provide flexibility when processing data that fails data quality requirements**. This flexibility allows you to process and store data that you expect to be messy and data that must meet strict quality requirements. 
+
+## How are Delta Live Tables and Delta Lake related?
+
+Delta Live Tables extends the functionality of Delta Lake. Because tables created and managed by Delta Live Tables are Delta tables, they have the same guarantees and features provided by Delta Lake. 
+
+Delta Live Tables adds several table properties in addition to the many table properties that can be set in Delta Lake. 
+
+## Limitations
+The following limitations apply:
+
+<ul>
+<li>All tables created and updated by Delta Live Tables are Delta tables.</li>
+<li>Delta Live Tables tables can only be defined once, meaning they can only be the target of a single operation in all Delta Live Tables pipelines.</li>
+<li>Identity columns are not supported with tables that are the target of <code>APPLY CHANGES INTO</code> and might be recomputed during updates for materialized views. For this reason, Databricks recommends only using identity columns with streaming tables in Delta Live Tables. See <a href="../delta/generated-columns#identity" data-linktype="relative-path">Use identity columns in Delta Lake</a>.</li>
+<li>An Azure Databricks workspace is limited to 100 concurrent pipeline updates.</li>
+</ul>
+
 
 
 
