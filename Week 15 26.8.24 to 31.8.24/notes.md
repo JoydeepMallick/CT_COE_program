@@ -209,16 +209,67 @@ ADF also provides built-in support to run Databricks notebooks, Python scripts, 
 # Jobs
 Blog Link : https://kb.databricks.com/jobs/job-run-dash.html
 
-# Job API
-Blog Link : 
+###<div class="helpjuice-article-body-content helpjuice-editor-content"><p id="isPasted">The Job Run dashboard is a notebook that displays information about all of the jobs currently running in your workspace.</p><p>To configure the dashboard, you must have permission to attach a notebook to an all-purpose cluster in the workspace you want to monitor. If an all-purpose cluster does not exist, you must have permission to create one.</p><p>Once the dashboard is configured, you can manage job permissions (<a href="https://docs.databricks.com/security/access-control/jobs-acl.html#configure-job-permissions" id="" rel="noopener noreferrer" target="_blank" title="job permissions]">AWS</a> | <a href="https://docs.microsoft.com/azure/databricks/security/access-control/jobs-acl#configure-job-permissions" id="" rel="noopener noreferrer" target="_blank" title="job permissions]">Azure</a>) and assign Can View permissions to users in your organization. These users can view the dashboard, but cannot modify it.</p><h1 id="job-run-dashboard-notebook">Job Run dashboard notebook</h1><p>Review the <a href="https://docs.databricks.com/_static/notebooks/kb/jobs/job-run-dashboard.html" id="" rel="noopener noreferrer" target="_blank" title="">Job Run dashboard notebook</a>.</p><h1 id="attach-the-dashboard">Attach the dashboard</h1><p id="isPasted">Because the Job Run dashboard is a notebook, no special steps are required to attach the notebook to a cluster (<a href="https://docs.databricks.com/notebooks/notebooks-manage.html#attach-a-notebook-to-a-cluster" id="" rel="noopener noreferrer" target="_blank" title="attach the notebook to a cluster">AWS</a> | <a href="https://docs.microsoft.com/azure/databricks/notebooks/notebooks-manage#attach-a-notebook-to-a-cluster" id="" rel="noopener noreferrer" target="_blank" title="attach the notebook to a cluster">Azure</a>).</p><p>Attach it to an all-purpose cluster.</p><h1 id="run-the-dashboard-as-a-scheduled-job">Run the dashboard as a scheduled job</h1><p id="isPasted">After attaching the notebook to a cluster in your workspace, configure it to run as a scheduled job that runs every minute.</p><ol>
+<li>Open the notebook.</li>
+<li>Click <strong>Schedule</strong> in the notebook toolbar.</li>
+<li>Click <strong>New</strong> in the <strong>Schedule job</strong> pane.</li>
+<li>Select <strong>Every</strong> and <strong>minute</strong> in the <strong>Create Schedule</strong> dialog box.</li>
+<li>Click <strong>OK</strong>.</li>
+<li>Click <strong>Job Run dashboard</strong> in the <strong>Schedule job</strong> pane.</li>
+<li>Click <strong>Edit</strong> next to the <strong>Cluster</strong> option on the job details (<a href="https://docs.databricks.com/jobs.html#job-details" id="" rel="noopener noreferrer" target="_blank" title="job details">AWS</a> | <a href="https://docs.microsoft.com/azure/databricks/jobs#job-details" id="" rel="noopener noreferrer" target="_blank" title="job details">Azure</a>) page.</li>
+<li>Select an existing all-purpose cluster.</li>
+<li>Click <strong>Confirm</strong>.</li>
+</ol><h1 id="display-dashboard">Display dashboard</h1><ol>
+<li id="isPasted">Go to the job details page for the scheduled job.</li>
+<li>Check to make sure at least one successful run has occurred.</li>
+<li>Click <strong>Latest successful run (refreshes automatically)</strong>.</li>
+<li>Select the <strong>Job Run Dashboard</strong> view.</li>
+</ol><p>The dashboard is now in presentation mode. It updates automatically after each scheduled run completes.</p><p>You can share the dashboard URL with any user who has view permissions.</p><h1 id="results-listed">Results listed</h1><p id="isPasted">The Job Run dashboard results are split into two sections:</p><ul>
+<li>
+<strong>Job Runs</strong> - Displays all of the scheduled jobs that are currently running.</li>
+<li>
+<strong>Run Submits</strong> - Displays all of the running jobs that were invoked via an API call.</li>
+</ul><p>The dashboard displays the following components for each job:</p><ul>
+<li>
+<strong>Job ID</strong> - This is the unique ID number for the job. You can use this to view all of the job data by entering it into a job URL (<a href="https://docs.databricks.com/workspace/workspace-details.html#job-url-and-id" rel="noopener noreferrer" target="_blank" title="job URL">AWS</a> | <a href="https://docs.microsoft.com/azure/databricks/workspace/workspace-details#job-url-and-id" id="" rel="noopener noreferrer" target="_blank" title="job URL">Azure</a>).</li>
+<li>
+<strong>Run Page</strong> - This is the ID number of the specific run for a given job. It is formatted as a clickable hyperlink, so you can navigate directly to the run page from the Job Run dashboard. You can access previous run pages by navigating to the job URL and then clicking the specific run page from the list of completed runs.</li>
+<li>
+<strong>Run Name</strong> - This is the name of the notebook associated with the job.</li>
+<li>
+<strong>Start Time</strong> - This is the time the job run began. Time is displayed in <span style="font-family: Times New Roman,Times,serif,-webkit-standard;">DD-MM-YYYY HH:MM:SS</span> format, using a 24 hour clock. Time is in UTC.</li>
+<li>
+<strong>Created By</strong> - This is the email address of the user who owns the job.</li>
+</ul><p class="empty-paragraph"><br></p></div>
 
+
+# Job API
+Blog Link : https://docs.databricks.com/api/workspace/jobs
+
+The Jobs API allows you to create, edit, and delete jobs.
+
+You can use a **Databricks job to run a data processing or data analysis task in a Databricks cluster with scalable resources**. Your job can consist of a single task or can be a large, multi-task workflow with complex dependencies. Databricks manages the task orchestration, cluster management, monitoring, and error reporting for all of your jobs. You can run your jobs immediately or periodically through an easy-to-use scheduling system. You can implement job tasks using notebooks, JARS, Delta Live Tables pipelines, or Python, Scala, Spark submit, and Java applications.
+
+You should never hard code secrets or store them in plain text. Use the Secrets CLI to manage secrets in the Databricks CLI. Use the Secrets utility to reference secrets in notebooks and jobs.
 
 # Cluster API
-Blog Link : 
+Blog Link : https://docs.databricks.com/api/workspace/clusters
+
+The Clusters API allows you to create, start, edit, list, terminate, and delete clusters.
+
+Databricks maps cluster node instance types to compute units known as DBUs. See the instance type pricing page for a list of the supported instance types and their corresponding DBUs.
+
+A Databricks cluster is a set of computation resources and configurations on which you run data engineering, data science, and data analytics workloads, such as production ETL pipelines, streaming analytics, ad-hoc analytics, and machine learning.
+
+You run these workloads as a set of commands in a notebook or as an automated job. Databricks makes a distinction between all-purpose clusters and job clusters. You use all-purpose clusters to analyze data collaboratively using interactive notebooks. You use job clusters to run fast and robust automated jobs.
+
+You can create an all-purpose cluster using the UI, CLI, or REST API. You can manually terminate and restart an all-purpose cluster. Multiple users can share such clusters to do collaborative interactive analysis.
+
+**IMPORTANT**: Databricks retains cluster configuration information for terminated clusters for 30 days. To keep an all-purpose cluster configuration even after it has been terminated for more than 30 days, an administrator can pin a cluster to the cluster list.
 
 
 # Rest API
-Blog Link : 
+Blog Link : https://docs.databricks.com/en/reference/api.html
 
 
 # Libraries
