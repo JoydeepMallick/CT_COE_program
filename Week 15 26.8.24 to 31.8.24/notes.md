@@ -273,23 +273,278 @@ Blog Link : https://docs.databricks.com/en/reference/api.html
 
 
 # Libraries
-Blog Link : 
+Blog Link : https://learn.microsoft.com/en-us/azure/databricks/libraries/
+
+To make third-party or custom code available to notebooks and jobs running on your clusters, you can install a library. Libraries can be written in Python, Java, Scala, and R. You can upload Python, Java, and Scala libraries and point to external packages in PyPI, Maven, and CRAN repositories.
+
+Azure Databricks includes many common libraries in Databricks Runtime. To see which libraries are included in Databricks Runtime, look at the **System Environment** subsection of the Databricks Runtime release notes for your Databricks Runtime version.
+
+## Cluster-scoped libraries
+
+You can install libraries on clusters so that they can be used by all notebooks and jobs running on the cluster. Databricks supports Python, JAR, and R libraries. See Cluster libraries.
+
+You can install a cluster library directly from the following sources:
+
+- A package repository such as PyPI, Maven, or CRAN
+- Workspace files
+- Unity Catalog volumes
+- A cloud object storage location
+- A path on your local machine
+
+Not all locations are supported for all types of libraries or all compute configurations. See Recommendations for uploading libraries for configuration recommendations.
+
+## Recommendations for uploading libraries
+Databricks supports most configuration installations of Python, JAR, and R libraries, but there are some unsupported scenarios. It is recommended that you upload libraries to source locations that support installation onto compute with shared access mode, as this is the recommended mode for all workloads.
+
+
+The following table provides recommendations organized by Databricks Runtime version and Unity Catalog enablement.
+
+<table aria-label="Table 1" class="table table-sm margin-top-none">
+<thead>
+<tr>
+<th>Configuration</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Databricks Runtime 13.3 LTS and above with Unity Catalog</td>
+<td>Install libraries on compute with <a href="../compute/configure#access-mode" data-linktype="relative-path">shared access mode</a> from Unity Catalog <a href="../ingestion/file-upload/upload-to-volume" data-linktype="relative-path">volumes</a> with GRANT READ for all account users.<br><br>If applicable, Maven coordinates and JAR library paths need to be added to the <a href="../data-governance/unity-catalog/manage-privileges/allowlist" data-linktype="relative-path">allowlist</a>.</td>
+</tr>
+<tr>
+<td>Databricks Runtime 11.3 LTS and above without Unity Catalog</td>
+<td>Install libraries from <a href="workspace-files-libraries" data-linktype="relative-path">workspace files</a>. (File size limit is 500 MB.)</td>
+</tr>
+<tr>
+<td>Databricks Runtime 10.4 LTS and below</td>
+<td>Install libraries from <a href="../connect/storage/" data-linktype="relative-path">cloud object storage</a>.</td>
+</tr>
+</tbody>
+</table>
+
+## Python library support
+The following table indicates Databricks Runtime version compatibility for Python wheel files for different cluster access modes based on the library source location. 
+
+In Databricks Runtime 15.0 and above, you can use requirements.txt files to manage your Python dependencies. These files can be uploaded to any supported source location.
+
+<table aria-label="Table 2" class="table table-sm margin-top-none">
+<thead>
+<tr>
+<th></th>
+<th scope="col">Shared access mode</th>
+<th scope="col">Single user access mode</th>
+<th scope="col">No isolation shared access mode <em>(Legacy)</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">PyPI</th>
+<td>13.3 LTS and above</td>
+<td>All supported Databricks Runtime versions</td>
+<td>All supported Databricks Runtime versions</td>
+</tr>
+<tr>
+<th scope="row">Workspace files</th>
+<td>13.3 LTS and above</td>
+<td>13.3 LTS and above</td>
+<td>14.1 and above</td>
+</tr>
+<tr>
+<th scope="row">Volumes</th>
+<td>13.3 LTS and above</td>
+<td>13.3 LTS and above</td>
+<td>Not supported</td>
+</tr>
+<tr>
+<th scope="row">Cloud storage</th>
+<td>13.3 LTS and above</td>
+<td>All supported Databricks Runtime versions</td>
+<td>All supported Databricks Runtime versions</td>
+</tr>
+<tr>
+<th scope="row">DBFS <em>(Not recommended)</em></th>
+<td>Not supported</td>
+<td>14.3 and below</td>
+<td>14.3 and below</td>
+</tr>
+</tbody>
+</table>
+
+## Java and Scala library support
+The following table indicates Databricks Runtime version compatibility for JAR files for different cluster access modes based on the library source location.
+
+<table aria-label="Table 3" class="table table-sm margin-top-none">
+<thead>
+<tr>
+<th></th>
+<th scope="col">Shared access mode</th>
+<th scope="col">Single user access mode</th>
+<th scope="col">No isolation shared access mode <em>(Legacy)</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">Maven</th>
+<td>13.3 LTS and above</td>
+<td>All supported Databricks Runtime versions</td>
+<td>All supported Databricks Runtime versions</td>
+</tr>
+<tr>
+<th scope="row">Workspace files</th>
+<td>Not supported</td>
+<td>Not supported</td>
+<td>14.1 and above</td>
+</tr>
+<tr>
+<th scope="row">Volumes</th>
+<td>13.3 LTS and above</td>
+<td>13.3 LTS and above</td>
+<td>Not supported</td>
+</tr>
+<tr>
+<th scope="row">Cloud storage</th>
+<td>13.3 LTS and above</td>
+<td>All supported Databricks Runtime versions</td>
+<td>All supported Databricks Runtime versions</td>
+</tr>
+<tr>
+<th scope="row">DBFS <em>(Not recommended)</em></th>
+<td>Not supported</td>
+<td>14.3 and below</td>
+<td>14.3 and below</td>
+</tr>
+</tbody>
+</table>
+
+## R library support
+The following table indicates Databricks Runtime version compatibility for CRAN packages for different cluster access modes.
+
+<table aria-label="Table 4" class="table table-sm margin-top-none">
+<thead>
+<tr>
+<th></th>
+<th scope="col">Shared access mode</th>
+<th scope="col">Single user access mode</th>
+<th scope="col">No isolation shared access mode <em>(Legacy)</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">CRAN</th>
+<td>Not supported</td>
+<td>All supported Databricks Runtime versions</td>
+<td>All supported Databricks Runtime versions</td>
+</tr>
+</tbody>
+</table>
+
+## Notebook-scoped libraries
+Notebook-scoped libraries, available for Python and R, allow you to install libraries and create an environment scoped to a notebook session. These libraries do not affect other notebooks running on the same cluster. Notebook-scoped libraries do not persist and must be re-installed for each session. Use notebook-scoped libraries when you need a custom environment for a specific notebook.
+
+- Notebook-scoped Python libraries
+- Notebook-scoped R libraries
+
+## Python environment management
+The following table provides an overview of options you can use to install Python libraries in Azure Databricks.
+
+<table aria-label="Table 5" class="table table-sm margin-top-none">
+<thead>
+<tr>
+<th>Python package source</th>
+<th><a href="notebooks-python-libraries" data-linktype="relative-path">Notebook-scoped libraries with %pip</a></th>
+<th><a href="cluster-libraries" data-linktype="relative-path">Cluster libraries</a></th>
+<th><a href="https://docs.databricks.com/api/azure/workspace/libraries" data-linktype="external">Job libraries</a> with <a href="https://docs.databricks.com/api/azure/workspace/jobs" data-linktype="external">Jobs API</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PyPI</td>
+<td>Use <code>%pip install</code>. See <a href="notebooks-python-libraries#pip-install" data-linktype="relative-path">example</a>.</td>
+<td>Select <a href="package-repositories#pypi-libraries" data-linktype="relative-path">PyPI as the source</a>.</td>
+<td>Add a new <code>pypi</code> object to the job libraries and specify the <code>package</code> field.</td>
+</tr>
+<tr>
+<td>Private PyPI mirror, such as Nexus or Artifactory</td>
+<td>Use <code>%pip install</code> with the <code>--index-url</code> option. <a href="../security/secrets/" data-linktype="relative-path">Secret management</a> is available. See <a href="notebooks-python-libraries#pip-install-private" data-linktype="relative-path">example</a>.</td>
+<td>Not supported.</td>
+<td>Not supported.</td>
+</tr>
+<tr>
+<td>VCS, such as GitHub, with raw source</td>
+<td>Use <code>%pip install</code> and specify the repository URL as the package name. See <a href="notebooks-python-libraries#pip-install-vcs" data-linktype="relative-path">example</a>.</td>
+<td>Select <a href="package-repositories#pypi-libraries" data-linktype="relative-path">PyPI as the source</a> and specify the repository URL as the package name.</td>
+<td>Add a new <code>pypi</code> object to the job libraries and specify the repository URL as the <code>package</code> field.</td>
+</tr>
+<tr>
+<td>Private VCS with raw source</td>
+<td>Use <code>%pip install</code> and specify the repository URL with basic authentication as the package name. <a href="../security/secrets/" data-linktype="relative-path">Secret management</a> is available. See <a href="notebooks-python-libraries#pip-install-private" data-linktype="relative-path">example</a>.</td>
+<td>Not supported.</td>
+<td>Not supported.</td>
+</tr>
+<tr>
+<td>File path</td>
+<td>Use <code>%pip install</code>. See [example](/libraries/notebooks-python-libraries.md#workspace-files.</td>
+<td>Select <strong>File path/ADLS</strong> as the source.</td>
+<td>Add a new <code>egg</code> or <code>whl</code> object to the job libraries and specify the file path as the <code>package</code> field.</td>
+</tr>
+<tr>
+<td>Azure Data Lake Storage Gen2</td>
+<td>Use <code>%pip install</code> together with a pre-signed URL. Paths with the Azure Data Lake Storage Gen2 protocol <code>abfss://</code> are not supported.</td>
+<td>Select <strong>File path/ADLS</strong> as the source.</td>
+<td>Add a new <code>egg</code> or <code>whl</code> object to the job libraries and specify the Azure Data Lake Storage Gen2 path as the <code>package</code> field.</td>
+</tr>
+</tbody>
+</table>
+
+## Python library precedence
+You might encounter a situation where you need to override the version for a built-in library, or have a custom library that conflicts in name with another library installed on the cluster. When you run `import <library>`, the library with the high precedence is imported.
+
+The following list orders precedence from highest to lowest. In this list, a lower number means higher precedence.
+
+<ol>
+<li>Libraries in the current working directory (Git folders only).</li>
+<li>Libraries in the Git folder root directory (Git folders only).</li>
+<li>Notebook-scoped libraries (<code>%pip install</code> in notebooks).</li>
+<li>Cluster libraries (using the UI, CLI, or API).</li>
+<li>Libraries included in Databricks Runtime.
+<ul>
+<li>Libraries installed with init scripts might resolve before or after built-in libraries, depending on how they are installed. Databricks does not recommend installing libraries with init scripts.</li>
+</ul>
+</li>
+<li>Libraries in the current working directory (not in Git folders).</li>
+<li>Workspace files appended to the <code>sys.path</code>.</li>
+</ol>
+
+
 
 
 # Repos
-Blog Link : 
+Blog Link : https://learn.microsoft.com/en-us/azure/databricks/repos/
+
+
 
 
 # DBFS
-Blog Link : 
+Blog Link : https://learn.microsoft.com/en-us/azure/databricks/dbfs/
 
 
 # Working with Files
+Blog Link : https://learn.microsoft.com/en-us/azure/databricks/files/
+
 
 # Migration
+Blog Link : https://learn.microsoft.com/en-us/azure/databricks/migration/
+
 
 # Spark Monitoring
+Video Link : https://youtu.be/rNpzrkB5KQQ
+
 
 # Query Databases using JDBC
+Video Link : https://youtu.be/ZD6StTLoSk8
+
 
 # Optimization & Performance
+Blog Link : https://learn.microsoft.com/en-us/azure/databricks/optimizations/
+
+
