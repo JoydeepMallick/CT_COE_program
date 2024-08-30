@@ -271,6 +271,8 @@ You can create an all-purpose cluster using the UI, CLI, or REST API. You can ma
 # Rest API
 Blog Link : https://docs.databricks.com/en/reference/api.html
 
+Please visit the link and refer.
+
 
 # Libraries
 Blog Link : https://learn.microsoft.com/en-us/azure/databricks/libraries/
@@ -561,6 +563,39 @@ If your Git provider is cloud-based and not listed as a supported provider, sele
 
 # DBFS
 Blog Link : https://learn.microsoft.com/en-us/azure/databricks/dbfs/
+
+The term DBFS is used to describe two parts of the platform:
+
+- DBFS root
+- DBFS mounts
+Storing and accessing data using DBFS root or DBFS mounts is a deprecated pattern and not recommended by Databricks.
+
+## What is the Databricks File System?
+The term DBFS comes from Databricks File System, which describes the distributed file system used by Azure Databricks to interact with cloud-based storage.
+
+The underlying technology associated with DBFS is still part of the Azure Databricks platform. For example, `dbfs:/` is an optional scheme when interacting with Unity Catalog volumes.
+
+Past and current warnings and caveats about DBFS only apply to the DBFS root or DBFS mounts.
+
+## How does DBFS work with Unity Catalog?
+Databricks recommends using Unity Catalog to manage access to all data.
+
+Unity Catalog adds the concepts of external locations, storage credentials, and volumes to help organizations provide the least privileged access to data in cloud object storage.
+
+Some security configurations provide direct access to Unity Catalog-managed resources and DBFS, primarily for organizations that have completed migrations or partially migrated to Unity Catalog.
+
+## What is the DBFS root?
+The DBFS root is a storage location provisioned during workspace creation in the cloud account containing the Azure Databricks workspace. 
+Databricks does not recommend storing production data, libraries, or scripts in DBFS root. 
+
+## Mount object storage
+
+Mounting object storage to DBFS allows you to access objects in object storage as if they were on the local file system. Mounts store Hadoop configurations necessary for accessing storage.
+
+
+
+# Working with Files
+Blog Link : https://learn.microsoft.com/en-us/azure/databricks/files/
 
 Azure Databricks has multiple utilities and APIs for interacting with files in the following locations:
 
@@ -919,23 +954,80 @@ dbutils.fs.cp ("file:/<path>", "/Volumes/<catalog>/<schema>/<volume>/<path>")
 %fs cp file:/<path> /Volumes/<catalog>/<schema>/<volume>/<path>
 ```
 
-# Working with Files
-Blog Link : https://learn.microsoft.com/en-us/azure/databricks/files/
 
 
 # Migration
 Blog Link : https://learn.microsoft.com/en-us/azure/databricks/migration/
 
+This article provides an introduction to migrating existing data applications to Azure Databricks. Azure Databricks provides a unified approach that lets you work with data from many source systems on a single platform.
+
+## Migrate ETL jobs to Azure Databricks
+You can migrate Apache Spark jobs used to extract, transform, and load data from on-premises or cloud-native implementations to Azure Databricks with just a few steps. 
+
+Azure Databricks extends the functionality of Spark SQL with pre-configured open source integrations, partner integrations, and enterprise product offerings. If your ETL workloads are written in SQL or Hive, you can migrate to Azure Databricks with minimal refactoring.
+
+## Replace your enterprise data warehouse with a lakehouse
+Azure Databricks provides optimal value and performance when workloads align around data stored in the lakehouse. Many enterprise data stacks include both a data lake and an enterprise data warehouse, and organizations create complex ETL workflows to try to keep these systems and data in sync. The lakehouse allows you to use the same data, stored in the data lake, across queries and systems that usually rely on a separate data warehouse.
+
+Migrating from an enterprise data warehouse to the lakehouse generally involves reducing the complexity of your data architecture and workflows, but there are some caveats and best practices to keep in mind while completing this work. See Migrate your data warehouse to the Databricks lakehouse.
+
+## Unify your ML, data science, and analytics workloads
+Because the lakehouse provides optimized access to cloud-based data files through table queries or file paths, you can do ML, data science, and analytics on a single copy of your data. Azure Databricks makes it easy to move workloads from both open source and proprietary tools, and maintains updated versions of many of open source libraries used by analysts and data scientists.
+
+Pandas workloads in Jupyter notebooks can be synced and run using Databricks Git folders. Azure Databricks provides native support for pandas in all Databricks Runtime versions, and configures many popular ML and deep learning libraries in Databricks Runtime for Machine Learning. If you sync your local workloads using Git and workspace files in Git folders, you can use the same relative paths for data and custom libaries present in your local environment.
+
+
 
 # Spark Monitoring
-Video Link : https://youtu.be/rNpzrkB5KQQ
+### ⭐⭐Video Link : https://youtu.be/rNpzrkB5KQQ
 
+![](./Screenshot%20(1189).png)
+![](./Screenshot%20(1190).png)
+![](./Screenshot%20(1191).png)
+![](./Screenshot%20(1192).png)
+![](./Screenshot%20(1195).png)
+![](./Screenshot%20(1196).png)
+![](./Screenshot%20(1197).png)
+![](./Screenshot%20(1198).png)
+![](./Screenshot%20(1199).png)
+![](./Screenshot%20(1200).png)
+![](./Screenshot%20(1201).png)
+![](./Screenshot%20(1202).png)
+
+
+See demo [from this timeline](https://youtu.be/rNpzrkB5KQQ?t=335)
 
 # Query Databases using JDBC
 Video Link : https://youtu.be/ZD6StTLoSk8
+
+Refer to this [databricks blog](https://docs.databricks.com/en/connect/external-systems/jdbc.html)
+
+
 
 
 # Optimization & Performance
 Blog Link : https://learn.microsoft.com/en-us/azure/databricks/optimizations/
 
 
+Azure Databricks provides many optimizations supporting a variety of workloads on the lakehouse, ranging from large-scale ETL processing to ad-hoc, interactive queries. Many of these optimizations take place automatically. You get their benefits simply by using Azure Databricks. Additionally, most Databricks Runtime features require Delta Lake, the default format used to create tables in Azure Databricks.
+
+Azure Databricks configures default values that optimize most workloads. But, in some cases, changing configuration settings improves performance.
+
+## Databricks Runtime performance enhancements
+
+- Disk caching accelerates repeated reads against Parquet data files by loading data to disk volumes attached to compute clusters.
+- Dynamic file pruning improves query performance by skipping directories that do not contain data files that match query predicates.
+- Low shuffle merge reduces the number of data files rewritten by `MERGE` operations and reduces the need to recaculate `ZORDER` clusters.
+- Apache Spark 3.0 introduced adaptive query execution, which provides enhanced performance for many operations.
+
+## Databricks recommendations for enhanced performance
+- You can clone tables on Azure Databricks to make deep or shallow copies of source datasets.
+- The cost-based optimizer accelerates query performance by leveraging table statistics.
+- You can use Spark SQL to interact with JSON strings without parsing strings.
+- Higher order functions provide built-in, optimized performance for many operations that do not have common Spark operators. Higher order functions provide a performance benefit over user defined functions.
+- Azure Databricks provides a number of built-in operators and special syntax for working with complex data types, including arrays, structs, and JSON strings.
+- You can manually tune settings for range joins. See Range join optimization.
+
+## Opt-in behaviors
+- Azure Databricks provides a write serializable isolation guarantee by default; changing the isolation level to serializable can reduce throughput for concurrent operations, but might be necessary when read serializability is required.
+- You can use bloom filter indexes to reduce the likelihood of scanning data files that don’t contain records matching a given condition.
