@@ -562,6 +562,362 @@ If your Git provider is cloud-based and not listed as a supported provider, sele
 # DBFS
 Blog Link : https://learn.microsoft.com/en-us/azure/databricks/dbfs/
 
+Azure Databricks has multiple utilities and APIs for interacting with files in the following locations:
+
+<ul>
+<li>Unity Catalog volumes</li>
+<li>Workspace files</li>
+<li>Cloud object storage</li>
+<li>DBFS mounts and DBFS root</li>
+<li>Ephemeral storage attached to the driver node of the cluster</li>
+</ul>
+
+This article has examples for interacting with files in these locations for the following tools:
+
+<ul>
+<li>Apache Spark</li>
+<li>Spark SQL and Databricks SQL</li>
+<li>Databricks file system utilities (<code>dbutils.fs</code> or <code>%fs</code>)</li>
+<li>Databricks CLI</li>
+<li>Databricks REST API</li>
+<li>Bash shell commands (<code>%sh</code>)</li>
+<li>Notebook-scoped library installs using <code>%pip</code></li>
+<li>pandas</li>
+<li>OSS Python file management and processing utilities</li>
+</ul>
+
+## Do I need to provide a URI scheme to access data?
+
+
+Data access paths in Azure Databricks follow one of the following standards:
+
+- **URI-style paths** include a URI scheme. For Databricks-native data access solutions, URI schemes are optional for most use cases. When directly accessing data in cloud object storage, you must provide the correct URI scheme for the storage type.
+
+![](https://learn.microsoft.com/en-us/azure/databricks/_static/images/files/uri-paths-azure.png)
+
+- **POSIX-style paths** provide data access relative to the driver root (`/`). POSIX-style paths never require a scheme. You can use Unity Catalog volumes or DBFS mounts to provide POSIX-style access to data in cloud object storage. Many ML frameworks and other OSS Python modules require FUSE and can only use POSIX-style paths.
+
+![](https://learn.microsoft.com/en-us/azure/databricks/_static/images/files/posix-paths.png)
+
+
+## Work with files in Unity Catalog volumes
+Databricks recommends using Unity Catalog volumes to configure access to non-tabular data files stored in cloud object storage. 
+
+<table aria-label="Table 1" class="table table-sm margin-top-none">
+<thead>
+<tr>
+<th>Tool</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apache Spark</td>
+<td><code>spark.read.format("json").load("/Volumes/my_catalog/my_schema/my_volume/data.json").show()</code></td>
+</tr>
+<tr>
+<td>Spark SQL and Databricks SQL</td>
+<td><code>SELECT * FROM csv.`/Volumes/my_catalog/my_schema/my_volume/data.csv`;</code> <br><code>LIST '/Volumes/my_catalog/my_schema/my_volume/';</code></td>
+</tr>
+<tr>
+<td>Databricks file system utilities</td>
+<td><code>dbutils.fs.ls("/Volumes/my_catalog/my_schema/my_volume/")</code> <br><code>%fs ls /Volumes/my_catalog/my_schema/my_volume/</code></td>
+</tr>
+<tr>
+<td>Databricks CLI</td>
+<td><code>databricks fs cp /path/to/local/file dbfs:/Volumes/my_catalog/my_schema/my_volume/</code></td>
+</tr>
+<tr>
+<td>Databricks REST API</td>
+<td><code>POST https://&lt;databricks-instance&gt;/api/2.1/jobs/create</code> <br><code>{"name": "A multitask job", "tasks": [{..."libraries": [{"jar": "/Volumes/dev/environment/libraries/logging/Logging.jar"}],},...]}</code></td>
+</tr>
+<tr>
+<td>Bash shell commands</td>
+<td><code>%sh curl http://&lt;address&gt;/text.zip -o /Volumes/my_catalog/my_schema/my_volume/tmp/text.zip</code></td>
+</tr>
+<tr>
+<td>Library installs</td>
+<td><code>%pip install /Volumes/my_catalog/my_schema/my_volume/my_library.whl</code></td>
+</tr>
+<tr>
+<td>Pandas</td>
+<td><code>df = pd.read_csv('/Volumes/my_catalog/my_schema/my_volume/data.csv')</code></td>
+</tr>
+<tr>
+<td>OSS Python</td>
+<td><code>os.listdir('/Volumes/my_catalog/my_schema/my_volume/path/to/directory')</code></td>
+</tr>
+</tbody>
+</table>
+
+
+### Volumes limitations
+Volumes have the following limitations:
+
+- Direct-append or non-sequential (random) writes, such as writing Zip and Excel files are not supported. For direct-append or random-write workloads, perform the operations on a local disk first and then copy the results to Unity Catalog volumes. For example:
+
+```py
+# python
+import xlsxwriter
+from shutil import copyfile
+
+workbook = xlsxwriter.Workbook('/local_disk0/tmp/excel.xlsx')
+worksheet = workbook.add_worksheet()
+worksheet.write(0, 0, "Key")
+worksheet.write(0, 1, "Value")
+workbook.close()
+
+copyfile('/local_disk0/tmp/excel.xlsx', '/Volumes/my_catalog/my_schema/my_volume/excel.xlsx')
+```
+
+- Sparse files are not supported. To copy sparse files, use `cp --sparse=never`:
+
+```bash
+$ cp sparse.file /Volumes/my_catalog/my_schema/my_volume/sparse.file
+error writing '/dbfs/sparse.file': Operation not supported
+$ cp --sparse=never sparse.file /Volumes/my_catalog/my_schema/my_volume/sparse.file
+```
+
+## Work with workspace files
+Databricks workspace files are the files in a workspace that are not notebooks. You can use workspace files to store and access data and other files saved alongside notebooks and other workspace assets. Because workspace files have size restrictions, Databricks recommends only storing small data files here primarily for development and testing.
+
+<table aria-label="Table 2" class="table table-sm margin-top-none">
+<thead>
+<tr>
+<th>Tool</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apache Spark</td>
+<td><code>spark.read.format("json").load("file:/Workspace/Users/&lt;user-folder&gt;/data.json").show()</code></td>
+</tr>
+<tr>
+<td>Spark SQL and Databricks SQL</td>
+<td><code>SELECT * FROM json.`file:/Workspace/Users/&lt;user-folder&gt;/file.json`;</code></td>
+</tr>
+<tr>
+<td>Databricks file system utilities</td>
+<td><code>dbutils.fs.ls("file:/Workspace/Users/&lt;user-folder&gt;/")</code> <br><code>%fs ls file:/Workspace/Users/&lt;user-folder&gt;/</code></td>
+</tr>
+<tr>
+<td>Databricks CLI</td>
+<td><code>databricks workspace list</code></td>
+</tr>
+<tr>
+<td>Databricks REST API</td>
+<td><code>POST https://&lt;databricks-instance&gt;/api/2.0/workspace/delete</code> <br><code>{"path": "/Workspace/Shared/code.py", "recursive": "false"}</code></td>
+</tr>
+<tr>
+<td>Bash shell commands</td>
+<td><code>%sh curl http://&lt;address&gt;/text.zip -o /Workspace/Users/&lt;user-folder&gt;/text.zip</code></td>
+</tr>
+<tr>
+<td>Library installs</td>
+<td><code>%pip install /Workspace/Users/&lt;user-folder&gt;/my_library.whl</code></td>
+</tr>
+<tr>
+<td>Pandas</td>
+<td><code>df = pd.read_csv('/Workspace/Users/&lt;user-folder&gt;/data.csv')</code></td>
+</tr>
+<tr>
+<td>OSS Python</td>
+<td><code>os.listdir('/Workspace/Users/&lt;user-folder&gt;/path/to/directory')</code></td>
+</tr>
+</tbody>
+</table>
+
+### Workspace files limitations
+
+Workspace files have the following limitations:
+
+<ul>
+<li><p>Workspace file size is limited to 500MB from the UI. The maximum file size allowed when writing from a cluster is 256 MB.</p>
+</li>
+<li><p>If your workflow uses source code located in a <a href="../jobs/how-to/use-repos" data-linktype="relative-path">remote Git repository</a>, you cannot write to the current directory or write using a relative path. Write data to other location options.</p>
+</li>
+<li><p>You cannot use <code>git</code> commands when you save to workspace files. The creation of <code>.git</code> directories is not allowed in workspace files.</p>
+</li>
+<li><p>There is limited support for workspace file operations from <strong>serverless compute</strong>.</p>
+</li>
+<li><p>Executors cannot write to workspace files.</p>
+</li>
+<li><p>symlinks are not supported.</p>
+</li>
+<li><p>Workspace files can’t be accessed from <a href="../udf/" data-linktype="relative-path">user-defined functions (UDFs)</a> on clusters with <a href="../compute/configure#access-modes" data-linktype="relative-path">shared access mode</a> on Databricks Runtime 14.2 and below.</p>
+</li>
+</ul>
+
+### Where do deleted workspace files go?
+Deleting a workspace file sends it to the trash. You can recover or permanently delete files from the trash using the UI.
+
+## Work with files in cloud object storage
+Databricks recommends using Unity Catalog volumes to configure secure access to files in cloud object storage. You must configure permissions if you choose to directly access data in cloud object storage using URIs.
+
+The following examples use URIs to access data in cloud object storage:
+
+<table aria-label="Table 3" class="table table-sm margin-top-none">
+<thead>
+<tr>
+<th>Tool</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apache Spark</td>
+<td><code>spark.read.format("json").load("abfss://container-name@storage-account-name.dfs.core.windows.net/path/file.json").show()</code></td>
+</tr>
+<tr>
+<td>Spark SQL and Databricks SQL</td>
+<td><code>SELECT * FROM csv.`abfss://container-name@storage-account-name.dfs.core.windows.net/path/file.json`;</code> <code>LIST 'abfss://container-name@storage-account-name.dfs.core.windows.net/path';</code></td>
+</tr>
+<tr>
+<td>Databricks file system utilities</td>
+<td><code>dbutils.fs.ls("abfss://container-name@storage-account-name.dfs.core.windows.net/path/")</code> <code>%fs ls abfss://container-name@storage-account-name.dfs.core.windows.net/path/</code></td>
+</tr>
+<tr>
+<td>Databricks CLI</td>
+<td>Not supported</td>
+</tr>
+<tr>
+<td>Databricks REST API</td>
+<td>Not supported</td>
+</tr>
+<tr>
+<td>Bash shell commands</td>
+<td>Not supported</td>
+</tr>
+<tr>
+<td>Library installs</td>
+<td><code>%pip install abfss://container-name@storage-account-name.dfs.core.windows.net/path/to/library.whl</code></td>
+</tr>
+<tr>
+<td>Pandas</td>
+<td>Not supported</td>
+</tr>
+<tr>
+<td>OSS Python</td>
+<td>Not supported</td>
+</tr>
+</tbody>
+</table>
+
+## Work with files in DBFS mounts and DBFS root
+DBFS mounts are not securable using Unity Catalog and are no longer recommended by Databricks. Data stored in the DBFS root is accessible by all users in the workspace. Databricks recommends against storing any sensitive or production code or data in the DBFS root.
+
+<table aria-label="Table 4" class="table table-sm margin-top-none">
+<thead>
+<tr>
+<th>Tool</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apache Spark</td>
+<td><code>spark.read.format("json").load("/mnt/path/to/data.json").show()</code></td>
+</tr>
+<tr>
+<td>Spark SQL and Databricks SQL</td>
+<td><code>SELECT * FROM json.`/mnt/path/to/data.json`;</code></td>
+</tr>
+<tr>
+<td>Databricks file system utilities</td>
+<td><code>dbutils.fs.ls("/mnt/path")</code> <br><code>%fs ls /mnt/path</code></td>
+</tr>
+<tr>
+<td>Databricks CLI</td>
+<td><code>databricks fs cp dbfs:/mnt/path/to/remote/file /path/to/local/file</code></td>
+</tr>
+<tr>
+<td>Databricks REST API</td>
+<td><code>POST https://&lt;host&gt;/api/2.0/dbfs/delete --data '{ "path": "/tmp/HelloWorld.txt" }'</code></td>
+</tr>
+<tr>
+<td>Bash shell commands</td>
+<td><code>%sh curl http://&lt;address&gt;/text.zip &gt; /dbfs/mnt/tmp/text.zip</code></td>
+</tr>
+<tr>
+<td>Library installs</td>
+<td><code>%pip install /dbfs/mnt/path/to/my_library.whl</code></td>
+</tr>
+<tr>
+<td>Pandas</td>
+<td><code>df = pd.read_csv('/dbfs/mnt/path/to/data.csv')</code></td>
+</tr>
+<tr>
+<td>OSS Python</td>
+<td><code>os.listdir('/dbfs/mnt/path/to/directory')</code></td>
+</tr>
+</tbody>
+</table>
+
+## Work with files in ephemeral storage attached to the driver node
+The ephemeral storage attached to the driver node is block storage with built-in POSIX-based path access. Any data stored in this location disappears when a cluster terminates or restarts.
+
+<table aria-label="Table 5" class="table table-sm margin-top-none">
+<thead>
+<tr>
+<th>Tool</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apache Spark</td>
+<td>Not supported</td>
+</tr>
+<tr>
+<td>Spark SQL and Databricks SQL</td>
+<td>Not supported</td>
+</tr>
+<tr>
+<td>Databricks file system utilities</td>
+<td><code>dbutils.fs.ls("file:/path")</code> <br><code>%fs ls file:/path</code></td>
+</tr>
+<tr>
+<td>Databricks CLI</td>
+<td>Not supported</td>
+</tr>
+<tr>
+<td>Databricks REST API</td>
+<td>Not supported</td>
+</tr>
+<tr>
+<td>Bash shell commands</td>
+<td><code>%sh curl http://&lt;address&gt;/text.zip &gt; /tmp/text.zip</code></td>
+</tr>
+<tr>
+<td>Library installs</td>
+<td>Not supported</td>
+</tr>
+<tr>
+<td>Pandas</td>
+<td><code>df = pd.read_csv('/path/to/data.csv')</code></td>
+</tr>
+<tr>
+<td>OSS Python</td>
+<td><code>os.listdir('/path/to/directory')</code></td>
+</tr>
+</tbody>
+</table>
+
+### Move data from ephemeral storage to volumes
+You might want to access data downloaded or saved to ephemeral storage using Apache Spark. Because ephemeral storage is attached to the driver and Spark is a distributed processing engine, not all operations can directly access data here. Suppose you must move data from the driver filesystem to Unity Catalog volumes. In that case, you can copy files using magic commands or the Databricks utilities, as in the following examples:
+
+```py
+dbutils.fs.cp ("file:/<path>", "/Volumes/<catalog>/<schema>/<volume>/<path>")
+```
+
+```bash
+%sh cp /<path> /Volumes/<catalog>/<schema>/<volume>/<path>
+```
+
+```bash
+%fs cp file:/<path> /Volumes/<catalog>/<schema>/<volume>/<path>
+```
 
 # Working with Files
 Blog Link : https://learn.microsoft.com/en-us/azure/databricks/files/
