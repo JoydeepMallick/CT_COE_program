@@ -521,7 +521,42 @@ The following list orders precedence from highest to lowest. In this list, a low
 # Repos
 Blog Link : https://learn.microsoft.com/en-us/azure/databricks/repos/
 
+**Databricks Git folders is a visual Git client and API in Azure Databricks**. It supports common **Git operations** such as cloning a repository, committing and pushing, pulling, branch management, and visual comparison of diffs when committing.
 
+Within Git folders you can develop code in notebooks or other files and follow data science and engineering code development best practices using Git for version control, collaboration, and CI/CD.
+
+## What can you do with Databricks Git folders?
+Databricks Git folders provides source control for data and AI projects by integrating with Git providers.
+
+In Databricks Git folders, you can use Git functionality to:
+
+- Clone, push to, and pull from a remote Git repository.
+- Create and manage branches for development work, including merging, rebasing, and resolving conflicts.
+- Create notebooks (including IPYNB notebooks) and edit them and other files.
+- Visually compare differences upon commit and resolve merge conflicts.
+
+## What is a “Git provider”?
+
+A “**Git provider**” is the specific (named) service that hosts a source control model based on Git. Git-based source control platforms are hosted in two ways: as a cloud service hosted by the developing company, or as an on-premises service installed and managed by your own company on its own hardware. **Many Git providers such as GitHub, Microsoft, GitLab, and Atlassian provide both cloud-based SaaS and on-premises** (sometimes called “self-managed”) Git services.
+
+## Supported Git providers
+Databricks Git folders are backed by an integrated Git repository. The repository can be hosted by any of the cloud and enterprise Git providers listed above.
+
+When choosing your Git provider during configuration, you must be aware of the **differences between cloud (SaaS) and on-premises Git providers**. On-premises solutions are typically hosted behind a company VPN and might not be accessible from the internet. Usually, the on-premises Git providers have a name ending in “Server” or “Self-Managed”, but if you are uncertain, contact your company admins or review the Git provider’s documentation.
+
+If your Git provider is cloud-based and not listed as a supported provider, selecting “GitHub” as your provider may work but is not guaranteed.
+
+## Cloud Git providers supported by Databricks
+- GitHub, GitHub AE, and GitHub Enterprise Cloud
+- Atlassian BitBucket Cloud
+- GitLab and GitLab EE
+- Microsoft Azure DevOps (Azure Repos)
+
+## On-premises Git providers supported by Databricks
+- GitHub Enterprise Server
+- Atlassian BitBucket Server and Data Center
+- GitLab Self-Managed
+- Microsoft Azure DevOps Server: A workspace admin must explicitly allowlist the URL domain prefixes for your Microsoft Azure DevOps Server if the URL does not match `dev.azure.com/*` or `visualstudio.com/*`.
 
 
 # DBFS
